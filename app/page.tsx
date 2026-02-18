@@ -1,65 +1,405 @@
-import Image from "next/image";
+const Accent = ({ children }: { children: React.ReactNode }) => (
+  <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-amber-300 bg-clip-text text-transparent">
+    {children}
+  </span>
+);
 
-export default function Home() {
+const Card = ({
+  title,
+  desc,
+  bullets,
+  badge,
+}: {
+  title: string;
+  desc: string;
+  bullets: string[];
+  badge?: string;
+}) => (
+  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur">
+    <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gradient-to-br from-fuchsia-500/20 via-violet-500/10 to-amber-400/10 blur-2xl" />
+    <div className="relative">
+      <div className="flex items-center justify-between gap-4">
+        <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
+        {badge ? (
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80">
+            {badge}
+          </span>
+        ) : null}
+      </div>
+      <p className="mt-2 text-sm leading-relaxed text-white/70">{desc}</p>
+      <ul className="mt-4 space-y-2 text-sm text-white/80">
+        {bullets.map((b) => (
+          <li key={b} className="flex gap-2">
+            <span className="mt-[6px] h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-fuchsia-400 to-amber-300" />
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
+
+export default function Page() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-[#05060a] text-white">
+      {/* Background glow */}
+      <div className="pointer-events-none fixed inset-0">
+        <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-gradient-to-br from-fuchsia-500/25 via-violet-500/15 to-amber-400/10 blur-3xl" />
+        <div className="absolute bottom-[-220px] left-[-120px] h-[520px] w-[520px] rounded-full bg-gradient-to-tr from-violet-500/20 via-fuchsia-500/10 to-transparent blur-3xl" />
+        <div className="absolute right-[-160px] top-[40%] h-[460px] w-[460px] rounded-full bg-gradient-to-tr from-amber-400/15 via-fuchsia-500/10 to-transparent blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_55%)]" />
+        <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:42px_42px]" />
+      </div>
+
+      {/* Header */}
+      <header className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-fuchsia-500 via-violet-500 to-amber-300 p-[1px]">
+            <div className="h-full w-full rounded-2xl bg-black/60" />
+          </div>
+          <div className="leading-tight">
+            <div className="text-sm text-white/70">Sip & Slay LLC</div>
+            <div className="text-xs text-white/45">
+              Mobile Bartending • Northwest Suburbs + Chicagoland
+            </div>
+          </div>
+        </div>
+
+        <nav className="hidden items-center gap-6 text-sm text-white/70 md:flex">
+          <a className="hover:text-white" href="#services">
+            Services
+          </a>
+          <a className="hover:text-white" href="#packages">
+            Packages
+          </a>
+          <a className="hover:text-white" href="#gallery">
+            Gallery
+          </a>
+          <a className="hover:text-white" href="#faq">
+            FAQ
+          </a>
+          <a className="hover:text-white" href="#contact">
+            Contact
+          </a>
+        </nav>
+
+        <a
+          href="#contact"
+          className="rounded-xl bg-gradient-to-r from-fuchsia-500 via-violet-500 to-amber-300 px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-fuchsia-500/10 hover:brightness-110"
+        >
+          Request a Quote
+        </a>
+      </header>
+
+      {/* Hero */}
+      <section className="relative mx-auto max-w-6xl px-6 pb-10 pt-10 md:pb-16 md:pt-16">
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/75">
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-fuchsia-400 to-amber-300" />
+              Premium luxury, vibrant energy, flawless service
+            </div>
+
+            <h1 className="mt-5 text-4xl font-semibold tracking-tight md:text-6xl">
+              Make your event feel <Accent>expensive</Accent>.
+              <br />
+              Keep it <Accent>fun</Accent>.
+            </h1>
+
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+              Sip & Slay brings a high-end, stylish bar experience to your
+              space — signature cocktails, beautiful presentation, and the kind
+              of vibe guests remember.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#contact"
+                className="rounded-xl bg-white px-5 py-3 text-center text-sm font-semibold text-black hover:bg-white/90"
+              >
+                Get availability + pricing
+              </a>
+              <a
+                href="#packages"
+                className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-white/10"
+              >
+                View packages
+              </a>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3 text-xs text-white/60">
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
+                Northwest Suburbs
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
+                Chicagoland
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
+                Weddings • Birthdays • Corporate
+              </span>
+            </div>
+          </div>
+
+          {/* Hero “mock” */}
+          <div className="relative">
+            <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-fuchsia-500/30 via-violet-500/20 to-amber-300/20 blur-2xl" />
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-semibold">
+                  Signature Menu Preview
+                </div>
+                <div className="text-xs text-white/60">sample</div>
+              </div>
+
+              <div className="mt-5 space-y-4">
+                {[
+                  ["Velvet Espresso Martini", "vodka • espresso • crème"],
+                  ["Blushing Paloma", "tequila • grapefruit • lime"],
+                  ["Midnight Mojito", "rum • mint • citrus"],
+                  ["Champagne Sparkler", "bubbles • berry • glow"],
+                ].map(([name, meta]) => (
+                  <div
+                    key={name}
+                    className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 px-4 py-3"
+                  >
+                    <div>
+                      <div className="text-sm font-semibold">{name}</div>
+                      <div className="text-xs text-white/55">{meta}</div>
+                    </div>
+                    <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-fuchsia-500 via-violet-500 to-amber-300 p-[1px]">
+                      <div className="h-full w-full rounded-xl bg-black/40" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/70">
+                Want it <span className="text-white">alcohol-free</span> or{" "}
+                <span className="text-white">custom themed</span>? We’ll build a
+                menu around your event.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section
+        id="services"
+        className="relative mx-auto max-w-6xl px-6 py-10 md:py-14"
+      >
+        <div className="mb-6 flex items-end justify-between gap-6">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+              Services
+            </h2>
+            <p className="mt-2 text-sm text-white/65">
+              Luxury presentation, vibrant energy, and smooth execution.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-3">
+          <Card
+            title="Mobile Bartending"
+            desc="Professional bartending for private + corporate events across the NW suburbs and Chicagoland."
+            bullets={[
+              "Setup + breakdown included",
+              "Fast, clean service flow",
+              "Guest-first hospitality",
+            ]}
+            badge="Most Popular"
+          />
+          <Card
+            title="Signature Cocktails"
+            desc="Custom menus built around your theme — bold flavors, gorgeous garnish, elevated glassware."
+            bullets={["Menu consultation", "Mocktails available", "Seasonal specials"]}
+          />
+          <Card
+            title="Premium Aesthetic"
+            desc="A bar that looks like it belongs at a luxury venue — because it does."
+            bullets={["Styled presentation", "Photo-ready setup", "Modern, vibrant vibe"]}
+          />
+        </div>
+      </section>
+
+      {/* Packages */}
+      <section
+        id="packages"
+        className="relative mx-auto max-w-6xl px-6 py-10 md:py-14"
+      >
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+            Packages
+          </h2>
+          <p className="mt-2 text-sm text-white/65">
+            Pricing depends on guest count, hours, and menu. These are clean
+            starting points.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        <div className="grid gap-5 md:grid-cols-3">
+          <Card
+            title="Classic"
+            desc="Perfect for intimate events that still want luxury."
+            bullets={["Up to 4 hours", "Beer/wine + 2 cocktails", "Styled garnish bar"]}
+            badge="Starter"
+          />
+          <Card
+            title="Signature"
+            desc="The full Sip & Slay experience — premium + vibrant."
+            bullets={["Up to 5 hours", "3–4 signature cocktails", "Menu + vibe consultation"]}
+            badge="Best Value"
+          />
+          <Card
+            title="Ultra"
+            desc="Big events, big energy. Elevated from start to finish."
+            bullets={["6+ hours", "Full custom menu", "Premium presentation upgrades"]}
+            badge="Luxury"
+          />
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/70 backdrop-blur">
+          <span className="text-white font-semibold">Note:</span> Alcohol
+          purchasing rules vary by event setup. We’ll guide you to the cleanest,
+          legal option for your format.
+        </div>
+      </section>
+
+      {/* Gallery preview */}
+      <section
+        id="gallery"
+        className="relative mx-auto max-w-6xl px-6 py-12 md:py-16"
+      >
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+            Gallery
+          </h2>
+          <p className="mt-2 text-sm text-white/65">
+            Photos & videos that show the real vibe — cocktails, luxury setups,
+            and unforgettable moments.
+          </p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+  {/* Image 1 — Bottles */}
+  <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+    <img
+      src="/gallery/bottles.jpg"
+      alt="Premium bottle display"
+      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+    <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
+      Top Shelf Liqour
+    </div>
+  </div>
+
+  {/* Image 2 — Luxury setup */}
+  <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+    <img
+      src="/gallery/luxary-setup.png"
+      alt="Luxury bar setup"
+      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+    <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
+      Luxury Bar Setup
+    </div>
+  </div>
+
+  {/* Video — Highlight */}
+  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/50">
+    <video
+      controls
+      className="h-full w-full object-cover"
+      src="/gallery/clip3.mp4"
+    />
+    <div className="absolute top-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur">
+      Video Highlight
+    </div>
+  </div>
+</div>
+
+
+        <div className="mt-6 flex justify-center">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/gallery"
+            className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+            View Full Gallery →
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* FAQ */}
+      <section
+        id="faq"
+        className="relative mx-auto max-w-6xl px-6 py-10 md:py-14"
+      >
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+            FAQ
+          </h2>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-2">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
+            <div className="text-white font-semibold">Do you provide alcohol?</div>
+            <div className="mt-2">
+              Typically, clients purchase alcohol and we provide the expertise,
+              menu, and service. We’ll tell you exactly what to buy and how much.
+            </div>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
+            <div className="text-white font-semibold">What areas do you serve?</div>
+            <div className="mt-2">
+              Northwest suburbs + Chicagoland. If you’re unsure, send the city and we’ll confirm.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="relative mx-auto max-w-6xl px-6 pb-16 pt-10">
+        <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
+          <div className="grid gap-8 md:grid-cols-2 md:items-center">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+                Ready to <Accent>book</Accent>?
+              </h2>
+              <p className="mt-2 text-sm text-white/70">
+                Email us with your date, city, guest count, and event type. We’ll respond with availability + options.
+              </p>
+
+              <div className="mt-6 space-y-2 text-sm text-white/75">
+                <div>
+                  <span className="text-white/60">Email:</span>{" "}
+                  <span className="font-semibold">sipandslayllc@gmail.com</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-black/30 p-6">
+              <div className="text-sm font-semibold">Quick Quote Template</div>
+              <p className="mt-2 text-sm text-white/65">Copy/paste into your email:</p>
+              <pre className="mt-4 whitespace-pre-wrap rounded-xl border border-white/10 bg-black/40 p-4 text-xs text-white/70">
+Date:
+City:
+Guest count:
+Event type:
+Hours:
+Vibe/theme:
+Alcohol preference (cocktails / mocktails / both):
+              </pre>
+            </div>
+          </div>
+        </div>
+
+        <footer className="relative mx-auto mt-10 max-w-6xl px-2 text-center text-xs text-white/45">
+          © {new Date().getFullYear()} Sip & Slay LLC • Premium luxury mobile bartending • Chicagoland
+        </footer>
+      </section>
+    </main>
   );
 }
