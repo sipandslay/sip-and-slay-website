@@ -216,26 +216,60 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-            <img src="/gallery/bottles.jpg" alt="Premium bottle display" className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-            <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
-              Top Shelf Liqour
-            </div>
-          </div>
-
-          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-            <img src="/gallery/Menu.png" alt="Slayyed Menus" className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-            <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
+        {/* ✅ 3 images + 1 highlight video */}
+        <div className="grid gap-4 md:grid-cols-4">
+          {/* Menu 1 */}
+          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+            <img
+              src="/gallery/Menu.png"
+              alt="Slayyed Menus"
+              className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+            <div className="pointer-events-none absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/85 backdrop-blur opacity-0 transition group-hover:opacity-100">
               Slayyed Menus
             </div>
           </div>
 
+          {/* Menu 2 (add this file) */}
+          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+            <img
+              src="/gallery/Menu2.png"
+              alt="Slayyed Menu option 2"
+              className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+            <div className="pointer-events-none absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/85 backdrop-blur opacity-0 transition group-hover:opacity-100">
+              Slayyed Menus
+            </div>
+          </div>
+
+          {/* Menu 3 (add this file) */}
+          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+            <img
+              src="/gallery/Menu3.png"
+              alt="Slayyed Menu option 3"
+              className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+            <div className="pointer-events-none absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/85 backdrop-blur opacity-0 transition group-hover:opacity-100">
+              Slayyed Menus
+            </div>
+          </div>
+
+          {/* Highlight video (thumbnail via poster) */}
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/50">
-            <video controls className="h-full w-full object-cover" src="/gallery/clip3.mp4" />
-            <div className="absolute top-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur">
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster="/gallery/clip3-poster.jpg"
+              className="h-full w-full object-cover"
+            >
+              <source src="/gallery/clip3.mp4" type="video/mp4" />
+            </video>
+
+            <div className="pointer-events-none absolute top-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/85 backdrop-blur">
               Video Highlight
             </div>
           </div>

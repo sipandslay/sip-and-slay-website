@@ -38,27 +38,37 @@ export default function GalleryPage() {
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                 />
               ) : (
-                <video controls className="h-full w-full object-cover" src={item.src} />
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={
+                    // expects something like /gallery/clip3-poster.jpg to exist
+                    item.src.replace(".mp4", "-poster.jpg")
+                  }
+                  className="h-full w-full object-cover"
+                >
+                  <source src={item.src} type="video/mp4" />
+                </video>
               )}
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+              {/* MUST NOT block clicks */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
 
               {"tag" in item && item.tag ? (
-                <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
+                <div className="pointer-events-none absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
                   {item.tag}
                 </div>
               ) : null}
 
               {item.type === "video" ? (
-                <div className="absolute top-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur">
+                <div className="pointer-events-none absolute top-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur">
                   Video
                 </div>
               ) : null}
             </div>
           ))}
         </div>
-
-
       </section>
     </main>
   );
