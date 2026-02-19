@@ -1,3 +1,4 @@
+import Image from "next/image";
 const Accent = ({ children }: { children: React.ReactNode }) => (
   <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-amber-300 bg-clip-text text-transparent">
     {children}
@@ -54,9 +55,17 @@ export default function Page() {
       {/* Header */}
       <header className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-fuchsia-500 via-violet-500 to-amber-300 p-[1px]">
-            <div className="h-full w-full rounded-2xl bg-black/60" />
-          </div>
+        <div className="h-12 w-12 overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10">
+  <Image
+    src="/logo.png"
+    alt="Sip & Slay logo"
+    width={96}
+    height={96}
+    priority
+    className="h-full w-full object-contain p-1"
+  />
+</div>
+
           <div className="leading-tight">
             <div className="text-sm text-white/70">Sip & Slay LLC</div>
             <div className="text-xs text-white/45">
