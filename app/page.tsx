@@ -226,10 +226,10 @@ export default function Page() {
           </div>
 
           <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-            <img src="/gallery/luxary-setup.png" alt="Luxury bar setup" className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+            <img src="/gallery/Menu.png" alt="Slayyed Menus" className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
             <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
-              Luxury Bar Setup
+              Slayyed Menus
             </div>
           </div>
 

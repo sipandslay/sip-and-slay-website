@@ -1,24 +1,18 @@
 export type GalleryItem =
-  | { type: "image"; src: string; alt: string; tag?: string }
-  | { type: "video"; src: string; title: string; tag?: string };
+  | { type: "image"; src: string; alt: string; tag: string }
+  | { type: "video"; src: string; poster: string; title: string; tag: string };
 
 export const galleryItems: GalleryItem[] = [
-  // 🎥 Your real videos from /public/gallery
-  { type: "video", src: "/gallery/clip1.mov", title: "Event clip 1", tag: "Highlights" },
-  { type: "video", src: "/gallery/clip2.mov", title: "Event clip 2", tag: "Highlights" },
-  { type: "video", src: "/gallery/clip3.mp4", title: "Event clip 3", tag: "Highlights" },
+  // ✅ IMPORTANT:
+  // Use MP4 for best compatibility. If your files are .mov right now,
+  // convert them to .mp4 and update the src below.
 
-  // Temporary placeholder images (you can delete later)
-  {
-    type: "image",
-    src: "https://images.unsplash.com/photo-1525268323446-0505b6fe7778?auto=format&fit=crop&w=1600&q=80",
-    alt: "Cocktail photo",
-    tag: "Cocktails",
-  },
-  {
-    type: "image",
-    src: "https://images.unsplash.com/photo-1514361892635-e955d7b34d78?auto=format&fit=crop&w=1600&q=80",
-    alt: "Bar setup",
-    tag: "Setup",
-  },
+  { type: "video", src: "/gallery/clip1.mov", poster: "/gallery/clip1-poster.png", title: "Event clip 1", tag: "Highlights" },
+  { type: "video", src: "/gallery/clip2.mov", poster: "/gallery/clip2-poster.png", title: "Event clip 2", tag: "Highlights" },
+  { type: "video", src: "/gallery/clip3.mp4", poster: "/gallery/clip3-poster.jpg", title: "Event clip 3", tag: "Highlights" },
+
+  // ✅ Images you want to keep (remove the ones you said you don’t want)
+  { type: "image", src: "/gallery/bottles.jpg", alt: "Premium bottle display", tag: "Gallery" },
+  { type: "image", src: "/gallery/luxary-setup.png", alt: "Luxury bar setup", tag: "Gallery" },
+
 ];

@@ -2,7 +2,7 @@ import { galleryItems } from "@/data/gallery";
 
 export default function GalleryPage() {
   return (
-    <main className="min-h-screen bg-[#05060a] text-white">
+    <main className="min-h-screen sip-bg sip-grain sip-text">
       {/* Background */}
       <div className="pointer-events-none fixed inset-0">
         <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-gradient-to-br from-fuchsia-500/25 via-violet-500/15 to-amber-400/10 blur-3xl" />
@@ -58,11 +58,7 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/70 backdrop-blur">
-          <span className="text-white font-semibold">How to add your media:</span>{" "}
-          drop files into <span className="text-white">/public/gallery</span> then add them to{" "}
-          <span className="text-white">data/gallery.ts</span>.
-        </div>
+
       </section>
     </main>
   );
