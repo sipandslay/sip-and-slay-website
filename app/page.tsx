@@ -1,6 +1,7 @@
 import Image from "next/image";
+
 const Accent = ({ children }: { children: React.ReactNode }) => (
-  <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-amber-300 bg-clip-text text-transparent">
+  <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-transparent">
     {children}
   </span>
 );
@@ -17,7 +18,8 @@ const Card = ({
   badge?: string;
 }) => (
   <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur">
-    <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gradient-to-br from-fuchsia-500/20 via-violet-500/10 to-amber-400/10 blur-2xl" />
+    {/* premium glow (gold + pink, subtle) */}
+    <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gradient-to-br from-[#FFC86A]/18 via-[#FF4FB8]/10 to-transparent blur-2xl" />
     <div className="relative">
       <div className="flex items-center justify-between gap-4">
         <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
@@ -31,7 +33,7 @@ const Card = ({
       <ul className="mt-4 space-y-2 text-sm text-white/80">
         {bullets.map((b) => (
           <li key={b} className="flex gap-2">
-            <span className="mt-[6px] h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-fuchsia-400 to-amber-300" />
+            <span className="mt-[6px] h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
             <span>{b}</span>
           </li>
         ))}
@@ -42,30 +44,22 @@ const Card = ({
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-[#05060a] text-white">
-      {/* Background glow */}
+    <main className="relative min-h-screen overflow-hidden bg-[#050507] text-white">
+      {/* Premium background glows */}
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-gradient-to-br from-fuchsia-500/25 via-violet-500/15 to-amber-400/10 blur-3xl" />
-        <div className="absolute bottom-[-220px] left-[-120px] h-[520px] w-[520px] rounded-full bg-gradient-to-tr from-violet-500/20 via-fuchsia-500/10 to-transparent blur-3xl" />
-        <div className="absolute right-[-160px] top-[40%] h-[460px] w-[460px] rounded-full bg-gradient-to-tr from-amber-400/15 via-fuchsia-500/10 to-transparent blur-3xl" />
+        <div className="absolute -top-56 left-1/2 h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.22),transparent_60%)] blur-3xl" />
+        <div className="absolute -top-20 right-[-220px] h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,79,184,0.18),transparent_62%)] blur-3xl" />
+        <div className="absolute bottom-[-420px] left-[-260px] h-[860px] w-[860px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.14),transparent_65%)] blur-3xl" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_55%)]" />
-        <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:42px_42px]" />
+
+        {/* softer grid (less “template”) */}
+        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:56px_56px]" />
       </div>
 
       {/* Header */}
       <header className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <div className="flex items-center gap-3">
-        <div className="h-12 w-12 overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10">
-  <Image
-    src="/logo.png"
-    alt="Sip & Slay logo"
-    width={96}
-    height={96}
-    priority
-    className="h-full w-full object-contain p-1"
-  />
-</div>
-
+          {/* keep header minimal—logo lives in hero */}
           <div className="leading-tight">
             <div className="text-sm text-white/70">Sip & Slay LLC</div>
             <div className="text-xs text-white/45">
@@ -94,79 +88,77 @@ export default function Page() {
 
         <a
           href="#contact"
-          className="rounded-xl bg-gradient-to-r from-fuchsia-500 via-violet-500 to-amber-300 px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-fuchsia-500/10 hover:brightness-110"
+          className="rounded-xl bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-[#FF4FB8]/10 hover:brightness-110"
         >
           Request a Quote
         </a>
       </header>
 
-{/* Hero */}
-<section className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 text-center">
-  <div className="mx-auto max-w-3xl">
-    {/* top pill */}
-    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/75">
-      <span className="h-2 w-2 rounded-full bg-gradient-to-r from-fuchsia-400 to-amber-300" />
-      Premium luxury, vibrant energy, flawless service
-    </div>
+      {/* Hero */}
+      <section className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 text-center">
+        <div className="mx-auto max-w-3xl">
+          {/* top pill */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/75">
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
+            Premium luxury, vibrant energy, flawless service
+          </div>
 
-{/* BIG FULL-SIZE LOGO */}
-<div className="mt-10 flex justify-center">
-  <Image
-    src="/logo.png"
-    alt="Sip & Slay logo"
-    width={900}
-    height={900}
-    priority
-    className="w-full max-w-3xl h-auto object-contain drop-shadow-[0_20px_60px_rgba(255,200,100,0.25)]"
-  />
-</div>
+          {/* BIG FULL-SIZE LOGO */}
+          <div className="mt-10 flex justify-center">
+            <Image
+              src="/logo.png"
+              alt="Sip & Slay logo"
+              width={1200}
+              height={1200}
+              priority
+              className="w-full max-w-4xl h-auto object-contain drop-shadow-[0_28px_85px_rgba(255,200,106,0.18)]"
+            />
+          </div>
 
+          {/* Headline */}
+          <h1 className="mt-10 text-4xl font-semibold tracking-tight md:text-6xl leading-tight">
+            Make your event feel <Accent>expensive</Accent>.
+            <br />
+            Keep it <Accent>fun</Accent>.
+          </h1>
 
-    {/* Headline */}
-    <h1 className="mt-8 text-4xl font-semibold tracking-tight md:text-6xl leading-tight">
-      Make your event feel <Accent>expensive</Accent>.
-      <br />
-      Keep it <Accent>fun</Accent>.
-    </h1>
+          {/* Description */}
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+            Sip & Slay brings a high-end, stylish bar experience to your space —
+            signature cocktails, beautiful presentation, and the kind of vibe guests
+            remember.
+          </p>
 
-    {/* Description */}
-    <p className="mt-6 text-base leading-relaxed text-white/70 md:text-lg">
-      Sip & Slay brings a high-end, stylish bar experience to your space —
-      signature cocktails, beautiful presentation, and the kind of vibe guests remember.
-    </p>
+          {/* Buttons */}
+          <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <a
+              href="#contact"
+              className="rounded-xl px-6 py-3 text-sm font-semibold text-black hover:brightness-110 bg-gradient-to-r from-[#FFC86A] to-[#D6A24A] shadow-[0_18px_40px_rgba(255,200,106,0.14)] border border-white/5"
+            >
+              Get availability + pricing
+            </a>
+            <a
+              href="#packages"
+              className="rounded-xl px-6 py-3 text-sm font-semibold text-black hover:brightness-110 bg-gradient-to-r from-[#FF4FB8] to-[#FF86D1] shadow-[0_18px_40px_rgba(255,79,184,0.12)] border border-white/5"
+            >
+              View packages
+            </a>
+          </div>
 
-    {/* Buttons */}
-    <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-      <a
-        href="#contact"
-        className="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-white/90"
-      >
-        Get availability + pricing
-      </a>
-      <a
-        href="#packages"
-        className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
-      >
-        View packages
-      </a>
-    </div>
-
-    {/* location tags */}
-    <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-white/60">
-      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
-        Northwest Suburbs
-      </span>
-      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
-        Chicagoland
-      </span>
-      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
-        Weddings • Birthdays • Corporate
-      </span>
-    </div>
-  </div>
-</section>
-
-
+          {/* location tags */}
+          <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-white/60">
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
+              Northwest Suburbs
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
+              Chicagoland
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
+              Weddings • Birthdays • Corporate
+            </span>
+          </div>
+        </div>
+      </section>
 
       {/* Services */}
       <section
@@ -203,7 +195,11 @@ export default function Page() {
           <Card
             title="Premium Aesthetic"
             desc="A bar that looks like it belongs at a luxury venue — because it does."
-            bullets={["Styled presentation", "Photo-ready setup", "Modern, vibrant vibe"]}
+            bullets={[
+              "Styled presentation",
+              "Photo-ready setup",
+              "Modern, vibrant vibe",
+            ]}
           />
         </div>
       </section>
@@ -245,9 +241,9 @@ export default function Page() {
         </div>
 
         <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/70 backdrop-blur">
-          <span className="text-white font-semibold">Note:</span> Alcohol
-          purchasing rules vary by event setup. We’ll guide you to the cleanest,
-          legal option for your format.
+          <span className="text-white font-semibold">Note:</span> Alcohol purchasing
+          rules vary by event setup. We’ll guide you to the cleanest, legal option
+          for your format.
         </div>
       </section>
 
@@ -261,51 +257,46 @@ export default function Page() {
             Gallery
           </h2>
           <p className="mt-2 text-sm text-white/65">
-            Photos & videos that show the real vibe — cocktails, luxury setups,
-            and unforgettable moments.
+            Photos & videos that show the real vibe — cocktails, luxury setups, and
+            unforgettable moments.
           </p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
-  {/* Image 1 — Bottles */}
-  <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-    <img
-      src="/gallery/bottles.jpg"
-      alt="Premium bottle display"
-      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-    <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
-      Top Shelf Liqour
-    </div>
-  </div>
+          {/* Image 1 — Bottles */}
+          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <img
+              src="/gallery/bottles.jpg"
+              alt="Premium bottle display"
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+            <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
+              Top Shelf Liqour
+            </div>
+          </div>
 
-  {/* Image 2 — Luxury setup */}
-  <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-    <img
-      src="/gallery/luxary-setup.png"
-      alt="Luxury bar setup"
-      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-    <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
-      Luxury Bar Setup
-    </div>
-  </div>
+          {/* Image 2 — Luxury setup */}
+          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <img
+              src="/gallery/luxary-setup.png"
+              alt="Luxury bar setup"
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+            <div className="absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
+              Luxury Bar Setup
+            </div>
+          </div>
 
-  {/* Video — Highlight */}
-  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/50">
-    <video
-      controls
-      className="h-full w-full object-cover"
-      src="/gallery/clip3.mp4"
-    />
-    <div className="absolute top-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur">
-      Video Highlight
-    </div>
-  </div>
-</div>
-
+          {/* Video — Highlight */}
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/50">
+            <video controls className="h-full w-full object-cover" src="/gallery/clip3.mp4" />
+            <div className="absolute top-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur">
+              Video Highlight
+            </div>
+          </div>
+        </div>
 
         <div className="mt-6 flex justify-center">
           <a
@@ -318,10 +309,7 @@ export default function Page() {
       </section>
 
       {/* FAQ */}
-      <section
-        id="faq"
-        className="relative mx-auto max-w-6xl px-6 py-10 md:py-14"
-      >
+      <section id="faq" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6">
           <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
             FAQ
@@ -339,7 +327,8 @@ export default function Page() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
             <div className="text-white font-semibold">What areas do you serve?</div>
             <div className="mt-2">
-              Northwest suburbs + Chicagoland. If you’re unsure, send the city and we’ll confirm.
+              Northwest suburbs + Chicagoland. If you’re unsure, send the city and
+              we’ll confirm.
             </div>
           </div>
         </div>
@@ -354,7 +343,8 @@ export default function Page() {
                 Ready to <Accent>book</Accent>?
               </h2>
               <p className="mt-2 text-sm text-white/70">
-                Email us with your date, city, guest count, and event type. We’ll respond with availability + options.
+                Email us with your date, city, guest count, and event type. We’ll
+                respond with availability + options.
               </p>
 
               <div className="mt-6 space-y-2 text-sm text-white/75">
@@ -382,7 +372,8 @@ Alcohol preference (cocktails / mocktails / both):
         </div>
 
         <footer className="relative mx-auto mt-10 max-w-6xl px-2 text-center text-xs text-white/45">
-          © {new Date().getFullYear()} Sip & Slay LLC • Premium luxury mobile bartending • Chicagoland
+          © {new Date().getFullYear()} Sip & Slay LLC • Premium luxury mobile
+          bartending • Chicagoland
         </footer>
       </section>
     </main>
