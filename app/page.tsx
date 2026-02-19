@@ -216,42 +216,50 @@ export default function Page() {
         </div>
 
         {/* ✅ same size tiles, but NO black box look + no cropping */}
-        <div className="grid gap-4 md:grid-cols-4">
-          {/* Menu 1 */}
-<div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-  <div className="absolute inset-0 p-3 sm:p-4">
+        <div className="grid gap-10 md:grid-cols-4 items-start">
+  
+  {/* Menu 1 */}
+  <div className="flex justify-center">
     <img
       src="/gallery/Menu.png"
       alt="Slayyed Menu option 1"
-      className="h-full w-full object-contain"
+      className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
     />
   </div>
-  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
-</div>
 
-{/* Menu 2 */}
-<div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-  <div className="absolute inset-0 p-3 sm:p-4">
+  {/* Menu 2 */}
+  <div className="flex justify-center">
     <img
       src="/gallery/Menu2.png"
       alt="Slayyed Menu option 2"
-      className="h-full w-full object-contain"
+      className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
     />
   </div>
-  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
-</div>
 
-{/* Menu 3 */}
-<div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-  <div className="absolute inset-0 p-3 sm:p-4">
+  {/* Menu 3 */}
+  <div className="flex justify-center">
     <img
       src="/gallery/Menu3.png"
       alt="Slayyed Menu option 3"
-      className="h-full w-full object-contain"
+      className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
     />
   </div>
-  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
+
+  {/* Highlight Video */}
+  <div className="flex justify-center">
+    <video
+      controls
+      playsInline
+      preload="metadata"
+      poster="/gallery/clip3-poster.jpg"
+      className="w-full max-w-[320px] h-auto rounded-xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+    >
+      <source src="/gallery/clip3.mp4" type="video/mp4" />
+    </video>
+  </div>
+
 </div>
+
 
 
           {/* Highlight video */}
