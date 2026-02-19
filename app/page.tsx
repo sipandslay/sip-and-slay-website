@@ -48,7 +48,7 @@ export default function Page() {
     <main className="min-h-screen sip-bg sip-grain sip-text">
       <div className="sip-sparkles" />
 
-      {/* Background glow layers (keep—this is the “breathing” feel on scroll) */}
+      {/* Background glow layers */}
       <div className="pointer-events-none fixed inset-0">
         <div className="absolute -top-56 left-1/2 h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.22),transparent_60%)] blur-3xl" />
         <div className="absolute -top-20 right-[-220px] h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,79,184,0.18),transparent_62%)] blur-3xl" />
@@ -93,15 +93,18 @@ export default function Page() {
             Premium luxury, vibrant energy, flawless service
           </div>
 
+          {/* ✅ Logo with premium edge blending */}
           <div className="mt-10 flex justify-center">
-            <Image
-              src="/logo.png"
-              alt="Sip & Slay logo"
-              width={1200}
-              height={1200}
-              priority
-              className="w-full max-w-4xl h-auto object-contain drop-shadow-[0_28px_85px_rgba(255,200,106,0.18)]"
-            />
+            <span className="sip-logo-wrap">
+              <Image
+                src="/logo.png"
+                alt="Sip & Slay logo"
+                width={1200}
+                height={1200}
+                priority
+                className="sip-logo-feather w-full max-w-4xl h-auto object-contain drop-shadow-[0_28px_85px_rgba(255,200,106,0.18)]"
+              />
+            </span>
           </div>
 
           <h1 className="mt-10 text-4xl font-semibold tracking-tight md:text-6xl leading-tight">

@@ -27,8 +27,8 @@ body {
 
 /* Sip & Slay palette */
 :root{
-  --sip-black: #000000;   /* darker base */
-  --sip-ink: #040406;     /* near-black */
+  --sip-black: #000000;
+  --sip-ink: #040406;
   --sip-gold: #ffc86a;
   --sip-gold-deep: #d6a24a;
   --sip-pink: #ff4fb8;
@@ -44,7 +44,7 @@ body {
     linear-gradient(180deg, var(--sip-ink), var(--sip-black));
 }
 
-/* Extra vignette to make edges feel deeper/black */
+/* Vignette for deeper edges */
 .sip-bg::after{
   content:"";
   position: fixed;
@@ -54,7 +54,7 @@ body {
   opacity: 0.85;
 }
 
-/* Tiny “film grain” – expensive texture */
+/* Film grain */
 .sip-grain::before{
   content:"";
   position: fixed;
@@ -65,21 +65,16 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
 }
 
-/* ✨ Sparkles: BRIGHTER + DENSER */
+/* ✨ Sparkles: brighter + denser */
 .sip-sparkles{
   position: fixed;
   inset: 0;
   pointer-events: none;
   mix-blend-mode: screen;
-
-  /* stronger visibility */
   opacity: 1;
-
-  /* denser */
   background-size: 190px 190px;
   background-repeat: repeat;
 
-  /* more sparkle points */
   background:
     radial-gradient(1.2px 1.2px at 10% 25%, rgba(255,255,255,0.95) 60%, transparent 62%),
     radial-gradient(1.6px 1.6px at 18% 70%, rgba(255,200,106,1) 60%, transparent 62%),
@@ -99,7 +94,6 @@ body {
     radial-gradient(1.2px 1.2px at 90% 18%, rgba(255,200,106,0.75) 60%, transparent 62%),
     radial-gradient(1.1px 1.1px at 96% 66%, rgba(255,79,184,0.7) 60%, transparent 62%);
 
-  /* premium motion */
   animation:
     sipSparkleDrift 14s linear infinite,
     sipSparkleTwinkle 2.8s ease-in-out infinite;
@@ -117,18 +111,17 @@ body {
   50% { opacity: 1; filter: brightness(2.0) blur(0.14px); }
 }
 
-/* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce){
   .sip-sparkles{ animation: none; }
 }
 
-/* Warm “champagne” text instead of pure white */
+/* Warm “champagne” text */
 .sip-text {
   color: rgba(255, 241, 226, 0.92);
   text-shadow: 0 0 18px rgba(255, 200, 106, 0.10);
 }
 
-/* Headings: TRUE gradient like hero */
+/* Headings: gradient like hero */
 .sip-heading {
   background: linear-gradient(90deg, #FFC86A 0%, #FF4FB8 55%, #FFC86A 100%);
   -webkit-background-clip: text;
@@ -140,4 +133,35 @@ body {
 /* Accent glow helper */
 .sip-glow {
   text-shadow: 0 0 18px rgba(255,200,106,0.12), 0 0 26px rgba(255,79,184,0.10);
+}
+
+/* ✅ Logo blending (feathers harsh edges without changing the logo colors) */
+.sip-logo-wrap{
+  position: relative;
+  display: inline-block;
+  border-radius: 28px;
+}
+
+/* Soft halo behind logo so the border never feels “cut out” */
+.sip-logo-wrap::before{
+  content:"";
+  position:absolute;
+  inset:-22px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 35%, rgba(255,200,106,0.22), transparent 60%),
+    radial-gradient(circle at 70% 40%, rgba(255,79,184,0.18), transparent 62%);
+  filter: blur(18px);
+  opacity: 0.9;
+  pointer-events:none;
+}
+
+/* Feather the logo’s outer pixels */
+.sip-logo-feather{
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 72%, rgba(0,0,0,0) 100%);
+  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 72%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
