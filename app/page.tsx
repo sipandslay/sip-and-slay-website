@@ -54,7 +54,6 @@ export default function Page() {
         <div className="absolute -top-20 right-[-220px] h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,79,184,0.18),transparent_62%)] blur-3xl" />
         <div className="absolute bottom-[-420px] left-[-260px] h-[860px] w-[860px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.14),transparent_65%)] blur-3xl" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_55%)]" />
-
         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:56px_56px]" />
       </div>
 
@@ -93,7 +92,7 @@ export default function Page() {
             Premium luxury, vibrant energy, flawless service
           </div>
 
-          {/* ✅ Logo with premium edge blending */}
+          {/* Logo */}
           <div className="mt-10 flex justify-center">
             <span className="sip-logo-wrap">
               <Image
@@ -216,49 +215,40 @@ export default function Page() {
           </p>
         </div>
 
-        {/* ✅ 3 images + 1 highlight video */}
+        {/* ✅ same size tiles, but NO black box look + no cropping */}
         <div className="grid gap-4 md:grid-cols-4">
           {/* Menu 1 */}
-          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
             <img
               src="/gallery/Menu.png"
               alt="Slayyed Menus"
-              className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+              className="h-full w-full object-contain p-4 transition duration-500 group-hover:scale-[1.02]"
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-            <div className="pointer-events-none absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/85 backdrop-blur opacity-0 transition group-hover:opacity-100">
-              Slayyed Menus
-            </div>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
           </div>
 
-          {/* Menu 2 (add this file) */}
-          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+          {/* Menu 2 */}
+          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
             <img
               src="/gallery/Menu2.png"
               alt="Slayyed Menu option 2"
-              className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+              className="h-full w-full object-contain p-4 transition duration-500 group-hover:scale-[1.02]"
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-            <div className="pointer-events-none absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/85 backdrop-blur opacity-0 transition group-hover:opacity-100">
-              Slayyed Menus
-            </div>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
           </div>
 
-          {/* Menu 3 (add this file) */}
-          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+          {/* Menu 3 */}
+          <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
             <img
               src="/gallery/Menu3.png"
               alt="Slayyed Menu option 3"
-              className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+              className="h-full w-full object-contain p-4 transition duration-500 group-hover:scale-[1.02]"
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-            <div className="pointer-events-none absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/85 backdrop-blur opacity-0 transition group-hover:opacity-100">
-              Slayyed Menus
-            </div>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
           </div>
 
-          {/* Highlight video (thumbnail via poster) */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-black/50">
+          {/* Highlight video */}
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
             <video
               controls
               playsInline
@@ -268,7 +258,6 @@ export default function Page() {
             >
               <source src="/gallery/clip3.mp4" type="video/mp4" />
             </video>
-
             <div className="pointer-events-none absolute top-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/85 backdrop-blur">
               Video Highlight
             </div>
