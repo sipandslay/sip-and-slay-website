@@ -101,55 +101,58 @@ export default function Page() {
       </header>
 
 {/* Hero */}
-<section className="relative mx-auto max-w-6xl px-6 pb-10 pt-10 md:pb-16 md:pt-16">
-  <div className="max-w-4xl">
+<section className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 text-center">
+  <div className="mx-auto max-w-3xl">
     {/* top pill */}
     <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/75">
       <span className="h-2 w-2 rounded-full bg-gradient-to-r from-fuchsia-400 to-amber-300" />
       Premium luxury, vibrant energy, flawless service
     </div>
 
-    {/* logo + headline */}
-    <div className="mt-6 flex items-start gap-5">
-      <div className="h-20 w-20 overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10">
+    {/* BIG LOGO */}
+    <div className="mt-8 flex justify-center">
+      <div className="relative h-40 w-40 md:h-52 md:w-52">
         <Image
           src="/logo.png"
           alt="Sip & Slay logo"
-          width={160}
-          height={160}
+          fill
           priority
-          className="h-full w-full object-contain p-2"
+          className="object-contain drop-shadow-[0_10px_40px_rgba(255,180,80,0.25)]"
         />
       </div>
-
-      <h1 className="text-4xl font-semibold tracking-tight md:text-6xl leading-tight">
-        Make your event feel <Accent>expensive</Accent>.
-        <br />
-        Keep it <Accent>fun</Accent>.
-      </h1>
     </div>
 
-    <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+    {/* Headline */}
+    <h1 className="mt-8 text-4xl font-semibold tracking-tight md:text-6xl leading-tight">
+      Make your event feel <Accent>expensive</Accent>.
+      <br />
+      Keep it <Accent>fun</Accent>.
+    </h1>
+
+    {/* Description */}
+    <p className="mt-6 text-base leading-relaxed text-white/70 md:text-lg">
       Sip & Slay brings a high-end, stylish bar experience to your space —
       signature cocktails, beautiful presentation, and the kind of vibe guests remember.
     </p>
 
-    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+    {/* Buttons */}
+    <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
       <a
         href="#contact"
-        className="rounded-xl bg-white px-5 py-3 text-center text-sm font-semibold text-black hover:bg-white/90"
+        className="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-white/90"
       >
         Get availability + pricing
       </a>
       <a
         href="#packages"
-        className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-white/10"
+        className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
       >
         View packages
       </a>
     </div>
 
-    <div className="mt-8 flex flex-wrap gap-3 text-xs text-white/60">
+    {/* location tags */}
+    <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-white/60">
       <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
         Northwest Suburbs
       </span>
@@ -162,6 +165,7 @@ export default function Page() {
     </div>
   </div>
 </section>
+
 
 
       {/* Services */}
