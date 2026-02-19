@@ -215,67 +215,42 @@ export default function Page() {
           </p>
         </div>
 
-        {/* ✅ same size tiles, but NO black box look + no cropping */}
+        {/* ORIGINAL-SIZE vibe: no forced aspect box, no cropping, no black tile */}
         <div className="grid gap-10 md:grid-cols-4 items-start">
-  
-  {/* Menu 1 */}
-  <div className="flex justify-center">
-    <img
-      src="/gallery/Menu.png"
-      alt="Slayyed Menu option 1"
-      className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
-    />
-  </div>
+          <div className="flex justify-center">
+            <img
+              src="/gallery/Menu.png"
+              alt="Slayyed Menu option 1"
+              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+            />
+          </div>
 
-  {/* Menu 2 */}
-  <div className="flex justify-center">
-    <img
-      src="/gallery/Menu2.png"
-      alt="Slayyed Menu option 2"
-      className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
-    />
-  </div>
+          <div className="flex justify-center">
+            <img
+              src="/gallery/Menu2.png"
+              alt="Slayyed Menu option 2"
+              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+            />
+          </div>
 
-  {/* Menu 3 */}
-  <div className="flex justify-center">
-    <img
-      src="/gallery/Menu3.png"
-      alt="Slayyed Menu option 3"
-      className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
-    />
-  </div>
+          <div className="flex justify-center">
+            <img
+              src="/gallery/Menu3.png"
+              alt="Slayyed Menu option 3"
+              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+            />
+          </div>
 
-  {/* Highlight Video */}
-  <div className="flex justify-center">
-    <video
-      controls
-      playsInline
-      preload="metadata"
-      poster="/gallery/clip3-poster.jpg"
-      className="w-full max-w-[320px] h-auto rounded-xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
-    >
-      <source src="/gallery/clip3.mp4" type="video/mp4" />
-    </video>
-  </div>
-
-</div>
-
-
-
-          {/* Highlight video */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
+          <div className="flex justify-center">
             <video
               controls
               playsInline
               preload="metadata"
               poster="/gallery/clip3-poster.jpg"
-              className="h-full w-full object-cover"
+              className="w-full max-w-[320px] h-auto rounded-xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
             >
               <source src="/gallery/clip3.mp4" type="video/mp4" />
             </video>
-            <div className="pointer-events-none absolute top-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/85 backdrop-blur">
-              Video Highlight
-            </div>
           </div>
         </div>
 
