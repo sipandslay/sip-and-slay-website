@@ -22,7 +22,7 @@ const Card = ({
     <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gradient-to-br from-[#FFC86A]/18 via-[#FF4FB8]/10 to-transparent blur-2xl" />
     <div className="relative">
       <div className="flex items-center justify-between gap-4">
-      <h3 className="text-xl font-semibold tracking-tight sip-glow">{title}</h3>
+        <h3 className="text-xl font-semibold tracking-tight sip-glow">{title}</h3>
 
         {badge ? (
           <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80">
@@ -30,7 +30,9 @@ const Card = ({
           </span>
         ) : null}
       </div>
+
       <p className="mt-2 text-sm leading-relaxed text-white/70">{desc}</p>
+
       <ul className="mt-4 space-y-2 text-sm text-white/80">
         {bullets.map((b) => (
           <li key={b} className="flex gap-2">
@@ -46,7 +48,8 @@ const Card = ({
 export default function Page() {
   return (
     <main className="min-h-screen sip-bg sip-grain sip-text">
-  <div className="sip-sparkles" />
+      {/* ✨ Global sparkles layer */}
+      <div className="sip-sparkles" />
 
       {/* Premium background glows */}
       <div className="pointer-events-none fixed inset-0">
@@ -64,7 +67,7 @@ export default function Page() {
         <div className="flex items-center gap-3">
           {/* keep header minimal—logo lives in hero */}
           <div className="leading-tight">
-            <div className="text-sm text-white/70">Sip & Slay LLC</div>
+            <div className="text-sm text-white/70 sip-glow">Sip & Slay LLC</div>
             <div className="text-xs text-white/45">
               Mobile Bartending • Northwest Suburbs + Chicagoland
             </div>
@@ -170,9 +173,9 @@ export default function Page() {
       >
         <div className="mb-6 flex items-end justify-between gap-6">
           <div>
-          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">
-  Services
-</h2>
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">
+              Services
+            </h2>
 
             <p className="mt-2 text-sm text-white/65">
               Luxury presentation, vibrant energy, and smooth execution.
@@ -214,9 +217,9 @@ export default function Page() {
         className="relative mx-auto max-w-6xl px-6 py-10 md:py-14"
       >
         <div className="mb-6">
-        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">
-  Packages
-</h2>
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">
+            Packages
+          </h2>
 
           <p className="mt-2 text-sm text-white/65">
             Pricing depends on guest count, hours, and menu. These are clean
@@ -258,9 +261,9 @@ export default function Page() {
         className="relative mx-auto max-w-6xl px-6 py-12 md:py-16"
       >
         <div className="mb-8">
-        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">
-  Gallery
-</h2>
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">
+            Gallery
+          </h2>
 
           <p className="mt-2 text-sm text-white/65">
             Photos & videos that show the real vibe — cocktails, luxury setups, and
@@ -317,10 +320,9 @@ export default function Page() {
       {/* FAQ */}
       <section id="faq" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6">
-        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">
-  Faq
-</h2>
-
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">
+            FAQ
+          </h2>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2">
