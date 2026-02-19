@@ -109,18 +109,18 @@ export default function Page() {
       Premium luxury, vibrant energy, flawless service
     </div>
 
-    {/* BIG LOGO */}
-    <div className="mt-8 flex justify-center">
-      <div className="relative h-40 w-40 md:h-52 md:w-52">
-        <Image
-          src="/logo.png"
-          alt="Sip & Slay logo"
-          fill
-          priority
-          className="object-contain drop-shadow-[0_10px_40px_rgba(255,180,80,0.25)]"
-        />
-      </div>
-    </div>
+{/* BIG FULL-SIZE LOGO */}
+<div className="mt-10 flex justify-center">
+  <Image
+    src="/logo.png"
+    alt="Sip & Slay logo"
+    width={900}
+    height={900}
+    priority
+    className="w-full max-w-3xl h-auto object-contain drop-shadow-[0_20px_60px_rgba(255,200,100,0.25)]"
+  />
+</div>
+
 
     {/* Headline */}
     <h1 className="mt-8 text-4xl font-semibold tracking-tight md:text-6xl leading-tight">
