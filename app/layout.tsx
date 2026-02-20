@@ -4,10 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Sip & Slay LLC",
-  description: "Luxury Cart Events • Premium Mobile Bartending",
-  icons: {
-    icon: "/icon.png", 
-  },
+  description: "Luxury Cart Events",
 };
 
 export default function RootLayout({
