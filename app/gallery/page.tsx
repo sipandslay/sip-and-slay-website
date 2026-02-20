@@ -1,3 +1,4 @@
+// /app/gallery/page.tsx
 import { galleryItems } from "@/data/gallery";
 
 export default function GalleryPage() {
@@ -9,13 +10,13 @@ export default function GalleryPage() {
         <a href="/" className="text-sm text-white/70 hover:text-white">
           ← Back to Home
         </a>
-        <div className="text-sm text-white/70">Sip & Slay LLC • Gallery</div>
+        <div className="text-sm text-white/70">Sip &amp; Slay LLC • Gallery</div>
       </header>
 
       <section className="relative mx-auto max-w-6xl px-6 pb-16">
-        <h1 className="text-3xl font-semibold tracking-tight md:text-4xl sip-heading">Gallery</h1>
+        <h1 className="sip-heading text-3xl font-semibold tracking-tight md:text-4xl">Gallery</h1>
         <p className="mt-2 text-sm text-white/65">
-          Photos & videos that show the real vibe — cocktails, luxury setups, and unforgettable moments.
+          Photos &amp; videos that show the real vibe — cocktails, luxury setups, and unforgettable moments.
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -35,19 +36,15 @@ export default function GalleryPage() {
                   controls
                   playsInline
                   preload="metadata"
-                  poster={(item as any).poster ?? undefined}
+                  poster={item.poster}
                   className="h-full w-full object-cover"
-                />
+                >
+                  <source src={item.src} />
+                </video>
               )}
 
               {/* overlay that does NOT block clicks */}
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-
-              {"tag" in item && (item as any).tag ? (
-                <div className="pointer-events-none absolute bottom-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur opacity-0 transition group-hover:opacity-100">
-                  {(item as any).tag}
-                </div>
-              ) : null}
 
               {item.type === "video" ? (
                 <div className="pointer-events-none absolute top-3 left-3 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white/80 backdrop-blur">
