@@ -11,8 +11,4 @@ export const galleryItems: GalleryItem[] = [
   { type: "video", src: "/gallery/clip2.mov", poster: "/gallery/clip2-poster.png", title: "Event clip 2", tag: "Highlights" },
   { type: "video", src: "/gallery/clip3.mp4", poster: "/gallery/clip3-poster.jpg", title: "Event clip 3", tag: "Highlights" },
 
-  // ✅ Images you want to keep (remove the ones you said you don’t want)
-  { type: "image", src: "/gallery/bottles.jpg", alt: "Premium bottle display", tag: "Gallery" },
-  { type: "image", src: "/gallery/luxary-setup.png", alt: "Luxury bar setup", tag: "Gallery" },
-
-];
+]
