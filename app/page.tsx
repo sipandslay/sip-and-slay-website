@@ -1,6 +1,8 @@
-// /app/page.tsx
+"use client";
+
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { useMemo, useState } from "react";
 
 const Accent = ({ children }: { children: ReactNode }) => (
   <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-transparent">
@@ -45,7 +47,148 @@ const Card = ({
   </div>
 );
 
+function Input({
+  label,
+  value,
+  onChange,
+  type = "text",
+  placeholder,
+  required,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  type?: string;
+  placeholder?: string;
+  required?: boolean;
+}) {
+  return (
+    <label className="block">
+      <div className="mb-2 text-xs text-white/70">
+        {label} {required ? <span className="text-[#FFC86A]">*</span> : null}
+      </div>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        required={required}
+        className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none focus:border-white/25"
+      />
+    </label>
+  );
+}
+
+function Select({
+  label,
+  value,
+  onChange,
+  options,
+  required,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  options: string[];
+  required?: boolean;
+}) {
+  return (
+    <label className="block">
+      <div className="mb-2 text-xs text-white/70">
+        {label} {required ? <span className="text-[#FFC86A]">*</span> : null}
+      </div>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        required={required}
+        className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-white/25"
+      >
+        <option value="" disabled>
+          Select…
+        </option>
+        {options.map((o) => (
+          <option key={o} value={o}>
+            {o}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
 export default function Page() {
+  // form state
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const [date, setDate] = useState("");
+  const [city, setCity] = useState("");
+  const [guestCount, setGuestCount] = useState("");
+  const [eventType, setEventType] = useState("");
+  const [hours, setHours] = useState("");
+  const [vibeTheme, setVibeTheme] = useState("");
+  const [alcoholPreference, setAlcoholPreference] = useState("");
+
+  // honeypot (hidden)
+  const [website, setWebsite] = useState("");
+
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState("");
+
+  const canSubmit = useMemo(() => {
+    return (
+      email.trim() &&
+      phone.trim() &&
+      date.trim() &&
+      city.trim() &&
+      guestCount.trim() &&
+      eventType.trim() &&
+      hours.trim() &&
+      vibeTheme.trim() &&
+      alcoholPreference.trim()
+    );
+  }, [email, phone, date, city, guestCount, eventType, hours, vibeTheme, alcoholPreference]);
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("sending");
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          date,
+          city,
+          guestCount,
+          eventType,
+          hours,
+          vibeTheme,
+          alcoholPreference,
+          website, // honeypot
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || "Could not send. Try again.");
+      }
+
+      setStatus("sent");
+      // optional: clear form
+      // setName(""); setEmail(""); setPhone("");
+      // setDate(""); setCity(""); setGuestCount(""); setEventType(""); setHours(""); setVibeTheme(""); setAlcoholPreference("");
+    } catch (err: any) {
+      setStatus("error");
+      setError(err?.message || "Could not send. Try again.");
+    }
+  }
+
   return (
     <main className="min-h-screen sip-bg sip-grain sip-text">
       <div className="sip-sparkles" />
@@ -97,8 +240,6 @@ export default function Page() {
       {/* Hero */}
       <section className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 text-center">
         <div className="mx-auto max-w-3xl">
-          {/* (Removed the pill line above the logo) */}
-
           {/* Logo */}
           <div className="mt-10 flex justify-center">
             <span className="sip-logo-wrap">
@@ -113,7 +254,7 @@ export default function Page() {
             </span>
           </div>
 
-          <h1 className="mt-10 text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+          <h1 className="mt-10 text-4xl font-semibold tracking-tight md:text-6xl leading-tight">
             Make your event feel <Accent>expensive</Accent>.
             <br />
             Keep it <Accent>fun</Accent>.
@@ -127,20 +268,23 @@ export default function Page() {
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
               href="#contact"
-              className="rounded-xl border border-white/5 bg-gradient-to-r from-[#FFC86A] to-[#D6A24A] px-6 py-3 text-sm font-semibold text-black shadow-[0_18px_40px_rgba(255,200,106,0.14)] hover:brightness-110"
+              className="rounded-xl px-6 py-3 text-sm font-semibold text-black hover:brightness-110 bg-gradient-to-r from-[#FFC86A] to-[#D6A24A] shadow-[0_18px_40px_rgba(255,200,106,0.14)] border border-white/5"
             >
               Get availability + pricing
             </a>
             <a
               href="#packages"
-              className="rounded-xl border border-white/5 bg-gradient-to-r from-[#FF4FB8] to-[#FF86D1] px-6 py-3 text-sm font-semibold text-black shadow-[0_18px_40px_rgba(255,79,184,0.12)] hover:brightness-110"
+              className="rounded-xl px-6 py-3 text-sm font-semibold text-black hover:brightness-110 bg-gradient-to-r from-[#FF4FB8] to-[#FF86D1] shadow-[0_18px_40px_rgba(255,79,184,0.12)] border border-white/5"
             >
               View packages
             </a>
           </div>
 
+          {/* UPDATED PILL TEXT */}
           <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-white/60">
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">Weddings • Birthdays • Corporate</span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
+              Birthdays • Weddings • Corporate • Private Events
+            </span>
           </div>
         </div>
       </section>
@@ -149,7 +293,7 @@ export default function Page() {
       <section id="services" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6 flex items-end justify-between gap-6">
           <div>
-            <h2 className="sip-heading text-2xl font-semibold tracking-tight md:text-3xl">Services</h2>
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">Services</h2>
             <p className="mt-2 text-sm text-white/65">Luxury presentation, vibrant energy, and smooth execution.</p>
           </div>
         </div>
@@ -177,8 +321,10 @@ export default function Page() {
       {/* Packages */}
       <section id="packages" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6">
-          <h2 className="sip-heading text-2xl font-semibold tracking-tight md:text-3xl">Packages</h2>
-          <p className="mt-2 text-sm text-white/65">Pricing depends on guest count, hours, and menu. These are clean starting points.</p>
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">Packages</h2>
+          <p className="mt-2 text-sm text-white/65">
+            Pricing depends on guest count, hours, and menu. These are clean starting points.
+          </p>
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
@@ -187,25 +333,24 @@ export default function Page() {
           <Card title="Ultra" desc="Big events, big energy. Elevated from start to finish." bullets={["6+ hours", "Full custom menu", "Premium presentation upgrades"]} badge="Luxury" />
         </div>
 
-        <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/70 backdrop-blur">
-          <span className="font-semibold text-white">Note:</span> Alcohol purchasing rules vary by event setup. We’ll guide you to the cleanest, legal option for your format.
-        </div>
+        {/* REMOVED the alcohol purchasing note per your request */}
       </section>
 
       {/* Gallery */}
       <section id="gallery" className="relative mx-auto max-w-6xl px-6 py-12 md:py-16">
         <div className="mb-8">
-          <h2 className="sip-heading text-2xl font-semibold tracking-tight md:text-3xl">Gallery</h2>
-          <p className="mt-2 text-sm text-white/65">Photos &amp; videos that show the real vibe — cocktails, luxury setups, and unforgettable moments.</p>
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">Gallery</h2>
+          <p className="mt-2 text-sm text-white/65">
+            Photos &amp; videos that show the real vibe — cocktails, luxury setups, and unforgettable moments.
+          </p>
         </div>
 
-        {/* 2 menus + highlight video */}
-        <div className="grid items-start gap-10 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-3 items-start">
           <div className="flex justify-center">
             <img
               src="/gallery/Menu.png"
               alt="Slayyed Menu option 1"
-              className="h-auto w-full max-w-[320px] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
             />
           </div>
 
@@ -213,7 +358,7 @@ export default function Page() {
             <img
               src="/gallery/Menu2.png"
               alt="Slayyed Menu option 2"
-              className="h-auto w-full max-w-[320px] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
             />
           </div>
 
@@ -223,7 +368,7 @@ export default function Page() {
               playsInline
               preload="metadata"
               poster="/gallery/clip3-poster.jpg"
-              className="h-auto w-full max-w-[320px] rounded-xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+              className="w-full max-w-[320px] h-auto rounded-xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
             >
               <source src="/gallery/clip3.mp4" type="video/mp4" />
             </video>
@@ -243,18 +388,18 @@ export default function Page() {
       {/* FAQ */}
       <section id="faq" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6">
-          <h2 className="sip-heading text-2xl font-semibold tracking-tight md:text-3xl">FAQ</h2>
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">FAQ</h2>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
-            <div className="font-semibold text-white">Do you provide alcohol?</div>
+            <div className="text-white font-semibold">Do you provide alcohol?</div>
             <div className="mt-2">
               Typically, clients purchase alcohol and we provide the expertise, menu, and service. We’ll tell you exactly what to buy and how much.
             </div>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
-            <div className="font-semibold text-white">What areas do you serve?</div>
+            <div className="text-white font-semibold">What areas do you serve?</div>
             <div className="mt-2">Northwest suburbs + Chicagoland. If you’re unsure, send the city and we’ll confirm.</div>
           </div>
         </div>
@@ -263,35 +408,92 @@ export default function Page() {
       {/* Contact */}
       <section id="contact" className="relative mx-auto max-w-6xl px-6 pb-16 pt-10">
         <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
-          <div className="grid gap-8 md:grid-cols-2 md:items-center">
+          <div className="grid gap-8 md:grid-cols-2 md:items-start">
             <div>
               <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
                 Ready to <Accent>book</Accent>?
               </h2>
               <p className="mt-2 text-sm text-white/70">
-                Email us with your date, city, guest count, and event type. We’ll respond with availability + options.
+                Submit the form and we’ll respond with availability + options.
               </p>
 
               <div className="mt-6 space-y-2 text-sm text-white/75">
                 <div>
-                  <span className="text-white/60">Email:</span> <span className="font-semibold">sipandslayllc@gmail.com</span>
+                  <span className="text-white/60">Email:</span>{" "}
+                  <span className="font-semibold">sipandslayllc@gmail.com</span>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-black/30 p-6">
-              <div className="text-sm font-semibold">Quick Quote Template</div>
-              <p className="mt-2 text-sm text-white/65">Copy/paste into your email:</p>
-              <pre className="mt-4 whitespace-pre-wrap rounded-xl border border-white/10 bg-black/40 p-4 text-xs text-white/70">
-Date:
-City:
-Guest count:
-Event type:
-Hours:
-Vibe/theme:
-Alcohol preference (cocktails / mocktails / both):
-              </pre>
-            </div>
+            <form onSubmit={onSubmit} className="rounded-2xl border border-white/10 bg-black/30 p-6">
+              <div className="text-sm font-semibold">Quick Quote Form</div>
+              <p className="mt-2 text-sm text-white/65">
+                Required fields are marked with <span className="text-[#FFC86A]">*</span>.
+              </p>
+
+              {/* Honeypot (hidden) */}
+              <input
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
+
+              <div className="mt-5 grid gap-4 md:grid-cols-2">
+                <Input label="Name" value={name} onChange={setName} placeholder="Your name (optional)" />
+                <Input label="Email" value={email} onChange={setEmail} type="email" required placeholder="you@email.com" />
+                <Input label="Phone" value={phone} onChange={setPhone} required placeholder="(555) 555-5555" />
+                <Input label="Date" value={date} onChange={setDate} required placeholder="MM/DD/YYYY" />
+                <Input label="City" value={city} onChange={setCity} required placeholder="Chicago, Arlington Heights, etc." />
+                <Input label="Guest count" value={guestCount} onChange={setGuestCount} required placeholder="e.g., 45" />
+                <Input label="Event type" value={eventType} onChange={setEventType} required placeholder="Birthday, wedding, corporate, etc." />
+                <Input label="Hours" value={hours} onChange={setHours} required placeholder="e.g., 4" />
+              </div>
+
+              <div className="mt-4">
+                <Input
+                  label="Vibe / theme"
+                  value={vibeTheme}
+                  onChange={setVibeTheme}
+                  required
+                  placeholder="Elegant, fun, black & gold, Barbie, etc."
+                />
+              </div>
+
+              <div className="mt-4">
+                <Select
+                  label="Alcohol preference"
+                  value={alcoholPreference}
+                  onChange={setAlcoholPreference}
+                  required
+                  options={["Cocktails", "Mocktails", "Both"]}
+                />
+              </div>
+
+              <div className="mt-5 flex items-center gap-3">
+                <button
+                  type="submit"
+                  disabled={!canSubmit || status === "sending"}
+                  className="rounded-xl bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-[#FF4FB8]/10 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {status === "sending" ? "Sending..." : "Submit Request"}
+                </button>
+
+                {status === "sent" ? (
+                  <span className="text-sm text-white/75">✅ Sent! We’ll reach out soon.</span>
+                ) : null}
+
+                {status === "error" ? (
+                  <span className="text-sm text-red-300">❌ {error}</span>
+                ) : null}
+              </div>
+
+              <p className="mt-3 text-xs text-white/45">
+                By submitting, you agree we can contact you back via email or phone.
+              </p>
+            </form>
           </div>
         </div>
 
