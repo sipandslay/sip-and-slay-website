@@ -239,9 +239,10 @@ export default function Page() {
         <div className="mx-auto max-w-3xl">
           {/* Logo */}
           <div className="mt-10 flex justify-center">
-            <span className="sip-logo-wrap">
-              <Image
-                src="/logo.png"
+            <span className="sip-logo-wrap sip-logo-float">
+  <span className="sip-logo-backglow" />
+  <Image
+    src="/logo_transparent_v2.png"
                 alt="Sip & Slay logo"
                 width={1200}
                 height={1200}

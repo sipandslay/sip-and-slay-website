@@ -164,4 +164,43 @@ body {
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+}.sip-logo-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.sip-logo-backglow {
+  position: absolute;
+  inset: 12% 10%;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 200, 106, 0.22) 0%,
+    rgba(255, 79, 184, 0.12) 34%,
+    rgba(255, 79, 184, 0.05) 52%,
+    transparent 74%
+  );
+  filter: blur(46px);
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.sip-logo-float {
+  animation: sipFloat 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes sipFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
