@@ -33,7 +33,7 @@ export default function SipsPage() {
 
       <section className="relative mx-auto max-w-6xl px-6 pb-16">
         <h1 className="sip-heading text-3xl font-semibold tracking-tight md:text-4xl">Sips</h1>
-        <p className="mt-2 max-w-2xl text-sm text-white/65">
+        <p className="mt-3 max-w-xl text-base font-light tracking-wide text-white/70">
           Signature cocktails, drink visuals, and event clips that show the vibe in motion.
         </p>
 

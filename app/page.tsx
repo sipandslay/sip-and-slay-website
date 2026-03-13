@@ -343,7 +343,7 @@ export default function Page() {
               </a>
 
               <p className="mt-2 max-w-xl text-sm text-white/65">
-                Signature drink visuals and event clips that show the energy in motion.
+                Signature drinks where every sip brings the vibe to life.
               </p>
 
               <div className="mt-5 overflow-hidden rounded-[24px] border border-white/10 bg-black/25 shadow-[0_18px_50px_rgba(0,0,0,0.5)]">
@@ -375,7 +375,7 @@ export default function Page() {
               </a>
 
               <p className="mt-2 max-w-xl text-sm text-white/65">
-                Menus, packages, and the visual pieces that make the brand feel elevated.
+                Curated menu experiences that slay, making every event unforgettable.
               </p>
 
               <div className="mt-5 overflow-hidden rounded-[24px] border border-white/10 bg-black/25 shadow-[0_18px_50px_rgba(0,0,0,0.5)]">
