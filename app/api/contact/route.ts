@@ -16,11 +16,48 @@ type Payload = {
   vibeTheme: string;
   alcoholPreference: string;
   website?: string; // honeypot
+  formStart?: number; // timing trap
 };
 
 function sanitize(v: unknown) {
   if (typeof v !== "string") return "";
   return v.trim().slice(0, 500);
+}
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isValidPhone(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  return digits.length >= 10;
+}
+
+function looksLikeSpamText(value: string) {
+  if (!value) return false;
+
+  const lower = value.toLowerCase();
+
+  // obvious junk / filler / bot-ish patterns
+  if (
+    lower.includes("asdf") ||
+    lower.includes("qwerty") ||
+    lower.includes("testtest") ||
+    lower.includes("lorem") ||
+    lower.includes("ipsum") ||
+    lower.includes("http://") ||
+    lower.includes("https://") ||
+    lower.includes("www.")
+  ) {
+    return true;
+  }
+
+  // way too many repeated same chars
+  if (/(.)\1{5,}/.test(lower)) {
+    return true;
+  }
+
+  return false;
 }
 
 export async function POST(req: Request) {
@@ -35,7 +72,7 @@ export async function POST(req: Request) {
 
     const body = (await req.json()) as Partial<Payload>;
 
-    // basic bot trap
+    // basic bot trap: hidden field filled out
     if (sanitize(body.website)) {
       return NextResponse.json({ ok: true }, { status: 200 });
     }
@@ -52,19 +89,63 @@ export async function POST(req: Request) {
       vibeTheme: sanitize(body.vibeTheme),
       alcoholPreference: sanitize(body.alcoholPreference),
       website: sanitize(body.website),
+      formStart: typeof body.formStart === "number" ? body.formStart : 0,
     };
 
+    // timing trap: humans take time, bots don't
+    if (!payload.formStart || Date.now() - payload.formStart < 4000) {
+      return NextResponse.json({ ok: true }, { status: 200 });
+    }
+
     // required fields
-    const required = ["email", "phone", "date", "city", "guestCount", "eventType", "hours", "vibeTheme", "alcoholPreference"] as const;
+    const required = [
+      "email",
+      "phone",
+      "date",
+      "city",
+      "guestCount",
+      "eventType",
+      "hours",
+      "vibeTheme",
+      "alcoholPreference",
+    ] as const;
+
     for (const k of required) {
       if (!payload[k]) {
         return NextResponse.json({ ok: false, error: `Missing ${k}` }, { status: 400 });
       }
     }
 
+    // basic sanity validation
+    if (!isValidEmail(payload.email)) {
+      return NextResponse.json({ ok: true }, { status: 200 });
+    }
+
+    if (!isValidPhone(payload.phone)) {
+      return NextResponse.json({ ok: true }, { status: 200 });
+    }
+
+    if (payload.name && payload.name.length > 80) {
+      return NextResponse.json({ ok: true }, { status: 200 });
+    }
+
+    if (payload.vibeTheme.length > 150) {
+      return NextResponse.json({ ok: true }, { status: 200 });
+    }
+
+    if (
+      looksLikeSpamText(payload.name || "") ||
+      looksLikeSpamText(payload.city) ||
+      looksLikeSpamText(payload.eventType) ||
+      looksLikeSpamText(payload.vibeTheme)
+    ) {
+      return NextResponse.json({ ok: true }, { status: 200 });
+    }
+
     const resend = new Resend(resendKey);
 
     const subject = `New Quote Request — ${payload.eventType} (${payload.date})`;
+
     const text = [
       "NEW SIP & SLAY WEBSITE SUBMISSION",
       "",
@@ -86,7 +167,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: fromEmail,
       to: toEmail,
-      replyTo: payload.email, // so you can just hit "Reply"
+      replyTo: payload.email,
       subject,
       text,
     });

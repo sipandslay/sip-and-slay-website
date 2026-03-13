@@ -130,6 +130,7 @@ export default function Page() {
   const [alcoholPreference, setAlcoholPreference] = useState("");
 
   const [website, setWebsite] = useState("");
+  const [formStart] = useState(Date.now());
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
@@ -169,6 +170,7 @@ export default function Page() {
           vibeTheme,
           alcoholPreference,
           website,
+          formStart,
         }),
       });
 
@@ -229,59 +231,54 @@ export default function Page() {
           Request a Quote
         </a>
       </header>
-{/* Hero */}
-<section className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 text-center">
 
-  <div className="mx-auto max-w-3xl">
+      {/* Hero */}
+      <section className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 text-center">
+        <div className="mx-auto max-w-3xl">
+          {/* LOGO */}
+          <div className="mt-10 flex justify-center">
+            <div className="sip-logo-circle sip-logo-float">
+              <span className="sip-logo-backglow" />
+              <span className="sip-logo-shimmer" />
 
-    {/* LOGO */}
-    <div className="mt-10 flex justify-center">
-      <div className="sip-logo-circle sip-logo-float">
+              <Image
+                src="/logo.png"
+                alt="Sip & Slay logo"
+                width={1200}
+                height={1200}
+                priority
+                className="sip-logo-image"
+              />
+            </div>
+          </div>
 
-        <span className="sip-logo-backglow" />
-        <span className="sip-logo-shimmer" />
+          <h1 className="mt-10 text-4xl font-semibold tracking-tight md:text-6xl leading-tight">
+            Make your event feel <Accent>expensive</Accent>.
+            <br />
+            Keep it <Accent>fun</Accent>.
+          </h1>
 
-        <Image
-          src="/logo.png"
-          alt="Sip & Slay logo"
-          width={1200}
-          height={1200}
-          priority
-          className="sip-logo-image"
-        />
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+            Sip &amp; Slay brings a high-end, stylish bar experience to your space — signature cocktails,
+            beautiful presentation, and the kind of vibe guests remember.
+          </p>
 
-      </div>
-    </div>
+          <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <a
+              href="#contact"
+              className="rounded-xl px-6 py-3 text-sm font-semibold text-black hover:brightness-110 bg-gradient-to-r from-[#FFC86A] to-[#D6A24A] shadow-[0_18px_40px_rgba(255,200,106,0.14)] border border-white/5"
+            >
+              Get availability + pricing
+            </a>
+          </div>
 
-    <h1 className="mt-10 text-4xl font-semibold tracking-tight md:text-6xl leading-tight">
-      Make your event feel <Accent>expensive</Accent>.
-      <br />
-      Keep it <Accent>fun</Accent>.
-    </h1>
-
-    <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-      Sip & Slay brings a high-end, stylish bar experience to your space — signature cocktails,
-      beautiful presentation, and the kind of vibe guests remember.
-    </p>
-
-    <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-      <a
-        href="#contact"
-        className="rounded-xl px-6 py-3 text-sm font-semibold text-black hover:brightness-110 bg-gradient-to-r from-[#FFC86A] to-[#D6A24A] shadow-[0_18px_40px_rgba(255,200,106,0.14)] border border-white/5"
-      >
-        Get availability + pricing
-      </a>
-    </div>
-
-    <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-white/60">
-      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
-        Birthdays • Weddings • Corporate • Private Events
-      </span>
-    </div>
-
-  </div>
-
-</section>
+          <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-white/60">
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
+              Birthdays • Weddings • Corporate • Private Events
+            </span>
+          </div>
+        </div>
+      </section>
 
       <section id="services" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6 flex items-end justify-between gap-6">
@@ -327,117 +324,70 @@ export default function Page() {
       </section>
 
       <section className="relative mx-auto max-w-6xl px-6 py-14">
+        <div className="grid gap-10 lg:grid-cols-2">
+          {/* SIPS CARD */}
+          <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur shadow-[0_30px_80px_rgba(0,0,0,0.45)] transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_40px_120px_rgba(255,79,184,0.18)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.16),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_40%)] opacity-90" />
 
-  <div className="grid gap-10 lg:grid-cols-2">
+            <div className="relative z-10 p-6">
+              <a href="/sips" className="group inline-flex items-center gap-2">
+                <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-3xl font-semibold tracking-wide text-transparent md:text-4xl transition group-hover:brightness-125">
+                  Sips
+                </span>
 
-    {/* SIPS CARD */}
+                <span className="text-white/70 transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
 
-    <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur shadow-[0_30px_80px_rgba(0,0,0,0.45)] transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_40px_120px_rgba(255,79,184,0.18)]">
+              <span className="block h-[2px] w-0 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] transition-all duration-300 group-hover:w-20"></span>
 
-      {/* gradient glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.16),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_40%)] opacity-90" />
+              <p className="mt-4 max-w-lg text-base font-light tracking-wide text-white/70">
+                Signature cocktails crafted to bring the party to life.
+              </p>
 
-      <div className="relative z-10 p-6">
+              <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster="/Sips/clip3-poster.jpg"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                >
+                  <source src="/Sips/clip3.mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
 
-        {/* CLICKABLE TITLE */}
+          {/* SLAYS CARD */}
+          <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur shadow-[0_30px_80px_rgba(0,0,0,0.45)] transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_40px_120px_rgba(255,200,106,0.18)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,79,184,0.16),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(255,200,106,0.14),transparent_40%)] opacity-90" />
 
-        <a
-          href="/sips"
-          className="group inline-flex items-center gap-2"
-        >
+            <div className="relative z-10 p-6">
+              <a href="/slays" className="group inline-flex items-center gap-2">
+                <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-3xl font-semibold tracking-wide text-transparent md:text-4xl transition group-hover:brightness-125">
+                  Slays
+                </span>
 
-          <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-3xl font-semibold tracking-wide text-transparent md:text-4xl transition group-hover:brightness-125">
-            Sips
-          </span>
+                <span className="text-white/70 transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
 
-          <span className="text-white/70 transition-transform duration-300 group-hover:translate-x-1">
-            →
-          </span>
+              <span className="block h-[2px] w-0 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] transition-all duration-300 group-hover:w-20"></span>
 
-        </a>
+              <p className="mt-4 max-w-lg text-base font-light tracking-wide text-white/70">
+                Curated menu experiences designed to elevate every event.
+              </p>
 
-        {/* underline animation */}
-
-        <span className="block h-[2px] w-0 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] transition-all duration-300 group-hover:w-20"></span>
-
-        <p className="mt-4 max-w-lg text-base font-light tracking-wide text-white/70">
-          Signature cocktails crafted to bring the party to life.
-        </p>
-
-        {/* VIDEO PREVIEW */}
-
-        <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
-
-          <video
-            controls
-            playsInline
-            preload="metadata"
-            poster="/Sips/clip3-poster.jpg"
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-          >
-            <source src="/Sips/clip3.mp4" />
-          </video>
-
+              <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
+                <img
+                  src="/Slays_examples.png"
+                  alt="Slays examples"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-
-      </div>
-
-    </div>
-
-
-    {/* SLAYS CARD */}
-
-    <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur shadow-[0_30px_80px_rgba(0,0,0,0.45)] transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_40px_120px_rgba(255,200,106,0.18)]">
-
-      {/* gradient glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,79,184,0.16),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(255,200,106,0.14),transparent_40%)] opacity-90" />
-
-      <div className="relative z-10 p-6">
-
-        {/* CLICKABLE TITLE */}
-
-        <a
-          href="/slays"
-          className="group inline-flex items-center gap-2"
-        >
-
-          <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-3xl font-semibold tracking-wide text-transparent md:text-4xl transition group-hover:brightness-125">
-            Slays
-          </span>
-
-          <span className="text-white/70 transition-transform duration-300 group-hover:translate-x-1">
-            →
-          </span>
-
-        </a>
-
-        {/* underline animation */}
-
-        <span className="block h-[2px] w-0 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] transition-all duration-300 group-hover:w-20"></span>
-
-        <p className="mt-4 max-w-lg text-base font-light tracking-wide text-white/70">
-          Curated menu experiences designed to elevate every event.
-        </p>
-
-        {/* IMAGE PREVIEW */}
-
-        <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
-
-          <img
-            src="/Slays_examples.png"
-            alt="Slays examples"
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-          />
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
+      </section>
 
       <section id="faq" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6">
