@@ -344,17 +344,17 @@ export default function Page() {
                 Signature cocktails crafted to bring the party to life.
               </p>
 
-              <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster="/Sips/clip3-poster.jpg"
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                >
-                  <source src="/Sips/clip3.mp4" />
-                </video>
-              </div>
+             <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
+  <video
+    controls
+    playsInline
+    preload="metadata"
+    poster="/Sips/clip3-poster.jpg"
+    className="relative z-10 block h-full w-full bg-black object-contain"
+  >
+    <source src="/Sips/clip3.mp4" type="video/mp4" />
+  </video>
+</div>
             </div>
           </div>
 
@@ -379,8 +379,8 @@ export default function Page() {
 
               <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
                 <img
-                  src="/Slays_examples.png"
-                  alt="Slays examples"
+                  src="/3menus.png"
+                  alt="3menus"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                 />
               </div>

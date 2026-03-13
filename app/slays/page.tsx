@@ -1,23 +1,27 @@
 const slaysItems = [
   {
-    src: "/Slays/Bday Bash.png",
-    alt: "Bday Bash",
-  },
-  {
     src: "/Slays/signature package.png",
     alt: "Signature package",
   },
   {
-    src: "/Slays/St. Patty's.png",
-    alt: "St. Patty's",
+    src: "/Slays/ice cream.png",
+    alt: "Ice cream",
   },
   {
     src: "/Slays/waffle pop.png",
     alt: "Waffle pop",
   },
   {
-    src: "/Slays/ice cream.png",
-    alt: "Ice cream",
+    src: "/Slays/Bday Bash.png",
+    alt: "Bday Bash",
+  },
+  {
+    src: "/Slays/St. Patty's.png",
+    alt: "St. Patty's",
+  },
+  {
+    src: "/Slays/holidays.png",
+    alt: "Holiday Menu",
   },
 ];
 
@@ -50,7 +54,7 @@ export default function SlaysPage() {
               <img
                 src={item.src}
                 alt={item.alt}
-                className="relative z-10 h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                className="relative z-10 h-full w-full bg-black object-contain transition duration-500 group-hover:scale-[1.03]"
               />
 
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
