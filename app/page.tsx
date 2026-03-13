@@ -1,3 +1,4 @@
+// app/page.tsx
 "use client";
 
 import Image from "next/image";
@@ -117,7 +118,6 @@ function Select({
 }
 
 export default function Page() {
-  // form state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -130,7 +130,6 @@ export default function Page() {
   const [vibeTheme, setVibeTheme] = useState("");
   const [alcoholPreference, setAlcoholPreference] = useState("");
 
-  // honeypot (hidden)
   const [website, setWebsite] = useState("");
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -170,7 +169,7 @@ export default function Page() {
           hours,
           vibeTheme,
           alcoholPreference,
-          website, // honeypot
+          website,
         }),
       });
 
@@ -180,9 +179,6 @@ export default function Page() {
       }
 
       setStatus("sent");
-      // optional: clear form
-      // setName(""); setEmail(""); setPhone("");
-      // setDate(""); setCity(""); setGuestCount(""); setEventType(""); setHours(""); setVibeTheme(""); setAlcoholPreference("");
     } catch (err: any) {
       setStatus("error");
       setError(err?.message || "Could not send. Try again.");
@@ -193,7 +189,6 @@ export default function Page() {
     <main className="min-h-screen sip-bg sip-grain sip-text">
       <div className="sip-sparkles" />
 
-      {/* Background glow layers */}
       <div className="pointer-events-none fixed inset-0">
         <div className="absolute -top-56 left-1/2 h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.22),transparent_60%)] blur-3xl" />
         <div className="absolute -top-20 right-[-220px] h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,79,184,0.18),transparent_62%)] blur-3xl" />
@@ -202,7 +197,6 @@ export default function Page() {
         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:56px_56px]" />
       </div>
 
-      {/* Header */}
       <header className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <div className="flex items-center gap-3">
           <div className="leading-tight">
@@ -234,15 +228,14 @@ export default function Page() {
         </a>
       </header>
 
-      {/* Hero */}
       <section className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 text-center">
         <div className="mx-auto max-w-3xl">
-          {/* Logo */}
           <div className="mt-10 flex justify-center">
             <span className="sip-logo-wrap sip-logo-float">
-  <span className="sip-logo-backglow" />
-  <Image
-    src="/logo.png"
+              <span className="sip-logo-backglow" />
+              <span className="sip-logo-shimmer" />
+              <Image
+                src="/logo.png"
                 alt="Sip & Slay logo"
                 width={1200}
                 height={1200}
@@ -252,7 +245,7 @@ export default function Page() {
             </span>
           </div>
 
-          <h1 className="mt-10 text-4xl font-semibold tracking-tight md:text-6xl leading-tight">
+          <h1 className="mt-10 text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
             Make your event feel <Accent>expensive</Accent>.
             <br />
             Keep it <Accent>fun</Accent>.
@@ -266,7 +259,7 @@ export default function Page() {
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
               href="#contact"
-              className="rounded-xl px-6 py-3 text-sm font-semibold text-black hover:brightness-110 bg-gradient-to-r from-[#FFC86A] to-[#D6A24A] shadow-[0_18px_40px_rgba(255,200,106,0.14)] border border-white/5"
+              className="rounded-xl border border-white/5 bg-gradient-to-r from-[#FFC86A] to-[#D6A24A] px-6 py-3 text-sm font-semibold text-black shadow-[0_18px_40px_rgba(255,200,106,0.14)] hover:brightness-110"
             >
               Get availability + pricing
             </a>
@@ -280,7 +273,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Services */}
       <section id="services" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6 flex items-end justify-between gap-6">
           <div>
@@ -298,7 +290,7 @@ export default function Page() {
             bullets={[
               "Professional bartending + full setup",
               "Custom cocktail menu curation",
-              "Styled luxury presentation"
+              "Styled luxury presentation",
             ]}
             badge="Signature Experience"
           />
@@ -308,7 +300,7 @@ export default function Page() {
             bullets={[
               "Fresh waffle pops prepared for your event",
               "Chocolate, caramel + specialty drizzles",
-              "Fruit, candies, cookies + sprinkle toppings"
+              "Fruit, candies, cookies + sprinkle toppings",
             ]}
           />
           <Card
@@ -324,72 +316,139 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Gallery */}
       <section id="gallery" className="relative mx-auto max-w-6xl px-6 py-12 md:py-16">
         <div className="mb-8">
           <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">Gallery</h2>
           <p className="mt-2 text-sm text-white/65">
-            Photos &amp; videos that show the real vibe — cocktails, luxury setups, and unforgettable moments.
+            Explore our drinks, menus, and event visuals through two curated galleries.
           </p>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-5 items-start">
-          <div className="flex justify-center">
-            <img
-              src="/gallery/Menu.png"
-              alt="Slayyed Menu option 1"
-              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
-            />
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_24px_90px_rgba(255,79,184,0.10)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.12),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.10),transparent_30%)] opacity-80" />
+
+            <div className="relative flex items-center justify-between gap-4">
+              <div>
+                <a
+                  href="/gallery/sips"
+                  className="inline-block bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-2xl font-semibold tracking-tight text-transparent transition hover:brightness-110 md:text-3xl"
+                >
+                  Sips
+                </a>
+                <p className="mt-2 max-w-xl text-sm text-white/65">
+                  Signature cocktails, drink visuals, behind-the-bar moments, and event clips.
+                </p>
+              </div>
+
+              <a
+                href="/gallery/sips"
+                className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/75 transition hover:bg-white/10 hover:text-white md:inline-flex"
+              >
+                Open Gallery →
+              </a>
+            </div>
+
+            <div className="relative mt-5 grid gap-4 sm:grid-cols-3">
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster="/Sips/clip1-poster.png"
+                  className="h-full w-full object-cover"
+                >
+                  <source src="/Sips/clip1.mov" />
+                </video>
+              </div>
+
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster="/Sips/clip2-poster.png"
+                  className="h-full w-full object-cover"
+                >
+                  <source src="/Sips/clip2.mov" />
+                </video>
+              </div>
+
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster="/Sips/clip3-poster.jpg"
+                  className="h-full w-full object-cover"
+                >
+                  <source src="/Sips/clip3.mp4" />
+                </video>
+              </div>
+            </div>
           </div>
 
-          <div className="flex justify-center">
-            <img
-              src="/gallery/Menu2.png"
-              alt="Slayyed Menu option 2"
-              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
-            />
-          </div>
+          <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_24px_90px_rgba(255,200,106,0.10)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,79,184,0.12),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(255,200,106,0.10),transparent_28%)] opacity-80" />
 
-          <div className="flex justify-center">
-            <img
-              src="/gallery/waffle pop.png"
-              alt="Waffle Pop Menu"
-              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
-            />
-          </div>
+            <div className="relative flex items-center justify-between gap-4">
+              <div>
+                <a
+                  href="/gallery/slays"
+                  className="inline-block bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-2xl font-semibold tracking-tight text-transparent transition hover:brightness-110 md:text-3xl"
+                >
+                  Slays
+                </a>
+                <p className="mt-2 max-w-xl text-sm text-white/65">
+                  Menus, packages, themed styling, and the pieces that make the brand feel premium.
+                </p>
+              </div>
 
-          <div className="flex justify-center">
-            <img
-              src="/gallery/ice cream.png"
-              alt="Ice Cream Sundae Menu"
-              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
-            />
-          </div>
+              <a
+                href="/gallery/slays"
+                className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/75 transition hover:bg-white/10 hover:text-white md:inline-flex"
+              >
+                Open Gallery →
+              </a>
+            </div>
 
-          <div className="flex justify-center">
-            <video
-              controls
-              playsInline
-              preload="metadata"
-              poster="/gallery/clip3-poster.jpg"
-              className="w-full max-w-[320px] h-auto rounded-xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
-            >
-              <source src="/gallery/clip3.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
+            <div className="relative mt-5 grid gap-4 sm:grid-cols-2">
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+                <img
+                  src="/Slays/signature package.png"
+                  alt="Signature package"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
 
-        <div className="mt-6 flex justify-center">
-          <a
-            href="/gallery"
-            className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
-          >
-            View Full Gallery →
-          </a>
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+                <img
+                  src="/Slays/Menu2.png"
+                  alt="Menu 2"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
+
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+                <img
+                  src="/Slays/waffle pop.png"
+                  alt="Waffle pop"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
+
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+                <img
+                  src="/Slays/ice cream.png"
+                  alt="Ice cream"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* FAQ */}
       <section id="faq" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6">
           <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">FAQ</h2>
@@ -400,8 +459,8 @@ export default function Page() {
             <div className="text-white font-semibold">Do you provide alcohol?</div>
             <div className="mt-2">
               No, we're a dry hire service. Which means we bring the bartending expertise, presentation and vibes —
-              you provide the alcohol. This allows for more customization and flexibility. We can provide guidance on quantities and types of alcohol based on your custom
-              menu and guest count.
+              you provide the alcohol. This allows for more customization and flexibility. We can provide guidance on
+              quantities and types of alcohol based on your custom menu and guest count.
             </div>
           </div>
 
@@ -414,16 +473,16 @@ export default function Page() {
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
             <div className="text-white font-semibold">
-              Do you provide the food for the waffle cart & ice cream bar experiences?
+              Do you provide the food for the waffle cart &amp; ice cream bar experiences?
             </div>
             <div className="mt-2">
-              Yes. We provide all the necessary foods & toppings based on guest count and price the package accordingly.
+              Yes. We provide all the necessary foods &amp; toppings based on guest count and price the package
+              accordingly.
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact */}
       <section id="contact" className="relative mx-auto max-w-6xl px-6 pb-16 pt-10">
         <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
           <div className="grid gap-8 md:grid-cols-2 md:items-start">
@@ -449,7 +508,6 @@ export default function Page() {
                 Required fields are marked with <span className="text-[#FFC86A]">*</span>.
               </p>
 
-              {/* Honeypot (hidden) */}
               <input
                 value={website}
                 onChange={(e) => setWebsite(e.target.value)}
@@ -494,18 +552,13 @@ export default function Page() {
                 <button
                   type="submit"
                   disabled={!canSubmit || status === "sending"}
-                  className="rounded-xl bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-[#FF4FB8]/10 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="rounded-xl bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-[#FF4FB8]/10 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {status === "sending" ? "Sending..." : "Submit Request"}
                 </button>
 
-                {status === "sent" ? (
-                  <span className="text-sm text-white/75">✅ Sent! We’ll reach out soon.</span>
-                ) : null}
-
-                {status === "error" ? (
-                  <span className="text-sm text-red-300">❌ {error}</span>
-                ) : null}
+                {status === "sent" ? <span className="text-sm text-white/75">✅ Sent! We’ll reach out soon.</span> : null}
+                {status === "error" ? <span className="text-sm text-red-300">❌ {error}</span> : null}
               </div>
 
               <p className="mt-3 text-xs text-white/45">

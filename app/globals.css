@@ -256,4 +256,32 @@ body {
     opacity: 0;
     transform: translateX(130%);
   }
+}@media (max-width: 768px) {
+  .sip-logo-blend {
+    -webkit-mask-image: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 1) 38%,
+      rgba(0, 0, 0, 0.98) 48%,
+      rgba(0, 0, 0, 0.88) 58%,
+      rgba(0, 0, 0, 0.62) 68%,
+      rgba(0, 0, 0, 0.3) 78%,
+      rgba(0, 0, 0, 0.08) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 1) 38%,
+      rgba(0, 0, 0, 0.98) 48%,
+      rgba(0, 0, 0, 0.88) 58%,
+      rgba(0, 0, 0, 0.62) 68%,
+      rgba(0, 0, 0, 0.3) 78%,
+      rgba(0, 0, 0, 0.08) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}@media (max-width: 768px) {
+  .sip-logo-wrap {
+    border-radius: 9999px;
+    overflow: hidden;
+  }
 }
