@@ -1,4 +1,3 @@
-// app/page.tsx
 "use client";
 
 import Image from "next/image";
@@ -209,8 +208,11 @@ export default function Page() {
           <a className="hover:text-white" href="#services">
             Services
           </a>
-          <a className="hover:text-white" href="#gallery">
-            Gallery
+          <a className="hover:text-white" href="#sips">
+            Sips
+          </a>
+          <a className="hover:text-white" href="#slays">
+            Slays
           </a>
           <a className="hover:text-white" href="#faq">
             FAQ
@@ -227,51 +229,59 @@ export default function Page() {
           Request a Quote
         </a>
       </header>
+{/* Hero */}
+<section className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 text-center">
 
-      <section className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 text-center">
-        <div className="mx-auto max-w-3xl">
-          <div className="mt-10 flex justify-center">
-            <span className="sip-logo-wrap sip-logo-float">
-              <span className="sip-logo-backglow" />
-              <span className="sip-logo-shimmer" />
-              <Image
-                src="/logo.png"
-                alt="Sip & Slay logo"
-                width={1200}
-                height={1200}
-                priority
-                className="sip-logo-blend h-auto w-full max-w-4xl object-contain drop-shadow-[0_28px_85px_rgba(255,200,106,0.18)]"
-              />
-            </span>
-          </div>
+  <div className="mx-auto max-w-3xl">
 
-          <h1 className="mt-10 text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-            Make your event feel <Accent>expensive</Accent>.
-            <br />
-            Keep it <Accent>fun</Accent>.
-          </h1>
+    {/* LOGO */}
+    <div className="mt-10 flex justify-center">
+      <div className="sip-logo-circle sip-logo-float">
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-            Sip &amp; Slay brings a high-end, stylish bar experience to your space — signature cocktails, beautiful
-            presentation, and the kind of vibe guests remember.
-          </p>
+        <span className="sip-logo-backglow" />
+        <span className="sip-logo-shimmer" />
 
-          <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a
-              href="#contact"
-              className="rounded-xl border border-white/5 bg-gradient-to-r from-[#FFC86A] to-[#D6A24A] px-6 py-3 text-sm font-semibold text-black shadow-[0_18px_40px_rgba(255,200,106,0.14)] hover:brightness-110"
-            >
-              Get availability + pricing
-            </a>
-          </div>
+        <Image
+          src="/logo.png"
+          alt="Sip & Slay logo"
+          width={1200}
+          height={1200}
+          priority
+          className="sip-logo-image"
+        />
 
-          <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-white/60">
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
-              Birthdays • Weddings • Corporate • Private Events
-            </span>
-          </div>
-        </div>
-      </section>
+      </div>
+    </div>
+
+    <h1 className="mt-10 text-4xl font-semibold tracking-tight md:text-6xl leading-tight">
+      Make your event feel <Accent>expensive</Accent>.
+      <br />
+      Keep it <Accent>fun</Accent>.
+    </h1>
+
+    <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+      Sip & Slay brings a high-end, stylish bar experience to your space — signature cocktails,
+      beautiful presentation, and the kind of vibe guests remember.
+    </p>
+
+    <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+      <a
+        href="#contact"
+        className="rounded-xl px-6 py-3 text-sm font-semibold text-black hover:brightness-110 bg-gradient-to-r from-[#FFC86A] to-[#D6A24A] shadow-[0_18px_40px_rgba(255,200,106,0.14)] border border-white/5"
+      >
+        Get availability + pricing
+      </a>
+    </div>
+
+    <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-white/60">
+      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
+        Birthdays • Weddings • Corporate • Private Events
+      </span>
+    </div>
+
+  </div>
+
+</section>
 
       <section id="services" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6 flex items-end justify-between gap-6">
@@ -316,65 +326,27 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="gallery" className="relative mx-auto max-w-6xl px-6 py-12 md:py-16">
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">Gallery</h2>
-          <p className="mt-2 text-sm text-white/65">
-            Explore our drinks, menus, and event visuals through two curated galleries.
-          </p>
-        </div>
-
+      <section className="relative mx-auto max-w-6xl px-6 py-12 md:py-16">
         <div className="grid gap-8 lg:grid-cols-2">
-          <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_24px_90px_rgba(255,79,184,0.10)]">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.12),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.10),transparent_30%)] opacity-80" />
+          <section
+            id="sips"
+            className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/5 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_26px_95px_rgba(255,79,184,0.14)]"
+          >
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.12),transparent_30%)] opacity-90" />
 
-            <div className="relative flex items-center justify-between gap-4">
-              <div>
-                <a
-                  href="/gallery/sips"
-                  className="inline-block bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-2xl font-semibold tracking-tight text-transparent transition hover:brightness-110 md:text-3xl"
-                >
-                  Sips
-                </a>
-                <p className="mt-2 max-w-xl text-sm text-white/65">
-                  Signature cocktails, drink visuals, behind-the-bar moments, and event clips.
-                </p>
-              </div>
-
+            <div className="relative z-10">
               <a
-                href="/gallery/sips"
-                className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/75 transition hover:bg-white/10 hover:text-white md:inline-flex"
+                href="/sips"
+                className="inline-block bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-3xl font-semibold tracking-tight text-transparent transition hover:brightness-110 md:text-4xl"
               >
-                Open Gallery →
+                Sips
               </a>
-            </div>
 
-            <div className="relative mt-5 grid gap-4 sm:grid-cols-3">
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster="/Sips/clip1-poster.png"
-                  className="h-full w-full object-cover"
-                >
-                  <source src="/Sips/clip1.mov" />
-                </video>
-              </div>
+              <p className="mt-2 max-w-xl text-sm text-white/65">
+                Signature drink visuals and event clips that show the energy in motion.
+              </p>
 
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster="/Sips/clip2-poster.png"
-                  className="h-full w-full object-cover"
-                >
-                  <source src="/Sips/clip2.mov" />
-                </video>
-              </div>
-
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+              <div className="mt-5 overflow-hidden rounded-[24px] border border-white/10 bg-black/25 shadow-[0_18px_50px_rgba(0,0,0,0.5)]">
                 <video
                   controls
                   playsInline
@@ -386,66 +358,35 @@ export default function Page() {
                 </video>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_24px_90px_rgba(255,200,106,0.10)]">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,79,184,0.12),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(255,200,106,0.10),transparent_28%)] opacity-80" />
+          <section
+            id="slays"
+            className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/5 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_26px_95px_rgba(255,200,106,0.14)]"
+          >
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,79,184,0.14),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(255,200,106,0.12),transparent_28%)] opacity-90" />
 
-            <div className="relative flex items-center justify-between gap-4">
-              <div>
-                <a
-                  href="/gallery/slays"
-                  className="inline-block bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-2xl font-semibold tracking-tight text-transparent transition hover:brightness-110 md:text-3xl"
-                >
-                  Slays
-                </a>
-                <p className="mt-2 max-w-xl text-sm text-white/65">
-                  Menus, packages, themed styling, and the pieces that make the brand feel premium.
-                </p>
-              </div>
-
+            <div className="relative z-10">
               <a
-                href="/gallery/slays"
-                className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/75 transition hover:bg-white/10 hover:text-white md:inline-flex"
+                href="/slays"
+                className="inline-block bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-3xl font-semibold tracking-tight text-transparent transition hover:brightness-110 md:text-4xl"
               >
-                Open Gallery →
+                Slays
               </a>
-            </div>
 
-            <div className="relative mt-5 grid gap-4 sm:grid-cols-2">
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-                <img
-                  src="/Slays/signature package.png"
-                  alt="Signature package"
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                />
-              </div>
+              <p className="mt-2 max-w-xl text-sm text-white/65">
+                Menus, packages, and the visual pieces that make the brand feel elevated.
+              </p>
 
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+              <div className="mt-5 overflow-hidden rounded-[24px] border border-white/10 bg-black/25 shadow-[0_18px_50px_rgba(0,0,0,0.5)]">
                 <img
-                  src="/Slays/Menu2.png"
-                  alt="Menu 2"
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                />
-              </div>
-
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-                <img
-                  src="/Slays/waffle pop.png"
-                  alt="Waffle pop"
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                />
-              </div>
-
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-                <img
-                  src="/Slays/ice cream.png"
-                  alt="Ice cream"
+                  src="/Slays_examples.png"
+                  alt="Slays examples"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                 />
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </section>
 
@@ -552,13 +493,18 @@ export default function Page() {
                 <button
                   type="submit"
                   disabled={!canSubmit || status === "sending"}
-                  className="rounded-xl bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-[#FF4FB8]/10 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="rounded-xl bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-[#FF4FB8]/10 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === "sending" ? "Sending..." : "Submit Request"}
                 </button>
 
-                {status === "sent" ? <span className="text-sm text-white/75">✅ Sent! We’ll reach out soon.</span> : null}
-                {status === "error" ? <span className="text-sm text-red-300">❌ {error}</span> : null}
+                {status === "sent" ? (
+                  <span className="text-sm text-white/75">✅ Sent! We’ll reach out soon.</span>
+                ) : null}
+
+                {status === "error" ? (
+                  <span className="text-sm text-red-300">❌ {error}</span>
+                ) : null}
               </div>
 
               <p className="mt-3 text-xs text-white/45">
