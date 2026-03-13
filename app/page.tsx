@@ -297,8 +297,7 @@ export default function Page() {
             bullets={[
               "Professional bartending + full setup",
               "Custom cocktail menu curation",
-              "Styled luxury presentation",
-              "Smooth, guest-first service flow",
+              "Styled luxury presentation"
             ]}
             badge="Signature Experience"
           />
@@ -308,8 +307,7 @@ export default function Page() {
             bullets={[
               "Fresh waffle pops prepared for your event",
               "Chocolate, caramel + specialty drizzles",
-              "Fruit, candies, cookies + sprinkle toppings",
-              "Interactive display with polished setup",
+              "Fruit, candies, cookies + sprinkle toppings"
             ]}
           />
           <Card
@@ -353,7 +351,7 @@ export default function Page() {
 
           <div className="flex justify-center">
             <img
-              src="/gallery/waffle-pop.png"
+              src="/gallery/waffle pop.png"
               alt="Waffle Pop Menu"
               className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
             />
@@ -361,7 +359,7 @@ export default function Page() {
 
           <div className="flex justify-center">
             <img
-              src="/gallery/ice-cream.png"
+              src="/gallery/ice cream.png"
               alt="Ice Cream Sundae Menu"
               className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
             />
@@ -400,9 +398,8 @@ export default function Page() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
             <div className="text-white font-semibold">Do you provide alcohol?</div>
             <div className="mt-2">
-              No, we're a dry hire service. Which means we bring the bartending expertise, presentation, and vibe —
-              you provide the alcohol. This allows for more customization and flexibility, and many clients prefer to
-              source their own drinks. We can provide guidance on quantities and types of alcohol based on your custom
+              No, we're a dry hire service. Which means we bring the bartending expertise, presentation and vibes —
+              you provide the alcohol. This allows for more customization and flexibility. We can provide guidance on quantities and types of alcohol based on your custom
               menu and guest count.
             </div>
           </div>
@@ -419,7 +416,7 @@ export default function Page() {
               Do you provide the food for the waffle cart & ice cream bar experiences?
             </div>
             <div className="mt-2">
-              Yes. We provide all the necessary foods & toppings based on guest count and priced accordingly.
+              Yes. We provide all the necessary foods & toppings based on guest count and price the package accordingly.
             </div>
           </div>
         </div>
