@@ -242,12 +242,12 @@ export default function Page() {
             <span className="sip-logo-wrap sip-logo-float">
   <span className="sip-logo-backglow" />
   <Image
-    src="/logo_transparent_clean2.png"
+    src="/logo.png"
                 alt="Sip & Slay logo"
                 width={1200}
                 height={1200}
                 priority
-                className="sip-logo-feather h-auto w-full max-w-4xl object-contain drop-shadow-[0_28px_85px_rgba(255,200,106,0.18)]"
+                className="sip-logo-blend h-auto w-full max-w-4xl object-contain drop-shadow-[0_28px_85px_rgba(255,200,106,0.18)]"
               />
             </span>
           </div>
