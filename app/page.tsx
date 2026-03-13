@@ -377,16 +377,13 @@ export default function Page() {
                 Curated menu experiences designed to elevate every event.
               </p>
 
-              <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
-                <img
-                  src="/3menus.jpg"
-                  alt="3menus"
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+             <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
+  <img
+    src="/Slays/3menus.jpg"
+    alt="3menus"
+    className="h-full w-full bg-black object-contain transition duration-500 group-hover:scale-[1.02]"
+  />
+</div>
       </section>
 
       <section id="faq" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
