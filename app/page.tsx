@@ -215,9 +215,6 @@ export default function Page() {
           <a className="hover:text-white" href="#services">
             Services
           </a>
-          <a className="hover:text-white" href="#packages">
-            Packages
-          </a>
           <a className="hover:text-white" href="#gallery">
             Gallery
           </a>
@@ -272,15 +269,8 @@ export default function Page() {
             >
               Get availability + pricing
             </a>
-            <a
-              href="#packages"
-              className="rounded-xl px-6 py-3 text-sm font-semibold text-black hover:brightness-110 bg-gradient-to-r from-[#FF4FB8] to-[#FF86D1] shadow-[0_18px_40px_rgba(255,79,184,0.12)] border border-white/5"
-            >
-              View packages
-            </a>
           </div>
 
-          {/* UPDATED PILL TEXT */}
           <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-white/60">
             <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
               Birthdays • Weddings • Corporate • Private Events
@@ -294,46 +284,45 @@ export default function Page() {
         <div className="mb-6 flex items-end justify-between gap-6">
           <div>
             <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">Services</h2>
-            <p className="mt-2 text-sm text-white/65">Luxury presentation, vibrant energy, and smooth execution.</p>
+            <p className="mt-2 text-sm text-white/65">
+              Luxury bartending and elevated dessert experiences for unforgettable events.
+            </p>
           </div>
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
           <Card
-            title="Mobile Bartending"
-            desc="Professional bartending for private + corporate events across the NW suburbs and Chicagoland."
-            bullets={["Setup + breakdown included", "Fast, clean service flow", "Guest-first hospitality"]}
-            badge="Most Popular"
+            title="Mobile Bartending Experience"
+            desc="A polished, high-end bartending experience with custom cocktails, stylish presentation, and seamless service that keeps the energy flowing."
+            bullets={[
+              "Professional bartending + full setup",
+              "Custom cocktail menu curation",
+              "Styled luxury presentation",
+              "Smooth, guest-first service flow",
+            ]}
+            badge="Signature Experience"
           />
           <Card
-            title="Signature Cocktails"
-            desc="Custom menus built around your theme — bold flavors, gorgeous garnish, elevated glassware."
-            bullets={["Menu consultation", "Mocktails available", "Seasonal specials"]}
+            title="Waffle Pop Experience"
+            desc="An elevated dessert experience featuring warm waffle pops, beautifully styled presentation, and customizable toppings guests will love."
+            bullets={[
+              "Fresh waffle pops prepared for your event",
+              "Chocolate, caramel + specialty drizzles",
+              "Fruit, candies, cookies + sprinkle toppings",
+              "Interactive display with polished setup",
+            ]}
           />
           <Card
-            title="Premium Aesthetic"
-            desc="A bar that looks like it belongs at a luxury venue — because it does."
-            bullets={["Styled presentation", "Photo-ready setup", "Modern, vibrant vibe"]}
+            title="Ice Cream Sundae Experience"
+            desc="A crowd-pleasing sundae experience upgraded with premium presentation, curated toppings, and a fun, memorable setup for guests of all ages."
+            bullets={[
+              "Premium ice cream flavors",
+              "Sauces, whipped cream + gourmet toppings",
+              "Styled sundae station for easy guest flow",
+              "Perfect for kids, adults + mixed events",
+            ]}
           />
         </div>
-      </section>
-
-      {/* Packages */}
-      <section id="packages" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
-        <div className="mb-6">
-          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl sip-heading">Packages</h2>
-          <p className="mt-2 text-sm text-white/65">
-            Pricing depends on guest count, hours, and menu. These are clean starting points.
-          </p>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-3">
-          <Card title="Classic" desc="Perfect for intimate events that still want luxury." bullets={["Up to 4 hours", "Beer/wine + 2 cocktails", "Styled garnish bar"]} badge="Starter" />
-          <Card title="Signature" desc="The full Sip & Slay experience — premium + vibrant." bullets={["Up to 5 hours", "3–4 signature cocktails", "Menu + vibe consultation"]} badge="Best Value" />
-          <Card title="Ultra" desc="Big events, big energy. Elevated from start to finish." bullets={["6+ hours", "Full custom menu", "Premium presentation upgrades"]} badge="Luxury" />
-        </div>
-
-        {/* REMOVED the alcohol purchasing note per your request */}
       </section>
 
       {/* Gallery */}
@@ -345,7 +334,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-3 items-start">
+        <div className="grid gap-10 md:grid-cols-5 items-start">
           <div className="flex justify-center">
             <img
               src="/gallery/Menu.png"
@@ -358,6 +347,22 @@ export default function Page() {
             <img
               src="/gallery/Menu2.png"
               alt="Slayyed Menu option 2"
+              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+            />
+          </div>
+
+          <div className="flex justify-center">
+            <img
+              src="/gallery/waffle-pop.png"
+              alt="Waffle Pop Menu"
+              className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+            />
+          </div>
+
+          <div className="flex justify-center">
+            <img
+              src="/gallery/ice-cream.png"
+              alt="Ice Cream Sundae Menu"
               className="w-full max-w-[320px] h-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
             />
           </div>
@@ -395,12 +400,27 @@ export default function Page() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
             <div className="text-white font-semibold">Do you provide alcohol?</div>
             <div className="mt-2">
-              Typically, clients purchase alcohol and we provide the expertise, menu, and service. We’ll tell you exactly what to buy and how much.
+              No, we're a dry hire service. Which means we bring the bartending expertise, presentation, and vibe —
+              you provide the alcohol. This allows for more customization and flexibility, and many clients prefer to
+              source their own drinks. We can provide guidance on quantities and types of alcohol based on your custom
+              menu and guest count.
             </div>
           </div>
+
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
             <div className="text-white font-semibold">What areas do you serve?</div>
-            <div className="mt-2">Northwest suburbs + Chicagoland. If you’re unsure, send the city and we’ll confirm.</div>
+            <div className="mt-2">
+              Northwest suburbs + Chicagoland. If you’re unsure, send the city and we’ll confirm.
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
+            <div className="text-white font-semibold">
+              Do you provide the food for the waffle cart & ice cream bar experiences?
+            </div>
+            <div className="mt-2">
+              Yes. We provide all the necessary foods & toppings based on guest count and priced accordingly.
+            </div>
           </div>
         </div>
       </section>
