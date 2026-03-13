@@ -242,7 +242,7 @@ export default function Page() {
             <span className="sip-logo-wrap sip-logo-float">
   <span className="sip-logo-backglow" />
   <Image
-    src="/logo_transparent_v2.png"
+    src="/logo_transparent_clean2.png"
                 alt="Sip & Slay logo"
                 width={1200}
                 height={1200}

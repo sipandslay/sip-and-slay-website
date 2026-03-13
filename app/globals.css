@@ -203,4 +203,77 @@ body {
   100% {
     transform: translateY(0px);
   }
+}/* ---------- Sip & Slay Logo Effects ---------- */
+
+.sip-logo-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sip-logo-backglow {
+  position: absolute;
+  inset: 12% 10%;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(255,200,106,0.25) 0%,
+    rgba(255,79,184,0.14) 35%,
+    rgba(255,79,184,0.05) 60%,
+    transparent 80%
+  );
+  filter: blur(48px);
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+.sip-logo-float {
+  animation: sipFloat 6s ease-in-out infinite;
+}
+
+@keyframes sipFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* sparkle sweep */
+
+.sip-logo-sparkle {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255,255,255,0.0) 45%,
+    rgba(255,215,130,0.85) 50%,
+    rgba(255,255,255,0.0) 55%,
+    transparent 65%
+  );
+  opacity: 0;
+  animation: sipSparkle 6s infinite;
+  pointer-events: none;
+}
+
+@keyframes sipSparkle {
+
+  0% {
+    opacity: 0;
+    transform: translateX(-120%);
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  18% {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+
+  100% {
+    opacity: 0;
+  }
+
 }
