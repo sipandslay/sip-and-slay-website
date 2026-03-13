@@ -379,7 +379,7 @@ export default function Page() {
 
               <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
                 <img
-                  src="/3menus.png"
+                  src="/3menus.jpg"
                   alt="3menus"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                 />
