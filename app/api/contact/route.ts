@@ -14,7 +14,7 @@ type Payload = {
   eventType: string;
   hours: string;
   vibeTheme: string;
-  alcoholPreference: string;
+  eventExperiences: string[];
   website?: string; // honeypot
   formStart?: number; // timing trap
 };
@@ -22,6 +22,14 @@ type Payload = {
 function sanitize(v: unknown) {
   if (typeof v !== "string") return "";
   return v.trim().slice(0, 500);
+}
+
+function sanitizeStringArray(v: unknown) {
+  if (!Array.isArray(v)) return [];
+  return v
+    .map((item) => sanitize(item))
+    .filter(Boolean)
+    .slice(0, 10);
 }
 
 function isValidEmail(email: string) {
@@ -38,7 +46,6 @@ function looksLikeSpamText(value: string) {
 
   const lower = value.toLowerCase();
 
-  // obvious junk / filler / bot-ish patterns
   if (
     lower.includes("asdf") ||
     lower.includes("qwerty") ||
@@ -52,7 +59,6 @@ function looksLikeSpamText(value: string) {
     return true;
   }
 
-  // way too many repeated same chars
   if (/(.)\1{5,}/.test(lower)) {
     return true;
   }
@@ -72,7 +78,6 @@ export async function POST(req: Request) {
 
     const body = (await req.json()) as Partial<Payload>;
 
-    // basic bot trap: hidden field filled out
     if (sanitize(body.website)) {
       return NextResponse.json({ ok: true }, { status: 200 });
     }
@@ -87,17 +92,15 @@ export async function POST(req: Request) {
       eventType: sanitize(body.eventType),
       hours: sanitize(body.hours),
       vibeTheme: sanitize(body.vibeTheme),
-      alcoholPreference: sanitize(body.alcoholPreference),
+      eventExperiences: sanitizeStringArray(body.eventExperiences),
       website: sanitize(body.website),
       formStart: typeof body.formStart === "number" ? body.formStart : 0,
     };
 
-    // timing trap: humans take time, bots don't
     if (!payload.formStart || Date.now() - payload.formStart < 4000) {
       return NextResponse.json({ ok: true }, { status: 200 });
     }
 
-    // required fields
     const required = [
       "email",
       "phone",
@@ -107,7 +110,6 @@ export async function POST(req: Request) {
       "eventType",
       "hours",
       "vibeTheme",
-      "alcoholPreference",
     ] as const;
 
     for (const k of required) {
@@ -116,7 +118,10 @@ export async function POST(req: Request) {
       }
     }
 
-    // basic sanity validation
+    if (payload.eventExperiences.length === 0) {
+      return NextResponse.json({ ok: false, error: "Missing event experiences" }, { status: 400 });
+    }
+
     if (!isValidEmail(payload.email)) {
       return NextResponse.json({ ok: true }, { status: 200 });
     }
@@ -137,7 +142,8 @@ export async function POST(req: Request) {
       looksLikeSpamText(payload.name || "") ||
       looksLikeSpamText(payload.city) ||
       looksLikeSpamText(payload.eventType) ||
-      looksLikeSpamText(payload.vibeTheme)
+      looksLikeSpamText(payload.vibeTheme) ||
+      payload.eventExperiences.some(looksLikeSpamText)
     ) {
       return NextResponse.json({ ok: true }, { status: 200 });
     }
@@ -159,7 +165,7 @@ export async function POST(req: Request) {
       `Event type: ${payload.eventType}`,
       `Hours: ${payload.hours}`,
       `Vibe/theme: ${payload.vibeTheme}`,
-      `Alcohol preference: ${payload.alcoholPreference}`,
+      `Experience(s) of interest: ${payload.eventExperiences.join(", ")}`,
       "",
       `Sent: ${new Date().toISOString()}`,
     ].join("\n");
