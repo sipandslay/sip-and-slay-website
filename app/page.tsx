@@ -280,14 +280,14 @@ export default function Page() {
       </section>
 
       <section id="services" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
-        <div className="mb-6 flex items-end justify-between gap-6">
-          <div>
-            <h2 className="sip-heading text-2xl font-semibold tracking-tight md:text-3xl">Services</h2>
-            <p className="mt-2 text-sm text-white/65">
-              Luxury bartending and elevated dessert experiences for unforgettable events.
-            </p>
-          </div>
-        </div>
+        <div className="mb-10 text-center">
+  <h2 className="sip-heading text-2xl font-semibold tracking-tight md:text-3xl">
+    Services
+  </h2>
+  <p className="mt-2 text-sm text-white/65">
+    Luxury bartending and elevated dessert experiences for unforgettable events.
+  </p>
+</div>
 
         <div className="grid gap-5 md:grid-cols-3">
           <Card
