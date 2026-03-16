@@ -252,15 +252,15 @@ export default function Page() {
           </div>
 
           <h1 className="mt-10 text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-            Make your event feel <Accent>expensive</Accent>.
-            <br />
-            Keep it <Accent>fun</Accent>.
-          </h1>
+  Sip something <Accent>unforgettable</Accent>.
+  <br />
+  Slay the whole <Accent>experience</Accent>.
+</h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-            Sip &amp; Slay brings a high-end, stylish bar experience to your space — signature cocktails,
-            beautiful presentation, and the kind of vibe guests remember.
-          </p>
+<p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+  From signature cocktails to elevated dessert experiences, Sip & Slay brings
+  stylish presentation and unforgettable moments to every event.
+</p>
 
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
@@ -323,7 +323,7 @@ export default function Page() {
       </section>
 
      <section className="relative mx-auto max-w-6xl px-6 py-14">
-  <div className="grid gap-10 lg:grid-cols-2">
+  <div className="grid items-start gap-10 lg:grid-cols-2">
     {/* SIPS CARD */}
     <div
       id="sips"
@@ -344,7 +344,7 @@ export default function Page() {
         <span className="block h-[2px] w-0 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] transition-all duration-300 group-hover:w-20" />
 
         <p className="mt-4 max-w-lg text-base font-light tracking-wide text-white/70">
-          Signature cocktails crafted to bring the party to life.
+          Signature cocktails crafted to bring the party vibes to life.
         </p>
 
         <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
