@@ -386,7 +386,7 @@ export default function Page() {
 
         <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
           <img
-            src="/slays/menu.jpeg"
+            src="/slays/3menus.jpeg"
             alt="Sip & Slay curated menu preview"
             className="block w-full h-auto object-contain transition duration-500 group-hover:scale-[1.02]"
           />
