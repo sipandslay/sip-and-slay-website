@@ -375,38 +375,58 @@ export default function Page() {
             </div>
           </div>
 
-          <div
-            id="slays"
-            className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur shadow-[0_30px_80px_rgba(0,0,0,0.45)] transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_40px_120px_rgba(255,200,106,0.18)]"
-          >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,79,184,0.16),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(255,200,106,0.14),transparent_40%)] opacity-90" />
+          {/* SLAYS CARD */}
+<div
+  id="slays"
+  className="relative rounded-[28px] border border-white/10 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur"
+>
+  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,79,184,0.16),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(255,200,106,0.14),transparent_40%)] opacity-90" />
 
-            <div className="relative z-10 p-6">
-              <a href="/slays" className="inline-flex items-center gap-2">
-                <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-3xl font-semibold tracking-wide text-transparent transition group-hover:brightness-125 md:text-4xl">
-                  Slays
-                </span>
-                <span className="text-white/70 transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </a>
+  <div className="relative z-10 p-6">
+    <a href="/slays" className="group inline-flex items-center gap-2">
+      <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-3xl font-semibold tracking-wide text-transparent transition group-hover:brightness-125 md:text-4xl">
+        Slays
+      </span>
+      <span className="text-white/70 transition-transform duration-300 group-hover:translate-x-1">
+        →
+      </span>
+    </a>
 
-              <span className="block h-[2px] w-0 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] transition-all duration-300 group-hover:w-20" />
+    <span className="block h-[2px] w-20 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]"></span>
 
-              <p className="mt-4 max-w-lg text-base font-light tracking-wide text-white/70">
-                Curated menu experiences designed to elevate every event.
-              </p>
+    <p className="mt-4 max-w-lg text-base font-light tracking-wide text-white/70">
+      Curated menu experiences designed to elevate every event.
+    </p>
+  </div>
 
-              <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
-                <img
-                  src="/Slays/3menus.jpeg"
-                  alt="Sip & Slay curated menu preview"
-                  className="block w-full h-auto object-contain transition duration-500 group-hover:scale-[1.02]"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+  <div className="slays-story mt-2">
+    <div className="slays-sticky-frame">
+      <div className="slays-slide slays-slide-1">
+        <img
+          src="/Slays/signature package.png"
+          alt="Signature package"
+          className="h-full w-full bg-black object-contain"
+        />
+      </div>
+
+      <div className="slays-slide slays-slide-2">
+        <img
+          src="/Slays/ice cream.png"
+          alt="Ice cream"
+          className="h-full w-full bg-black object-contain"
+        />
+      </div>
+
+      <div className="slays-slide slays-slide-3">
+        <img
+          src="/Slays/waffle pop.png"
+          alt="Waffle pop"
+          className="h-full w-full bg-black object-contain"
+        />
+      </div>
+    </div>
+  </div>
+</div>
       </section>
 
       <section id="faq" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">

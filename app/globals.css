@@ -436,4 +436,138 @@ border:1px solid rgba(255,200,106,0.25);
     width:125%;
   }
 
+}/* Slays sticky reveal */
+
+.slays-story {
+  position: relative;
+  height: 180vh;
+}
+
+.slays-sticky-frame {
+  position: sticky;
+  top: 90px;
+  height: min(70vh, 720px);
+  margin: 0 1.5rem 1.5rem;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.slays-slide {
+  position: absolute;
+  inset: 0;
+  padding: 0.75rem;
+  opacity: 0;
+  transform: scale(0.985);
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 100%;
+}
+
+.slays-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+}
+
+.slays-slide-1 {
+  opacity: 1;
+  animation-name: slaysReveal1;
+}
+
+.slays-slide-2 {
+  animation-name: slaysReveal2;
+}
+
+.slays-slide-3 {
+  animation-name: slaysReveal3;
+}
+
+@keyframes slaysReveal1 {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+
+@keyframes slaysReveal2 {
+  0% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  28% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  42% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  72% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  86% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+
+@keyframes slaysReveal3 {
+  0% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  58% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  74% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .slays-story {
+    height: 150vh;
+  }
+
+  .slays-sticky-frame {
+    top: 72px;
+    height: min(58vh, 560px);
+    margin: 0 1rem 1rem;
+  }
+
+  .slays-slide {
+    padding: 0.5rem;
+  }
+
+  .slays-slide img {
+    border-radius: 16px;
+  }
 }
