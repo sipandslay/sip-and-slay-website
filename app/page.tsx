@@ -338,7 +338,7 @@ export default function Page() {
       </section>
 
       <section className="relative mx-auto max-w-6xl px-6 py-14">
-  <div className="grid gap-10 lg:grid-cols-2">
+  <div className="grid items-start gap-10 lg:grid-cols-2">
     <div
       id="sips"
       className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_40px_120px_rgba(255,79,184,0.18)]"
