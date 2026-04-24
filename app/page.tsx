@@ -9,43 +9,6 @@ const Accent = ({ children }: { children: ReactNode }) => (
   </span>
 );
 
-const Card = ({
-  title,
-  desc,
-  bullets,
-  badge,
-}: {
-  title: string;
-  desc: string;
-  bullets: string[];
-  badge?: string;
-}) => (
-  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur">
-    <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gradient-to-br from-[#FFC86A]/18 via-[#FF4FB8]/10 to-transparent blur-2xl" />
-    <div className="relative">
-      <div className="flex items-center justify-between gap-4">
-        <h3 className="sip-glow text-xl font-semibold tracking-tight">{title}</h3>
-        {badge ? (
-          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80">
-            {badge}
-          </span>
-        ) : null}
-      </div>
-
-      <p className="mt-2 text-sm leading-relaxed text-white/70">{desc}</p>
-
-      <ul className="mt-4 space-y-2 text-sm text-white/80">
-        {bullets.map((b) => (
-          <li key={b} className="flex gap-2">
-            <span className="mt-[6px] h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
-            <span>{b}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-);
-
 function Input({
   label,
   value,
@@ -246,11 +209,8 @@ export default function Page() {
         </div>
 
         <nav className="hidden items-center gap-6 text-sm text-white/70 md:flex">
-          <a className="hover:text-white" href="#services">
-            Services
-          </a>
           <a className="hover:text-white" href="#menus">
-            Menus
+            Packages
           </a>
           <a className="hover:text-white" href="/gallery">
             Gallery
@@ -310,9 +270,10 @@ export default function Page() {
             </a>
             <a
               href="/gallery"
-              className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white/90 backdrop-blur transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+              className="group inline-flex items-center gap-2 rounded-xl border border-[#FFC86A]/60 bg-black/40 px-6 py-3 text-sm font-semibold tracking-wide text-[#FFC86A] backdrop-blur shadow-[0_10px_30px_rgba(255,200,106,0.14)] transition hover:border-[#FFC86A] hover:bg-[#FFC86A]/10 hover:shadow-[0_14px_40px_rgba(255,200,106,0.25)]"
             >
               View Gallery
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
 
@@ -325,49 +286,6 @@ export default function Page() {
             <span className="h-1 w-1 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
             <span>Private Events</span>
           </div>
-        </div>
-      </section>
-
-      <section id="services" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
-        <div className="mb-10 text-center">
-          <h2 className="sip-heading text-2xl font-semibold tracking-tight md:text-3xl">
-            Services
-          </h2>
-          <p className="mt-2 text-sm text-white/65">
-            Luxury bartending and elevated dessert experiences for unforgettable events.
-          </p>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-3">
-          <Card
-            title="Mobile Bartending Experience"
-            desc="A polished, high-end bartending experience with custom cocktails, stylish presentation, and seamless service that keeps the energy flowing."
-            bullets={[
-              "Professional bartending + full setup",
-              "Custom cocktail menu curation",
-              "Styled luxury presentation",
-            ]}
-            badge="Signature Experience"
-          />
-          <Card
-            title="Waffle Pop Experience"
-            desc="An elevated dessert experience featuring warm waffle pops, beautifully styled presentation, and customizable toppings guests will love."
-            bullets={[
-              "Fresh waffle pops prepared for your event",
-              "Chocolate, caramel + specialty drizzles",
-              "Fruit, candies, cookies + sprinkle toppings",
-            ]}
-          />
-          <Card
-            title="Ice Cream Sundae Experience"
-            desc="A crowd-pleasing sundae experience upgraded with premium presentation, curated toppings, and a fun, memorable setup for guests of all ages."
-            bullets={[
-              "Premium ice cream flavors",
-              "Sauces, whipped cream + gourmet toppings",
-              "Styled sundae station for easy guest flow",
-              "Perfect for kids, adults + mixed events",
-            ]}
-          />
         </div>
       </section>
 
