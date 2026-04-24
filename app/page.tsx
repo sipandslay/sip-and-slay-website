@@ -129,6 +129,29 @@ function CheckboxGroup({
   );
 }
 
+const menuPackages = [
+  {
+    src: "/Menus/Flavored Boba Lemonade & Mocktail Cart.png",
+    alt: "Flavored Boba Lemonade & Mocktail Cart — flavors, custom mocktails, and packages",
+    title: "Flavored Boba Lemonade & Mocktail Cart",
+  },
+  {
+    src: "/Menus/Bar Cart Experience.png",
+    alt: "Bar Cart Experience — custom cocktails, professional bar setup, licensed bartender",
+    title: "Bar Cart Experience",
+  },
+  {
+    src: "/Menus/Ice Cream Sundae Cart.png",
+    alt: "Ice Cream Sundae Cart — flavors, toppings, drizzles, and add-ons",
+    title: "Ice Cream Sundae Cart",
+  },
+  {
+    src: "/Menus/Waffle Pop Cart.png",
+    alt: "Waffle Pop Cart — freshly made waffle pops, toppings, drizzles, and add-ons",
+    title: "Waffle Pop Cart",
+  },
+];
+
 export default function Page() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -226,11 +249,11 @@ export default function Page() {
           <a className="hover:text-white" href="#services">
             Services
           </a>
-          <a className="hover:text-white" href="#sips">
-            Sips
+          <a className="hover:text-white" href="#menus">
+            Menus
           </a>
-          <a className="hover:text-white" href="#slays">
-            Slays
+          <a className="hover:text-white" href="/gallery">
+            Gallery
           </a>
           <a className="hover:text-white" href="#faq">
             FAQ
@@ -272,9 +295,10 @@ export default function Page() {
             Slay the whole <Accent>experience</Accent>.
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-            From signature cocktails to elevated dessert experiences, Sip &amp; Slay brings
-            stylish presentation and unforgettable moments to every event.
+          <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed tracking-wide text-white/75 md:text-lg">
+            From <Accent>signature cocktails</Accent> to{" "}
+            <Accent>elevated dessert experiences</Accent>, Sip &amp; Slay brings stylish
+            presentation and unforgettable moments to every event.
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -284,12 +308,22 @@ export default function Page() {
             >
               Get availability + pricing
             </a>
+            <a
+              href="/gallery"
+              className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white/90 backdrop-blur transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+            >
+              View Gallery
+            </a>
           </div>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-white/60">
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
-              Birthdays • Weddings • Corporate • Private Events
-            </span>
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] font-medium uppercase tracking-[0.32em] text-white/80 sm:gap-x-5">
+            <span>Birthdays</span>
+            <span className="h-1 w-1 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
+            <span>Weddings</span>
+            <span className="h-1 w-1 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
+            <span>Corporate</span>
+            <span className="h-1 w-1 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
+            <span>Private Events</span>
           </div>
         </div>
       </section>
@@ -337,89 +371,59 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-6xl px-6 py-14">
-  <div className="grid items-start gap-10 lg:grid-cols-2">
-    <div
-      id="sips"
-      className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_40px_120px_rgba(255,79,184,0.18)]"
-    >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.16),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_40%)] opacity-90" />
+      <section id="menus" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
+        <div className="mb-12 text-center md:mb-14">
+          <div className="mb-5 flex items-center justify-center gap-3">
+            <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#FFC86A]/70" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.38em] text-[#FFC86A]">
+              Signature Experiences
+            </span>
+            <span className="h-px w-10 bg-gradient-to-l from-transparent to-[#FFC86A]/70" />
+          </div>
 
-      <div className="relative z-10 p-6">
-        <a href="/sips" className="group inline-flex items-center gap-2">
-          <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-3xl font-semibold tracking-wide text-transparent transition group-hover:brightness-125 md:text-4xl">
-            Sips
-          </span>
-          <span className="text-white/70 transition-transform duration-300 group-hover:translate-x-1">
-            →
-          </span>
-        </a>
+          <h2 className="sip-heading text-4xl font-semibold tracking-tight md:text-6xl">
+            Packages
+          </h2>
 
-        <span className="block h-[2px] w-0 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] transition-all duration-300 group-hover:w-20"></span>
+          <div className="mx-auto mt-4 h-[2px] w-20 rounded-full bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A]" />
 
-        <p className="mt-4 max-w-lg text-base font-light tracking-wide text-white/70">
-          Signature cocktails crafted to bring the party to life.
-        </p>
+          <p className="mx-auto mt-5 max-w-2xl text-base font-light tracking-wide text-white/70 md:text-lg">
+            Curated cart experiences — signature menus, styled details, and the finishing touches that elevate every event.
+          </p>
+        </div>
 
-        <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/25">
-          <video
-            controls
-            playsInline
-            preload="metadata"
-            poster="/Sips/clip3-poster.jpg"
-            className="relative z-10 block h-full w-full bg-black object-contain"
+        <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
+          {menuPackages.map((item) => (
+            <figure
+              key={item.src}
+              className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_18px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_28px_100px_rgba(255,79,184,0.16)]"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_38%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_36%)] opacity-90" />
+
+              <img
+                src={item.src}
+                alt={item.alt}
+                loading="lazy"
+                className="relative z-10 block h-auto w-full object-contain transition duration-500 group-hover:scale-[1.015]"
+              />
+
+              <figcaption className="sr-only">{item.title}</figcaption>
+
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+            </figure>
+          ))}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <a
+            href="/gallery"
+            className="group inline-flex items-center gap-2 rounded-xl border border-white/5 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-6 py-3 text-sm font-semibold tracking-wide text-black shadow-[0_18px_40px_rgba(255,79,184,0.22)] transition hover:brightness-110"
           >
-            <source src="/Sips/clip3.mp4" type="video/mp4" />
-          </video>
+            See the full gallery
+            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
         </div>
-      </div>
-    </div>
-
-    <div
-      id="slays"
-      className="relative rounded-[28px] border border-white/10 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur"
-    >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,79,184,0.16),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(255,200,106,0.14),transparent_40%)] opacity-90" />
-
-      <div className="relative z-10 p-6">
-        <a href="/slays" className="group inline-flex items-center gap-2">
-          <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-3xl font-semibold tracking-wide text-transparent transition group-hover:brightness-125 md:text-4xl">
-            Slays
-          </span>
-          <span className="text-white/70 transition-transform duration-300 group-hover:translate-x-1">
-            →
-          </span>
-        </a>
-
-        <span className="block h-[2px] w-20 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]"></span>
-
-        <p className="mt-4 max-w-lg text-base font-light tracking-wide text-white/70">
-          Curated menu experiences designed to elevate every event.
-        </p>
-      </div>
-
-      <div className="mt-2 overflow-hidden rounded-b-[28px] border-t border-white/10 bg-black/25 p-3">
-        <div className="flex flex-col gap-3">
-          <img
-            src="/Slays/signature package.png"
-            alt="Signature package"
-            className="w-full rounded-xl object-contain"
-          />
-          <img
-            src="/Slays/ice cream.png"
-            alt="Ice cream"
-            className="w-full rounded-xl object-contain"
-          />
-          <img
-            src="/Slays/waffle pop.png"
-            alt="Waffle pop"
-            className="w-full rounded-xl object-contain"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       <section id="faq" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6">
