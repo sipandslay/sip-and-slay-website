@@ -1,75 +1,24 @@
-type GalleryItem =
-  | {
-      type: "video";
-      src: string;
-      poster: string;
-      mime: string;
-      label: string;
-    }
-  | {
-      type: "image";
-      src: string;
-      alt: string;
-      label: string;
-    };
+type GalleryVideo = {
+  src: string;
+  poster: string;
+  mime: string;
+};
 
-const galleryItems: GalleryItem[] = [
+const galleryVideos: GalleryVideo[] = [
   {
-    type: "video",
     src: "/Sips/clip1.mp4",
     poster: "/Sips/clip1-poster.png",
     mime: "video/mp4",
-    label: "Sips",
   },
   {
-    type: "video",
     src: "/Sips/clip2.mp4",
     poster: "/Sips/clip2-poster.png",
     mime: "video/mp4",
-    label: "Sips",
   },
   {
-    type: "video",
     src: "/Sips/clip3.mp4",
     poster: "/Sips/clip3-poster.jpg",
     mime: "video/mp4",
-    label: "Sips",
-  },
-  {
-    type: "image",
-    src: "/Slays/signature package.png",
-    alt: "Signature package",
-    label: "Slays",
-  },
-  {
-    type: "image",
-    src: "/Slays/ice cream.png",
-    alt: "Ice cream",
-    label: "Slays",
-  },
-  {
-    type: "image",
-    src: "/Slays/waffle pop.png",
-    alt: "Waffle pop",
-    label: "Slays",
-  },
-  {
-    type: "image",
-    src: "/Slays/Bday Bash.png",
-    alt: "Birthday bash menu",
-    label: "Slays",
-  },
-  {
-    type: "image",
-    src: "/Slays/St. Patty's.png",
-    alt: "St. Patty's menu",
-    label: "Slays",
-  },
-  {
-    type: "image",
-    src: "/Slays/holidays.png",
-    alt: "Holiday menu",
-    label: "Slays",
   },
 ];
 
@@ -97,51 +46,28 @@ export default function GalleryPage() {
           <h1 className="sip-heading text-3xl font-semibold tracking-tight md:text-5xl">
             Gallery
           </h1>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-white/65 md:text-base">
-            Signature cocktails, elevated dessert styling, and the real moments from our events — all in one place.
+          <p className="mx-auto mt-3 max-w-2xl text-sm font-light tracking-wide text-white/70 md:text-base">
+            Signature cocktails in motion — a glimpse of the real moments from our events.
           </p>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {galleryItems.map((item, idx) => (
+          {galleryVideos.map((item, idx) => (
             <div
               key={idx}
               className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_18px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_28px_100px_rgba(255,79,184,0.16)]"
             >
-              <div
-                className={
-                  item.label === "Sips"
-                    ? "pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_34%)] opacity-90"
-                    : "pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,79,184,0.14),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(255,200,106,0.14),transparent_32%)] opacity-90"
-                }
-              />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_34%)] opacity-90" />
 
-              {item.type === "video" ? (
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster={item.poster}
-                  className="relative z-10 block h-full w-full bg-black object-contain"
-                >
-                  <source src={item.src} type={item.mime} />
-                </video>
-              ) : (
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  loading="lazy"
-                  className="relative z-10 block h-full w-full bg-black object-contain transition duration-500 group-hover:scale-[1.03]"
-                />
-              )}
-
-              <span className="pointer-events-none absolute left-3 top-3 rounded-xl border border-white/10 bg-black/40 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-white/85 backdrop-blur">
-                {item.label}
-              </span>
-
-              {item.type === "image" ? (
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-              ) : null}
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                poster={item.poster}
+                className="relative z-10 block h-full w-full bg-black object-contain"
+              >
+                <source src={item.src} type={item.mime} />
+              </video>
             </div>
           ))}
         </div>
