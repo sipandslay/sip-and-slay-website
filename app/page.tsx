@@ -448,6 +448,7 @@ export default function Page() {
                     "Waffle Pop Experience",
                     "Mobile Bartending Experience (Alcohol)",
                     "Mobile Bartending Experience (Mocktails)",
+                    "In-Home Mixology Classes",
                   ]}
                 />
               </div>
