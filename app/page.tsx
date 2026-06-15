@@ -94,14 +94,19 @@ function CheckboxGroup({
 
 const menuPackages = [
   {
-    src: "/Menus/Flavored Boba Lemonade & Mocktail Cart.png",
-    alt: "Flavored Boba Lemonade & Mocktail Cart — flavors, custom mocktails, and packages",
-    title: "Flavored Boba Lemonade & Mocktail Cart",
-  },
-  {
     src: "/Menus/Bar Cart Experience.png",
     alt: "Bar Cart Experience — custom cocktails, professional bar setup, licensed bartender",
     title: "Bar Cart Experience",
+  },
+  {
+    src: "/Menus/In-Home Mixology Classes.png",
+    alt: "In-Home Mixology Classes — hands-on cocktail making, bar tools, games, and a professional mixologist",
+    title: "In-Home Mixology Classes",
+  },
+  {
+    src: "/Menus/Flavored Boba Lemonade & Mocktail Cart.png",
+    alt: "Flavored Boba Lemonade & Mocktail Cart — flavors, custom mocktails, and packages",
+    title: "Flavored Boba Lemonade & Mocktail Cart",
   },
   {
     src: "/Menus/Ice Cream Sundae Cart.png",
