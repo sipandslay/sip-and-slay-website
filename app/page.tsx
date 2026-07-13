@@ -458,10 +458,10 @@ export default function Page() {
 
               <div className="mt-4">
                 <Input
-                  label="Referred by (name)"
+                  label="Referred by (name + email/phone)"
                   value={referredBy}
                   onChange={setReferredBy}
-                  placeholder="Who referred you? (optional)"
+                  placeholder="Referrer's name & email/phone, so we can send their $25 (optional)"
                 />
               </div>
 
