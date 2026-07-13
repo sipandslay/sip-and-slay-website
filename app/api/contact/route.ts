@@ -15,6 +15,7 @@ type Payload = {
   hours: string;
   vibeTheme: string;
   eventExperiences: string[];
+  referredBy?: string;
   website?: string; // honeypot
   formStart?: number; // timing trap
 };
@@ -93,6 +94,7 @@ export async function POST(req: Request) {
       hours: sanitize(body.hours),
       vibeTheme: sanitize(body.vibeTheme),
       eventExperiences: sanitizeStringArray(body.eventExperiences),
+      referredBy: sanitize(body.referredBy),
       website: sanitize(body.website),
       formStart: typeof body.formStart === "number" ? body.formStart : 0,
     };
@@ -166,6 +168,7 @@ export async function POST(req: Request) {
       `Hours: ${payload.hours}`,
       `Vibe/theme: ${payload.vibeTheme}`,
       `Experience(s) of interest: ${payload.eventExperiences.join(", ")}`,
+      `Referred by: ${payload.referredBy || "(not provided)"}`,
       "",
       `Sent: ${new Date().toISOString()}`,
     ].join("\n");

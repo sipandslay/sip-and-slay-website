@@ -132,6 +132,7 @@ export default function Page() {
   const [hours, setHours] = useState("");
   const [vibeTheme, setVibeTheme] = useState("");
   const [eventExperiences, setEventExperiences] = useState<string[]>([]);
+  const [referredBy, setReferredBy] = useState("");
 
   const [website, setWebsite] = useState("");
   const [formStart] = useState(Date.now());
@@ -173,6 +174,7 @@ export default function Page() {
           hours,
           vibeTheme,
           eventExperiences,
+          referredBy,
           website,
           formStart,
         }),
@@ -187,6 +189,7 @@ export default function Page() {
       setStatus("sent");
       setError("");
       setEventExperiences([]);
+      setReferredBy("");
     } catch (err: unknown) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Could not send. Try again.");
@@ -450,6 +453,15 @@ export default function Page() {
                     "Mobile Bartending Experience (Mocktails)",
                     "In-Home Mixology Classes",
                   ]}
+                />
+              </div>
+
+              <div className="mt-4">
+                <Input
+                  label="Referred by (name)"
+                  value={referredBy}
+                  onChange={setReferredBy}
+                  placeholder="Who referred you? (optional)"
                 />
               </div>
 
