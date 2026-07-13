@@ -4,6 +4,22 @@ type GalleryVideo = {
   mime: string;
 };
 
+type GalleryPhoto = {
+  src: string;
+  alt: string;
+};
+
+const galleryPhotos: GalleryPhoto[] = [
+  {
+    src: "/gallery/dessert-drink-spread.png",
+    alt: "Sip & Slay dessert & drink spread — waffle pops, ice cream sundae, and flavored boba drinks under the neon sign",
+  },
+  {
+    src: "/gallery/backyard-bar-cart.jpg",
+    alt: "Sip & Slay backyard bar cart setup with custom cocktail menu and string lights",
+  },
+];
+
 const galleryVideos: GalleryVideo[] = [
   {
     src: "/Sips/clip1.mp4",
@@ -49,6 +65,25 @@ export default function GalleryPage() {
           <p className="mx-auto mt-3 max-w-2xl text-sm font-light tracking-wide text-white/70 md:text-base">
             Signature cocktails in motion — a glimpse of the real moments from our events.
           </p>
+        </div>
+
+        <div className="mb-5 grid gap-5 sm:grid-cols-2">
+          {galleryPhotos.map((item, idx) => (
+            <div
+              key={idx}
+              className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_18px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_28px_100px_rgba(255,79,184,0.16)]"
+            >
+              <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_34%)] opacity-90" />
+
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.src}
+                alt={item.alt}
+                loading="lazy"
+                className="relative block aspect-[4/5] h-full w-full bg-black object-cover"
+              />
+            </div>
+          ))}
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
