@@ -220,6 +220,9 @@ export default function Page() {
           <a className="hover:text-white" href="#menus">
             Packages
           </a>
+          <a className="hover:text-white" href="#meet">
+            Meet Me
+          </a>
           <a className="hover:text-white" href="/gallery">
             Gallery
           </a>
@@ -384,13 +387,12 @@ export default function Page() {
 
           <div className="text-center md:text-left">
             <p className="text-lg font-light leading-relaxed tracking-wide text-white/80 md:text-xl">
-              Hi, I&apos;m the heart behind <Accent>Sip &amp; Slay</Accent> — the one shaking,
-              pouring, and making sure your event is nothing short of unforgettable.
+              Heyy, I&apos;m the heart &amp; soul behind <Accent>Sip &amp; Slay</Accent> — the one
+              shaking, pouring &amp; cooking up your event, your way!
             </p>
             <p className="mt-5 text-base font-light leading-relaxed tracking-wide text-white/65">
-              When you book with us, you&apos;re not getting a faceless service. You&apos;re getting
-              me, my crew, and our full attention on making your day look, taste, and feel
-              like a total slay.
+              When you book with us, it&apos;s quality and professionalism customized to your
+              heart&apos;s content. Book today, and let&apos;s slay your event!
             </p>
 
             <div className="mt-8 flex justify-center md:justify-start">
