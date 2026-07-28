@@ -376,9 +376,11 @@ export default function Page() {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_34%)] opacity-90" />
 
             <video
-              controls
+              autoPlay
+              muted
+              loop
               playsInline
-              preload="metadata"
+              preload="auto"
               className="relative z-10 block max-h-[70vh] w-full bg-black object-contain"
             >
               <source src="/intro-bartender.mp4" type="video/mp4" />
@@ -387,7 +389,7 @@ export default function Page() {
 
           <div className="text-center md:text-left">
             <p className="text-lg font-light leading-relaxed tracking-wide text-white/80 md:text-xl">
-              Heyy, I&apos;m the heart &amp; soul behind <Accent>Sip &amp; Slay</Accent> — the one
+              Heyy, I&apos;m the heart &amp; soul behind <Accent>Sip &amp; Slay</Accent>. The one
               shaking, pouring &amp; cooking up your event, your way!
             </p>
             <p className="mt-5 text-base font-light leading-relaxed tracking-wide text-white/65">
