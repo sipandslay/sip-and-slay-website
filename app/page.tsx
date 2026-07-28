@@ -134,6 +134,8 @@ export default function Page() {
   const [eventExperiences, setEventExperiences] = useState<string[]>([]);
   const [referredBy, setReferredBy] = useState("");
 
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const [website, setWebsite] = useState("");
   const [formStart] = useState(Date.now());
 
@@ -208,7 +210,7 @@ export default function Page() {
         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:56px_56px]" />
       </div>
 
-      <header className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+      <header className="relative z-30 mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <div className="flex items-center gap-3">
           <div className="leading-tight">
             <div className="sip-glow text-sm text-white/70">Sip &amp; Slay LLC</div>
@@ -220,7 +222,10 @@ export default function Page() {
           <a className="hover:text-white" href="#menus">
             Packages
           </a>
-          <a className="hover:text-white" href="#meet">
+          <a
+            className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text font-semibold text-transparent transition hover:brightness-110"
+            href="#meet"
+          >
             Meet Me
           </a>
           <a className="hover:text-white" href="/gallery">
@@ -236,10 +241,93 @@ export default function Page() {
 
         <a
           href="#contact"
-          className="rounded-xl border border-white/5 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-[#FF4FB8]/10 hover:brightness-110"
+          className="hidden rounded-xl border border-white/5 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-[#FF4FB8]/10 hover:brightness-110 md:inline-block"
         >
           Request a Quote
         </a>
+
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((v) => !v)}
+          className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 p-2 text-white/80 backdrop-blur transition hover:text-white md:hidden"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+          >
+            {mobileOpen ? (
+              <>
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="6" y1="18" x2="18" y2="6" />
+              </>
+            ) : (
+              <>
+                <line x1="3" y1="7" x2="21" y2="7" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="17" x2="21" y2="17" />
+              </>
+            )}
+          </svg>
+        </button>
+
+        {mobileOpen ? (
+          <div className="absolute left-0 right-0 top-full z-30 mx-4 mt-2 overflow-hidden rounded-2xl border border-white/10 bg-black/80 shadow-[0_18px_70px_rgba(0,0,0,0.55)] backdrop-blur-xl md:hidden">
+            <nav className="flex flex-col text-sm">
+              <a
+                href="#menus"
+                onClick={() => setMobileOpen(false)}
+                className="border-b border-white/5 px-5 py-3.5 text-white/80 transition hover:bg-white/5 hover:text-white"
+              >
+                Packages
+              </a>
+              <a
+                href="#meet"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2 border-b border-white/5 px-5 py-3.5 transition hover:bg-white/5"
+              >
+                <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text font-semibold text-transparent">
+                  Meet Me
+                </span>
+                <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
+              </a>
+              <a
+                href="/gallery"
+                onClick={() => setMobileOpen(false)}
+                className="border-b border-white/5 px-5 py-3.5 text-white/80 transition hover:bg-white/5 hover:text-white"
+              >
+                Gallery
+              </a>
+              <a
+                href="#faq"
+                onClick={() => setMobileOpen(false)}
+                className="border-b border-white/5 px-5 py-3.5 text-white/80 transition hover:bg-white/5 hover:text-white"
+              >
+                FAQ
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setMobileOpen(false)}
+                className="border-b border-white/5 px-5 py-3.5 text-white/80 transition hover:bg-white/5 hover:text-white"
+              >
+                Contact
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setMobileOpen(false)}
+                className="m-3 rounded-xl bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-4 py-3 text-center font-semibold text-black shadow-lg shadow-[#FF4FB8]/10"
+              >
+                Request a Quote
+              </a>
+            </nav>
+          </div>
+        ) : null}
       </header>
 
       <section className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 text-center">
