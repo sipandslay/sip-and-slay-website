@@ -351,6 +351,61 @@ export default function Page() {
         </div>
       </section>
 
+      <section id="meet" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
+        <div className="mb-12 text-center md:mb-14">
+          <div className="mb-5 flex items-center justify-center gap-3">
+            <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#FFC86A]/70" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.38em] text-[#FFC86A]">
+              Meet Your Bartender
+            </span>
+            <span className="h-px w-10 bg-gradient-to-l from-transparent to-[#FFC86A]/70" />
+          </div>
+
+          <h2 className="sip-heading text-4xl font-semibold tracking-tight md:text-6xl">
+            The Face Behind the Slay
+          </h2>
+
+          <div className="mx-auto mt-4 h-[2px] w-20 rounded-full bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A]" />
+        </div>
+
+        <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
+          <div className="group relative mx-auto w-full max-w-sm overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_18px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_28px_100px_rgba(255,79,184,0.16)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_34%)] opacity-90" />
+
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              className="relative z-10 block max-h-[70vh] w-full bg-black object-contain"
+            >
+              <source src="/intro-bartender.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <div className="text-center md:text-left">
+            <p className="text-lg font-light leading-relaxed tracking-wide text-white/80 md:text-xl">
+              Hi, I&apos;m the heart behind <Accent>Sip &amp; Slay</Accent> — the one shaking,
+              pouring, and making sure your event is nothing short of unforgettable.
+            </p>
+            <p className="mt-5 text-base font-light leading-relaxed tracking-wide text-white/65">
+              When you book with us, you&apos;re not getting a faceless service. You&apos;re getting
+              me, my crew, and our full attention on making your day look, taste, and feel
+              like a total slay.
+            </p>
+
+            <div className="mt-8 flex justify-center md:justify-start">
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 rounded-xl border border-white/5 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-6 py-3 text-sm font-semibold tracking-wide text-black shadow-[0_18px_40px_rgba(255,79,184,0.22)] transition hover:brightness-110"
+              >
+                Let&apos;s make it unforgettable
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="faq" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="mb-6">
           <h2 className="sip-heading text-2xl font-semibold tracking-tight md:text-3xl">FAQ</h2>
