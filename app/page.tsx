@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
 
 const Accent = ({ children }: { children: ReactNode }) => (
   <span className="bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A] bg-clip-text text-transparent">
@@ -135,6 +135,18 @@ export default function Page() {
   const [referredBy, setReferredBy] = useState("");
 
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.defaultMuted = true;
+    const attempt = v.play();
+    if (attempt && typeof attempt.catch === "function") {
+      attempt.catch(() => {});
+    }
+  }, []);
 
   const [website, setWebsite] = useState("");
   const [formStart] = useState(Date.now());
@@ -459,6 +471,7 @@ export default function Page() {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_34%)] opacity-90" />
 
             <video
+              ref={videoRef}
               autoPlay
               muted
               loop
