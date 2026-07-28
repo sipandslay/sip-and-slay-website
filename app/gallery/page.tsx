@@ -7,16 +7,34 @@ type GalleryVideo = {
 type GalleryPhoto = {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 };
 
 const galleryPhotos: GalleryPhoto[] = [
   {
+    src: "/gallery/event-drinks.jpg",
+    alt: "Sip & Slay signature mocktails paired with WellWithAll Energy flavors at a Chicago event",
+    width: 1469,
+    height: 1918,
+  },
+  {
+    src: "/gallery/event-setup.jpg",
+    alt: "Sip & Slay bar cart styled with a custom mocktail menu, gold accents, and tip station",
+    width: 1800,
+    height: 1350,
+  },
+  {
     src: "/gallery/dessert-drink-spread.png",
     alt: "Sip & Slay dessert & drink spread — waffle pops, ice cream sundae, and flavored boba drinks under the neon sign",
+    width: 1122,
+    height: 1402,
   },
   {
     src: "/gallery/backyard-bar-cart.jpg",
     alt: "Sip & Slay backyard bar cart setup with custom cocktail menu and string lights",
+    width: 1920,
+    height: 2400,
   },
 ];
 
@@ -67,7 +85,7 @@ export default function GalleryPage() {
           </p>
         </div>
 
-        <div className="mb-5 grid gap-5 sm:grid-cols-2">
+        <div className="mb-5 grid items-start gap-5 sm:grid-cols-2">
           {galleryPhotos.map((item, idx) => (
             <div
               key={idx}
@@ -79,8 +97,10 @@ export default function GalleryPage() {
               <img
                 src={item.src}
                 alt={item.alt}
+                width={item.width}
+                height={item.height}
                 loading="lazy"
-                className="relative block aspect-[4/5] h-full w-full bg-black object-cover"
+                className="relative block h-auto w-full bg-black object-contain"
               />
             </div>
           ))}
