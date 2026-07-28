@@ -212,21 +212,57 @@ export default function Page() {
 
       <header className="relative z-30 mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <div className="flex items-center gap-3">
+          <button
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((v) => !v)}
+            className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 p-2 text-white/80 backdrop-blur transition hover:text-white md:hidden"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            >
+              {mobileOpen ? (
+                <>
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                  <line x1="6" y1="18" x2="18" y2="6" />
+                </>
+              ) : (
+                <>
+                  <line x1="3" y1="7" x2="21" y2="7" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="17" x2="21" y2="17" />
+                </>
+              )}
+            </svg>
+          </button>
           <div className="leading-tight">
             <div className="sip-glow text-sm text-white/70">Sip &amp; Slay LLC</div>
             <div className="text-xs text-white/45">Luxury Cart Events</div>
+            <a href="#meet" className="mt-1.5 inline-flex items-center gap-2 md:hidden">
+              <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text text-sm font-semibold text-transparent">
+                Meet Me
+              </span>
+              <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
+            </a>
           </div>
         </div>
 
         <nav className="hidden items-center gap-6 text-sm text-white/70 md:flex">
-          <a className="hover:text-white" href="#menus">
-            Packages
-          </a>
           <a
             className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text font-semibold text-transparent transition hover:brightness-110"
             href="#meet"
           >
             Meet Me
+          </a>
+          <a className="hover:text-white" href="#menus">
+            Packages
           </a>
           <a className="hover:text-white" href="/gallery">
             Gallery
@@ -246,37 +282,6 @@ export default function Page() {
           Request a Quote
         </a>
 
-        <button
-          type="button"
-          aria-label="Toggle menu"
-          aria-expanded={mobileOpen}
-          onClick={() => setMobileOpen((v) => !v)}
-          className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 p-2 text-white/80 backdrop-blur transition hover:text-white md:hidden"
-        >
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          >
-            {mobileOpen ? (
-              <>
-                <line x1="6" y1="6" x2="18" y2="18" />
-                <line x1="6" y1="18" x2="18" y2="6" />
-              </>
-            ) : (
-              <>
-                <line x1="3" y1="7" x2="21" y2="7" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="17" x2="21" y2="17" />
-              </>
-            )}
-          </svg>
-        </button>
-
         {mobileOpen ? (
           <div className="absolute left-0 right-0 top-full z-30 mx-4 mt-2 overflow-hidden rounded-2xl border border-white/10 bg-black/80 shadow-[0_18px_70px_rgba(0,0,0,0.55)] backdrop-blur-xl md:hidden">
             <nav className="flex flex-col text-sm">
@@ -286,16 +291,6 @@ export default function Page() {
                 className="border-b border-white/5 px-5 py-3.5 text-white/80 transition hover:bg-white/5 hover:text-white"
               >
                 Packages
-              </a>
-              <a
-                href="#meet"
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-2 border-b border-white/5 px-5 py-3.5 transition hover:bg-white/5"
-              >
-                <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text font-semibold text-transparent">
-                  Meet Me
-                </span>
-                <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
               </a>
               <a
                 href="/gallery"
