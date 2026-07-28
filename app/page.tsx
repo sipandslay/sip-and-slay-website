@@ -427,6 +427,8 @@ export default function Page() {
               <img
                 src={item.src}
                 alt={item.alt}
+                width={1024}
+                height={1536}
                 loading="lazy"
                 className="relative z-10 block h-auto w-full object-contain transition duration-500 group-hover:scale-[1.015]"
               />
