@@ -176,6 +176,35 @@ body {
     0 0 26px rgba(255, 79, 184, 0.1);
 }
 
+/* Autofilled form fields.
+   Chrome/Safari repaint autofilled inputs a light blue-white and ignore any
+   background-color you set, so the quote form flashed bright on autofill. The
+   only reliable override is a huge inset box-shadow painted over the field,
+   plus -webkit-text-fill-color for the text itself. The absurd transition
+   delay is a second line of defence: it stops the browser's own background
+   from ever animating in. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #ffffff;
+  caret-color: #ffffff;
+  -webkit-box-shadow: 0 0 0 1000px #07070a inset;
+  box-shadow: 0 0 0 1000px #07070a inset;
+  border-color: rgba(255, 200, 106, 0.28);
+  transition:
+    background-color 600000s 0s,
+    color 600000s 0s;
+}
+
+/* Firefox uses the unprefixed selector and a background-image for its tint. */
+input:autofill {
+  -webkit-text-fill-color: #ffffff;
+  caret-color: #ffffff;
+  box-shadow: 0 0 0 1000px #07070a inset;
+  border-color: rgba(255, 200, 106, 0.28);
+}
+
 /* Logo */
 .sip-logo-float {
   animation: sipFloat 6s ease-in-out infinite;
