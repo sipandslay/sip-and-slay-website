@@ -32,21 +32,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/logo.png",
-        width: 1024,
-        height: 1024,
-        alt: "Sip & Slay LLC — luxury event carts and mobile bartending",
+        // Purpose-built 1200x630 card — the ratio every preview crawler wants.
+        url: "/og-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Sip & Slay LLC — luxury event carts, mobile bartending, mixology classes, dessert carts and event servers in Chicagoland",
       },
     ],
   },
   twitter: {
-    // "summary" not "summary_large_image": the logo is square, and the large
-    // card crops to landscape, which would slice the top and bottom off it.
-    // Switch to summary_large_image once a 1200x630 banner exists.
-    card: "summary",
+    // Safe to use the large card now that the image is true 1200x630 landscape;
+    // it would have cropped the square logo top and bottom.
+    card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/logo.png"],
+    images: ["/og-banner.png"],
   },
   icons: {
     icon: [
