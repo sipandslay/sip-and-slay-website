@@ -200,10 +200,9 @@ export default function Page() {
         throw new Error(data?.error || "Could not send. Try again.");
       }
 
+      // No field resets needed — the form is replaced by the success panel.
       setStatus("sent");
       setError("");
-      setEventExperiences([]);
-      setReferredBy("");
     } catch (err: unknown) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Could not send. Try again.");
@@ -565,6 +564,34 @@ export default function Page() {
               </div>
             </div>
 
+            {status === "sent" ? (
+              <div
+                role="status"
+                className="rounded-2xl border border-[#FFC86A]/30 bg-black/30 p-8 text-center shadow-[0_18px_70px_rgba(255,79,184,0.12)]"
+              >
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#FFC86A] to-[#FF4FB8] shadow-[0_10px_30px_rgba(255,79,184,0.3)]">
+                  <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="black"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+
+                <p className="sip-heading mt-5 text-xl font-semibold tracking-tight md:text-2xl">
+                  Sent! We&apos;ll reach out soon.
+                </p>
+
+                <div className="mx-auto mt-4 h-[2px] w-16 rounded-full bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A]" />
+              </div>
+            ) : (
             <form onSubmit={onSubmit} className="rounded-2xl border border-white/10 bg-black/30 p-6">
               <div className="text-sm font-semibold">Quick Quote Form</div>
               <p className="mt-2 text-sm text-white/65">
@@ -636,10 +663,6 @@ export default function Page() {
                   {status === "sending" ? "Sending..." : "Submit Request"}
                 </button>
 
-                {status === "sent" ? (
-                  <span className="text-sm text-white/75">✅ Sent! We&apos;ll reach out soon.</span>
-                ) : null}
-
                 {status === "error" ? <span className="text-sm text-red-300">❌ {error}</span> : null}
               </div>
 
@@ -647,6 +670,7 @@ export default function Page() {
                 By submitting, you agree we can contact you back via email or phone.
               </p>
             </form>
+            )}
           </div>
         </div>
 
