@@ -2,12 +2,52 @@
 import "./globals.css";
 import type { Metadata } from "next";
 
+const siteUrl = "https://sipandslayllc.com";
+
+// Brand first, so it survives in the browser tab, bookmarks and history, which
+// only show the first 20-30 characters. Service terms still follow. Chicagoland
+// lives in the description instead — the verified Google Business Profile
+// already owns local and "near me" intent, so the title need not carry it.
+const siteTitle = "Sip & Slay LLC | Mobile Bartending & Event Carts";
+
+const siteDescription =
+  "Luxury event carts for Chicagoland weddings, birthdays & corporate events — mobile bartending, mixology classes, dessert carts & event servers.";
+
 export const metadata: Metadata = {
-  // Keyword-led rather than brand-led: people search the service and the city,
-  // not the business name. Kept under ~60 characters so Google shows it whole.
-  title: "Mobile Bartending & Event Carts in Chicagoland | Sip & Slay",
-  description:
-    "Luxury event carts for Chicagoland weddings, birthdays & corporate events — mobile bartending, mixology classes, dessert carts & event servers.",
+  // Lets the relative image path below resolve to an absolute URL, which the
+  // link-preview crawlers require.
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
+  // Without these, sharing the link produced plain text with no image.
+  openGraph: {
+    type: "website",
+    siteName: "Sip & Slay LLC",
+    title: siteTitle,
+    description: siteDescription,
+    url: siteUrl,
+    locale: "en_US",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1024,
+        height: 1024,
+        alt: "Sip & Slay LLC — luxury event carts and mobile bartending",
+      },
+    ],
+  },
+  twitter: {
+    // "summary" not "summary_large_image": the logo is square, and the large
+    // card crops to landscape, which would slice the top and bottom off it.
+    // Switch to summary_large_image once a 1200x630 banner exists.
+    card: "summary",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/logo.png"],
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -34,10 +74,10 @@ const localBusinessSchema = {
   name: "Sip & Slay LLC",
   description:
     "Luxury event carts serving Chicagoland — mobile bartending, in-home mixology classes, ice cream and waffle pop dessert carts, and professional event servers.",
-  url: "https://sipandslayllc.com",
+  url: siteUrl,
   telephone: "+1-630-666-5882",
   email: "sipandslayllc@gmail.com",
-  image: "https://sipandslayllc.com/logo.png",
+  image: `${siteUrl}/logo.png`,
   // Canonical profile URL only — the ?utm_source share-sheet parameters that
   // Instagram appends are tracking noise and would weaken the entity match.
   sameAs: ["https://www.instagram.com/sip_and_slayllc/"],
