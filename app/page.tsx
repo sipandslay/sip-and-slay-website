@@ -95,27 +95,27 @@ function CheckboxGroup({
 const menuPackages = [
   {
     src: "/Menus/Bar Cart Experience.png",
-    alt: "Bar Cart Experience — custom cocktails, professional bar setup, licensed bartender",
+    alt: "Bar Cart Experience — cocktail and mocktail menus, licensed and insured bartender, professional bar setup and tools",
     title: "Bar Cart Experience",
   },
   {
+    src: "/Menus/Professional Event Servers.png",
+    alt: "Professional Event Servers — serving and passing food, buffet setup, cake service, table clearing, and event cleanup",
+    title: "Professional Event Servers",
+  },
+  {
     src: "/Menus/In-Home Mixology Classes.png",
-    alt: "In-Home Mixology Classes — hands-on cocktail making, bar tools, games, and a professional mixologist",
+    alt: "In-Home Mixology Classes — hands-on cocktail making, all bar tools, mixology games, and professional mixologist guidance",
     title: "In-Home Mixology Classes",
   },
   {
-    src: "/Menus/Flavored Boba Lemonade & Mocktail Cart.png",
-    alt: "Flavored Boba Lemonade & Mocktail Cart — flavors, custom mocktails, and packages",
-    title: "Flavored Boba Lemonade & Mocktail Cart",
-  },
-  {
     src: "/Menus/Ice Cream Sundae Cart.png",
-    alt: "Ice Cream Sundae Cart — flavors, toppings, drizzles, and add-ons",
+    alt: "Ice Cream Sundae Cart — flavors, dry and fruit toppings, drizzles, and full-service setup",
     title: "Ice Cream Sundae Cart",
   },
   {
     src: "/Menus/Waffle Pop Cart.png",
-    alt: "Waffle Pop Cart — freshly made waffle pops, toppings, drizzles, and add-ons",
+    alt: "Waffle Pop Cart — freshly made waffle pops, dry and fruit toppings, drizzles, and full-service setup",
     title: "Waffle Pop Cart",
   },
 ];
@@ -257,11 +257,15 @@ export default function Page() {
           <div className="leading-tight">
             <div className="sip-glow text-sm text-white/70">Sip &amp; Slay LLC</div>
             <div className="text-xs text-white/45">Luxury Cart Events</div>
-            <a href="#meet" className="mt-1.5 inline-flex items-center gap-2 md:hidden">
+            <a
+              href="#meet"
+              aria-label="Meet your bartender"
+              className="sip-meet-pill mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#FFC86A]/45 bg-white/[0.06] px-3 py-1.5 backdrop-blur transition active:scale-95 md:hidden"
+            >
               <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text text-sm font-semibold text-transparent">
                 Meet Me
               </span>
-              <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
+              <span className="sip-meet-arrow text-xs font-bold text-[#FF4FB8]">↓</span>
             </a>
           </div>
         </div>
@@ -362,9 +366,9 @@ export default function Page() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed tracking-wide text-white/75 md:text-lg">
-            From <Accent>signature cocktails</Accent> to{" "}
-            <Accent>elevated dessert experiences</Accent>, Sip &amp; Slay brings stylish
-            presentation and unforgettable moments to every event.
+            From <Accent>signature cocktails</Accent> and elevated dessert carts to
+            mixology classes and <Accent>professional event servers</Accent> — Sip &amp;
+            Slay brings stylish presentation and unforgettable moments to every event.
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -609,6 +613,7 @@ export default function Page() {
                     "Mobile Bartending Experience (Alcohol)",
                     "Mobile Bartending Experience (Mocktails)",
                     "In-Home Mixology Classes",
+                    "Professional Event Servers",
                   ]}
                 />
               </div>
