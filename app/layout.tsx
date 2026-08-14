@@ -8,7 +8,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png" }, // fallback if needed
+      // Filename is capital-I on disk. Vercel runs Linux and is case-sensitive,
+      // so this must match exactly or it 404s in production.
+      { url: "/Icon.png", type: "image/png" },
     ],
   },
 };
@@ -20,23 +22,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        {/* Google tag (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18306247760"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-18306247760');
-            `,
-          }}
-        />
-      </head>
       <body>{children}</body>
     </html>
   );
