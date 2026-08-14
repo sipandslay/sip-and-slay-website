@@ -221,7 +221,9 @@ export default function Page() {
         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:56px_56px]" />
       </div>
 
-      <header className="relative z-30 mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+      {/* Flush to the top-left corner on mobile; padded from md up, where the
+          nav and quote button need breathing room from the viewport edges. */}
+      <header className="relative z-30 mx-auto flex max-w-6xl items-center justify-between md:px-6 md:py-6">
         <div className="flex items-center gap-3">
           <button
             type="button"
