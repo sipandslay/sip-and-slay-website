@@ -422,10 +422,20 @@ export default function Page() {
         </div>
 
         <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
-          {menuPackages.map((item) => (
+          {menuPackages.map((item, idx) => {
+            // With an odd number of cards the last one would sit alone in the
+            // left column. Span both columns but keep it one column wide, so it
+            // centers under the pair above instead. The 0.75rem is half of the
+            // sm:gap-6 gutter, which keeps its width identical to its siblings.
+            const isLoneLast =
+              menuPackages.length % 2 === 1 && idx === menuPackages.length - 1;
+
+            return (
             <figure
               key={item.src}
-              className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_18px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_28px_100px_rgba(255,79,184,0.16)]"
+              className={`group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_18px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_28px_100px_rgba(255,79,184,0.16)]${
+                isLoneLast ? " sm:col-span-2 sm:mx-auto sm:w-[calc(50%_-_0.75rem)]" : ""
+              }`}
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_38%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_36%)] opacity-90" />
 
@@ -442,7 +452,8 @@ export default function Page() {
 
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
             </figure>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-12 flex justify-center">
