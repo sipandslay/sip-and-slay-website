@@ -35,6 +35,10 @@ const localBusinessSchema = {
   telephone: "+1-630-666-5882",
   email: "sipandslayllc@gmail.com",
   image: "https://sipandslayllc.com/logo.png",
+  priceRange: "$200+",
+  // Canonical profile URL only — the ?utm_source share-sheet parameters that
+  // Instagram appends are tracking noise and would weaken the entity match.
+  sameAs: ["https://www.instagram.com/sip_and_slayllc/"],
   address: {
     "@type": "PostalAddress",
     postalCode: "60004",
