@@ -257,7 +257,7 @@ export default function Page() {
           </button>
           <div className="leading-tight">
             <div className="sip-glow text-sm text-white/70">Sip &amp; Slay LLC</div>
-            <div className="text-xs text-white/45">Luxury Cart Events</div>
+            <div className="text-xs text-white/45">Luxury Event Carts</div>
             <a
               href="#meet"
               aria-label="Meet your bartender"
@@ -688,7 +688,19 @@ export default function Page() {
         </div>
 
         <footer className="relative mx-auto mt-10 max-w-6xl px-2 text-center text-xs text-white/45">
-          © {new Date().getFullYear()} Sip &amp; Slay LLC • Premium luxury mobile bartending • Chicagoland
+          <div>
+            © {new Date().getFullYear()} Sip &amp; Slay LLC • Luxury Event Carts • Chicagoland
+          </div>
+
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-white/35">
+            <span>Mobile Bartending</span>
+            <span className="h-1 w-1 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
+            <span>Mixology Classes</span>
+            <span className="h-1 w-1 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
+            <span>Dessert Carts</span>
+            <span className="h-1 w-1 rounded-full bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8]" />
+            <span>Event Servers</span>
+          </div>
         </footer>
       </section>
     </main>

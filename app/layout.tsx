@@ -3,8 +3,11 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sip & Slay LLC",
-  description: "Luxury Cart Events",
+  // Keyword-led rather than brand-led: people search the service and the city,
+  // not the business name. Kept under ~60 characters so Google shows it whole.
+  title: "Mobile Bartending & Event Carts in Chicagoland | Sip & Slay",
+  description:
+    "Luxury event carts for Chicagoland weddings, birthdays & corporate events — mobile bartending, mixology classes, dessert carts & event servers.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
