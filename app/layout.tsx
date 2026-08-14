@@ -18,13 +18,16 @@ export const metadata: Metadata = {
   },
 };
 
-// LocalBusiness structured data. This is invisible to visitors — it exists so
-// Google can read the business as an entity (services, service area, contact)
-// rather than inferring it from prose, which is what feeds the local results.
+// LocalBusiness structured data. Invisible to visitors, and secondary to the
+// verified Google Business Profile, which is what Google actually displays in
+// local results. This exists only to corroborate that profile — so it is
+// deliberately limited to stable facts.
 //
-// No street address on purpose: this is a mobile, service-area business, so
-// the radius below is what matters and a home address would be published to
-// the world for no benefit. Google supports omitting it for this business type.
+// Hours and price range are intentionally absent. Both are displayed from the
+// Business Profile and both change over time, so asserting them here only
+// creates a chance of the site contradicting the profile, which is worse than
+// staying silent. Same reasoning for the street address, with the added point
+// that this is a mobile business and a home address should not be published.
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -35,7 +38,6 @@ const localBusinessSchema = {
   telephone: "+1-630-666-5882",
   email: "sipandslayllc@gmail.com",
   image: "https://sipandslayllc.com/logo.png",
-  priceRange: "$200+",
   // Canonical profile URL only — the ?utm_source share-sheet parameters that
   // Instagram appends are tracking noise and would weaken the entity match.
   sameAs: ["https://www.instagram.com/sip_and_slayllc/"],
@@ -54,20 +56,6 @@ const localBusinessSchema = {
       longitude: -87.9806,
     },
     geoRadius: "128748",
-  },
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ],
-    opens: "00:00",
-    closes: "23:59",
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
