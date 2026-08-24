@@ -1,141 +1,32 @@
-type GalleryVideo = {
-  src: string;
-  poster: string;
-  mime: string;
+import { PhotoCard, type Photo } from "./GalleryCards";
+
+export const metadata = {
+  title: "Event Photos | Sip & Slay LLC Gallery",
+  description:
+    "Real Sip & Slay event setups across Chicagoland — styled bar carts, custom menus and the details that finish a room.",
 };
 
-type GalleryPhoto = {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-};
-
-const galleryPhotos: GalleryPhoto[] = [
+const photos: Photo[] = [
   {
-    src: "/gallery/event-drinks.jpg",
-    alt: "Sip & Slay signature mocktails paired with WellWithAll Energy flavors at a Chicago event",
-    width: 1469,
-    height: 1918,
-  },
-  {
-    src: "/gallery/event-setup.jpg",
-    alt: "Sip & Slay bar cart styled with a custom mocktail menu, gold accents, and tip station",
+    src: "/gallery/events/event-setup.jpg",
+    alt: "Sip & Slay bar cart styled with a custom mocktail menu, gold accents and tip station",
     width: 1800,
     height: 1350,
   },
   {
-    src: "/gallery/dessert-drink-spread.png",
-    alt: "Sip & Slay dessert & drink spread — waffle pops, ice cream sundae, and flavored boba drinks under the neon sign",
-    width: 1122,
-    height: 1402,
-  },
-  {
-    src: "/gallery/backyard-bar-cart.jpg",
+    src: "/gallery/events/backyard-bar-cart.jpg",
     alt: "Sip & Slay backyard bar cart setup with custom cocktail menu and string lights",
     width: 1920,
     height: 2400,
   },
 ];
 
-const galleryVideos: GalleryVideo[] = [
-  {
-    src: "/Sips/clip1.mp4",
-    poster: "/Sips/clip1-poster.png",
-    mime: "video/mp4",
-  },
-  {
-    src: "/Sips/clip2.mp4",
-    poster: "/Sips/clip2-poster.png",
-    mime: "video/mp4",
-  },
-  {
-    src: "/Sips/clip3.mp4",
-    poster: "/Sips/clip3-poster.jpg",
-    mime: "video/mp4",
-  },
-];
-
-export default function GalleryPage() {
+export default function EventPhotosPage() {
   return (
-    <main className="sip-bg sip-grain sip-text min-h-screen">
-      <div className="sip-sparkles" />
-
-      <div className="pointer-events-none fixed inset-0">
-        <div className="absolute -top-56 left-1/2 h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.22),transparent_60%)] blur-3xl" />
-        <div className="absolute -top-20 right-[-220px] h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,79,184,0.18),transparent_62%)] blur-3xl" />
-        <div className="absolute bottom-[-420px] left-[-260px] h-[860px] w-[860px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.14),transparent_65%)] blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_55%)]" />
-      </div>
-
-      <header className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-        <a href="/" className="text-sm text-white/70 transition hover:text-white">
-          ← Back to Home
-        </a>
-        <div className="text-sm text-white/70">Sip &amp; Slay LLC • Gallery</div>
-      </header>
-
-      <section className="relative mx-auto max-w-6xl px-6 pb-16 pt-4 md:pt-8">
-        <div className="mb-10 text-center md:mb-12">
-          <h1 className="sip-heading text-3xl font-semibold tracking-tight md:text-5xl">
-            Gallery
-          </h1>
-          <p className="mx-auto mt-3 max-w-2xl text-sm font-light tracking-wide text-white/70 md:text-base">
-            Signature cocktails in motion — a glimpse of the real moments from our events.
-          </p>
-        </div>
-
-        <div className="mb-5 grid items-start gap-5 sm:grid-cols-2">
-          {galleryPhotos.map((item, idx) => (
-            <div
-              key={idx}
-              className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_18px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_28px_100px_rgba(255,79,184,0.16)]"
-            >
-              <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_34%)] opacity-90" />
-
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.src}
-                alt={item.alt}
-                width={item.width}
-                height={item.height}
-                loading="lazy"
-                className="relative block h-auto w-full bg-black object-contain"
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {galleryVideos.map((item, idx) => (
-            <div
-              key={idx}
-              className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_18px_70px_rgba(0,0,0,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_28px_100px_rgba(255,79,184,0.16)]"
-            >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_34%)] opacity-90" />
-
-              <video
-                controls
-                playsInline
-                preload="metadata"
-                poster={item.poster}
-                className="relative z-10 block h-full w-full bg-black object-contain"
-              >
-                <source src={item.src} type={item.mime} />
-              </video>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-12 flex justify-center">
-          <a
-            href="/#contact"
-            className="rounded-xl border border-white/5 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-[#FF4FB8]/10 transition hover:brightness-110"
-          >
-            Request a Quote
-          </a>
-        </div>
-      </section>
-    </main>
+    <div className="grid items-start gap-5 sm:gap-6 sm:grid-cols-2">
+      {photos.map((item) => (
+        <PhotoCard key={item.src} item={item} />
+      ))}
+    </div>
   );
 }

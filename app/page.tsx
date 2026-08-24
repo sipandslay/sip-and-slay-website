@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import ReviewsCarousel from "./ReviewsCarousel";
 import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
 
 const Accent = ({ children }: { children: ReactNode }) => (
@@ -258,16 +259,29 @@ export default function Page() {
           <div className="leading-tight">
             <div className="sip-glow text-sm text-white/70">Sip &amp; Slay LLC</div>
             <div className="text-xs text-white/45">Luxury Event Carts</div>
-            <a
-              href="#meet"
-              aria-label="Meet your bartender"
-              className="sip-meet-pill mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#FFC86A]/45 bg-white/[0.06] px-3 py-1.5 backdrop-blur transition active:scale-95 md:hidden"
-            >
-              <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text text-sm font-semibold text-transparent">
-                Meet Me
-              </span>
-              <span className="sip-meet-arrow text-xs font-bold text-[#FF4FB8]">↓</span>
-            </a>
+            <div className="mt-2 flex items-center gap-2 md:hidden">
+              <a
+                href="#meet"
+                aria-label="Meet your bartender"
+                className="sip-meet-pill inline-flex items-center gap-1.5 rounded-full border border-[#FFC86A]/45 bg-white/[0.06] px-3 py-1.5 backdrop-blur transition active:scale-95"
+              >
+                <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text text-[13px] font-semibold text-transparent">
+                  Meet Me
+                </span>
+                <span className="sip-meet-arrow text-xs font-bold text-[#FF4FB8]">↓</span>
+              </a>
+
+              <a
+                href="#reviews"
+                aria-label="Read client reviews"
+                className="sip-meet-pill inline-flex items-center gap-1.5 rounded-full border border-[#FFC86A]/45 bg-white/[0.06] px-3 py-1.5 backdrop-blur transition active:scale-95"
+              >
+                <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text text-[13px] font-semibold text-transparent">
+                  Reviews
+                </span>
+                <span className="sip-meet-arrow text-xs font-bold text-[#FF4FB8]">↓</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -283,6 +297,9 @@ export default function Page() {
           </a>
           <a className="hover:text-white" href="/gallery">
             Gallery
+          </a>
+          <a className="hover:text-white" href="#reviews">
+            Reviews
           </a>
           <a className="hover:text-white" href="#faq">
             FAQ
@@ -317,6 +334,13 @@ export default function Page() {
                 Gallery
               </a>
               <a
+                href="#reviews"
+                onClick={() => setMobileOpen(false)}
+                className="border-b border-white/5 px-5 py-3.5 text-white/80 transition hover:bg-white/5 hover:text-white"
+              >
+                Reviews
+              </a>
+              <a
                 href="#faq"
                 onClick={() => setMobileOpen(false)}
                 className="border-b border-white/5 px-5 py-3.5 text-white/80 transition hover:bg-white/5 hover:text-white"
@@ -347,13 +371,12 @@ export default function Page() {
           <div className="mt-10 flex justify-center">
             <div className="sip-logo-circle sip-logo-float">
               <span className="sip-logo-backglow" />
-              <span className="sip-logo-shimmer" />
 
               <Image
                 src="/logo.png"
                 alt="Sip & Slay logo"
-                width={1200}
-                height={1200}
+                width={1254}
+                height={1254}
                 priority
                 className="sip-logo-image"
               />
@@ -522,6 +545,26 @@ export default function Page() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section id="reviews" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
+        <div className="mb-12 text-center md:mb-14">
+          <div className="mb-5 flex items-center justify-center gap-3">
+            <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#FFC86A]/70" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.38em] text-[#FFC86A]">
+              Kind Words
+            </span>
+            <span className="h-px w-10 bg-gradient-to-l from-transparent to-[#FFC86A]/70" />
+          </div>
+
+          <h2 className="sip-heading text-4xl font-semibold tracking-tight md:text-6xl">
+            What Our Clients Say
+          </h2>
+
+          <div className="mx-auto mt-4 h-[2px] w-20 rounded-full bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A]" />
+        </div>
+
+        <ReviewsCarousel />
       </section>
 
       <section id="faq" className="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
