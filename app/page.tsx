@@ -165,12 +165,41 @@ export default function Page() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+
     v.muted = true;
     v.defaultMuted = true;
-    const attempt = v.play();
-    if (attempt && typeof attempt.catch === "function") {
-      attempt.catch(() => {});
-    }
+
+    const resume = () => {
+      // Browsers suspend video in a background tab and do not always restart it
+      // when you come back, which left the clip frozen on its last frame. Only
+      // nudge it when it is genuinely stopped, so we never fight the user.
+      if (v.paused || v.ended) {
+        const attempt = v.play();
+        if (attempt && typeof attempt.catch === "function") {
+          attempt.catch(() => {});
+        }
+      }
+    };
+
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") resume();
+    };
+
+    // Belt and braces: `ended` should never fire while the loop attribute is
+    // set, but if the browser drops the loop after a suspend it would stick on
+    // the final frame forever without this.
+    resume();
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("pageshow", resume);
+    window.addEventListener("focus", resume);
+    v.addEventListener("ended", resume);
+
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("pageshow", resume);
+      window.removeEventListener("focus", resume);
+      v.removeEventListener("ended", resume);
+    };
   }, []);
 
   const [website, setWebsite] = useState("");

@@ -103,25 +103,11 @@ export default function ReviewsCarousel() {
           ))}
         </div>
 
-        {/* A wide screenshot downscaled into a phone-width frame is simply
-            small; no amount of frame height changes that. So give people a way
-            to open the current review at full size instead. */}
-        <a
-          href={reviews[index].src}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open this review full size"
-          className="absolute bottom-2.5 right-2.5 z-30 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/60 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-[#FFC86A] backdrop-blur transition hover:border-[#FFC86A]/60 hover:bg-black/85 active:scale-95"
-        >
-          Full Size
-          <span aria-hidden="true" className="text-white/50">&#8599;</span>
-        </a>
-
         <button
           type="button"
           onClick={() => go(index - 1)}
           aria-label="Previous review"
-          className="absolute left-2 top-1/2 z-30 -translate-y-1/2 rounded-full border border-white/10 bg-black/55 p-2.5 text-[#FFC86A] backdrop-blur transition hover:border-[#FFC86A]/60 hover:bg-black/80 active:scale-95"
+          className="absolute bottom-2.5 left-2.5 z-30 rounded-full border border-white/[0.08] bg-black/30 p-2 text-[#FFC86A]/60 backdrop-blur transition hover:border-[#FFC86A]/50 hover:bg-black/60 hover:text-[#FFC86A] active:scale-95"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="15 18 9 12 15 6" />
@@ -132,7 +118,7 @@ export default function ReviewsCarousel() {
           type="button"
           onClick={() => go(index + 1)}
           aria-label="Next review"
-          className="absolute right-2 top-1/2 z-30 -translate-y-1/2 rounded-full border border-white/10 bg-black/55 p-2.5 text-[#FFC86A] backdrop-blur transition hover:border-[#FFC86A]/60 hover:bg-black/80 active:scale-95"
+          className="absolute bottom-2.5 right-2.5 z-30 rounded-full border border-white/[0.08] bg-black/30 p-2 text-[#FFC86A]/60 backdrop-blur transition hover:border-[#FFC86A]/50 hover:bg-black/60 hover:text-[#FFC86A] active:scale-95"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="9 18 15 12 9 6" />

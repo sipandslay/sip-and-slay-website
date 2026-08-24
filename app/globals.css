@@ -34,6 +34,9 @@ body {
 
 /* Premium background: darker + more seamless */
 .sip-bg {
+  /* isolate creates a stacking context so the vignette below can sit at
+     z-index -1: above this background, but underneath the page content. */
+  isolation: isolate;
   background:
     radial-gradient(1100px 620px at 15% 18%, rgba(255, 200, 106, 0.09), transparent 52%),
     radial-gradient(1000px 600px at 85% 22%, rgba(255, 79, 184, 0.08), transparent 52%),
@@ -42,12 +45,19 @@ body {
 }
 
 /* Vignette for deeper edges */
+/* Vignette. This is a fixed full-viewport layer, and as a positioned
+   pseudo-element it was painting ABOVE the page content in tree order, so it
+   was dimming photos as they scrolled through the darkened edge — visible as a
+   dark bar sweeping over the gallery. z-index -1 drops it behind the content
+   while keeping it above the background, which is what it was always meant to
+   do: darken the backdrop, never the photographs. */
 .sip-bg::after {
   content: "";
   position: fixed;
   inset: 0;
+  z-index: -1;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 0, 0.88) 100%);
+  background: radial-gradient(ellipse at center, transparent 28%, rgba(0, 0, 0, 0.88) 100%);
   opacity: 0.95;
 }
 
