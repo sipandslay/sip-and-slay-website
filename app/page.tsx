@@ -239,11 +239,11 @@ export default function Page() {
       <div className="sip-sparkles" />
 
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute -top-56 left-1/2 h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.22),transparent_60%)] blur-3xl" />
-        <div className="absolute -top-20 right-[-220px] h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,79,184,0.18),transparent_62%)] blur-3xl" />
-        <div className="absolute bottom-[-420px] left-[-260px] h-[860px] w-[860px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.14),transparent_65%)] blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_55%)]" />
-        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:56px_56px]" />
+        <div className="absolute -top-56 left-1/2 h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.13),transparent_58%)] blur-3xl" />
+        <div className="absolute -top-20 right-[-220px] h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,79,184,0.11),transparent_60%)] blur-3xl" />
+        <div className="absolute bottom-[-420px] left-[-260px] h-[860px] w-[860px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,200,106,0.085),transparent_62%)] blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.03),transparent_52%)]" />
+        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:56px_56px]" />
       </div>
 
       {/* Flush to the top-left corner on mobile; padded from md up, where the
@@ -310,20 +310,26 @@ export default function Page() {
         </div>
 
         <nav className="hidden items-center gap-6 text-sm text-white/70 md:flex">
+          {/* Meet Me and Reviews share the gradient treatment and sit together,
+              so the two highlighted destinations read as a deliberate pair
+              rather than one accent stranded among plain links. */}
           <a
             className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text font-semibold text-transparent transition hover:brightness-110"
             href="#meet"
           >
             Meet Me
           </a>
+          <a
+            className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text font-semibold text-transparent transition hover:brightness-110"
+            href="#reviews"
+          >
+            Reviews
+          </a>
           <a className="hover:text-white" href="#menus">
             Packages
           </a>
           <a className="hover:text-white" href="/gallery">
             Gallery
-          </a>
-          <a className="hover:text-white" href="#reviews">
-            Reviews
           </a>
           <a className="hover:text-white" href="#faq">
             FAQ
@@ -588,7 +594,7 @@ export default function Page() {
 
           {/* Doubles as the section heading, so there is still one h2 here
               without stacking a big gradient title on top of the line. */}
-          <h2 className="sip-script mx-auto mt-3 max-w-2xl text-[#FFC86A] text-sm font-semibold leading-relaxed tracking-wide md:text-base">
+          <h2 className="sip-script mx-auto mt-3 max-w-md text-balance text-[#FFC86A] text-lg font-bold leading-snug tracking-wide md:max-w-2xl md:text-2xl">
             See what our clients have to say about Sip &amp; Slay
           </h2>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const reviews = [
   { src: "/Reviews/review1.jpeg", width: 888, height: 351 },
@@ -22,6 +22,22 @@ export default function ReviewsCarousel() {
 
   const go = useCallback((next: number) => {
     setIndex((next + reviews.length) % reviews.length);
+  }, []);
+
+  // Randomise which review is shown first. This runs in a timeout rather than
+  // straight in the effect body so the server and the client still agree on the
+  // initial HTML (both start on the first review) and hydration stays valid --
+  // the jump happens a tick later, hidden by the fade.
+  const didInit = useRef(false);
+  useEffect(() => {
+    if (didInit.current) return;
+    didInit.current = true;
+
+    const t = window.setTimeout(() => {
+      setIndex(Math.floor(Math.random() * reviews.length));
+    }, 0);
+
+    return () => window.clearTimeout(t);
   }, []);
 
   useEffect(() => {
