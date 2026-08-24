@@ -314,3 +314,9 @@ border:1px solid rgba(255,200,106,0.25);
   }
 
 }
+
+/* Script face for accent lines. Falls back to whatever cursive the OS has if
+   the webfont fails, so the line never renders in plain Arial by surprise. */
+.sip-script {
+  font-family: var(--font-script), "Segoe Script", "Brush Script MT", cursive;
+}

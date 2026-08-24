@@ -31,7 +31,7 @@ export default function SipsAndSweetsPage() {
   return (
     <>
       <p className="mx-auto mb-10 max-w-2xl text-center text-sm font-light leading-relaxed tracking-wide text-white/65 md:text-base">
-        The drinks, the waffle pops, the sundaes &mdash; up close and in motion.
+        The sips that start the night, and the sweets that finish it.
       </p>
 
       <SectionLabel>In Motion</SectionLabel>

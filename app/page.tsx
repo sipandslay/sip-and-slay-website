@@ -10,6 +10,30 @@ const Accent = ({ children }: { children: ReactNode }) => (
   </span>
 );
 
+const StarRating = () => (
+  <div className="flex items-center justify-center gap-2">
+    <span className="text-base font-semibold leading-none text-white/85 md:text-lg">5.0</span>
+
+    {/* Solid gold rather than the brand gradient, so it reads as a familiar
+        review rating the way Google renders it. One SVG, five paths. */}
+    <svg
+      viewBox="0 0 124 24"
+      role="img"
+      aria-label="Rated 5.0 out of 5 stars"
+      className="h-[18px] w-auto drop-shadow-[0_0_8px_rgba(255,200,106,0.3)] md:h-5"
+    >
+      {[0, 25, 50, 75, 100].map((x) => (
+        <path
+          key={x}
+          transform={`translate(${x} 0)`}
+          fill="#FFC86A"
+          d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+        />
+      ))}
+    </svg>
+  </div>
+);
+
 function Input({
   label,
   value,
@@ -259,27 +283,27 @@ export default function Page() {
           <div className="leading-tight">
             <div className="sip-glow text-sm text-white/70">Sip &amp; Slay LLC</div>
             <div className="text-xs text-white/45">Luxury Event Services</div>
-            <div className="mt-2 flex items-center gap-2 md:hidden">
+            <div className="mt-1.5 flex items-center gap-1.5 md:hidden">
               <a
                 href="#meet"
                 aria-label="Meet your bartender"
-                className="sip-meet-pill inline-flex items-center gap-1.5 rounded-full border border-[#FFC86A]/45 bg-white/[0.06] px-3 py-1.5 backdrop-blur transition active:scale-95"
+                className="sip-meet-pill inline-flex items-center gap-1 rounded-full border border-[#FFC86A]/45 bg-white/[0.06] px-2 py-[3px] backdrop-blur transition active:scale-95"
               >
-                <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text text-[13px] font-semibold text-transparent">
+                <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text text-[10px] font-semibold text-transparent">
                   Meet Me
                 </span>
-                <span className="sip-meet-arrow text-xs font-bold text-[#FF4FB8]">↓</span>
+                <span className="sip-meet-arrow text-[9px] font-bold text-[#FF4FB8]">↓</span>
               </a>
 
               <a
                 href="#reviews"
                 aria-label="Read client reviews"
-                className="sip-meet-pill inline-flex items-center gap-1.5 rounded-full border border-[#FFC86A]/45 bg-white/[0.06] px-3 py-1.5 backdrop-blur transition active:scale-95"
+                className="sip-meet-pill inline-flex items-center gap-1 rounded-full border border-[#FFC86A]/45 bg-white/[0.06] px-2 py-[3px] backdrop-blur transition active:scale-95"
               >
-                <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text text-[13px] font-semibold text-transparent">
+                <span className="bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] bg-clip-text text-[10px] font-semibold text-transparent">
                   Reviews
                 </span>
-                <span className="sip-meet-arrow text-xs font-bold text-[#FF4FB8]">↓</span>
+                <span className="sip-meet-arrow text-[9px] font-bold text-[#FF4FB8]">↓</span>
               </a>
             </div>
           </div>
@@ -558,9 +582,13 @@ export default function Page() {
             <span className="h-px w-10 bg-gradient-to-l from-transparent to-[#FFC86A]/70" />
           </div>
 
+          <div className="mt-5">
+            <StarRating />
+          </div>
+
           {/* Doubles as the section heading, so there is still one h2 here
               without stacking a big gradient title on top of the line. */}
-          <h2 className="mx-auto mt-1 max-w-2xl text-xl font-light leading-relaxed tracking-wide text-white/80 md:text-2xl">
+          <h2 className="sip-script mx-auto mt-3 max-w-2xl text-[#FFC86A] text-sm font-semibold leading-relaxed tracking-wide md:text-base">
             See what our clients have to say about Sip &amp; Slay
           </h2>
         </div>

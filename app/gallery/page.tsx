@@ -23,10 +23,16 @@ const photos: Photo[] = [
 
 export default function EventPhotosPage() {
   return (
-    <div className="grid items-start gap-5 sm:gap-6 sm:grid-cols-2">
-      {photos.map((item) => (
-        <PhotoCard key={item.src} item={item} />
-      ))}
-    </div>
+    <>
+      <p className="mx-auto mb-10 max-w-2xl text-center text-sm font-light leading-relaxed tracking-wide text-white/65 md:text-base">
+        Book with us today and have your event slayed!
+      </p>
+
+      <div className="grid items-start gap-5 sm:gap-6 sm:grid-cols-2">
+        {photos.map((item) => (
+          <PhotoCard key={item.src} item={item} />
+        ))}
+      </div>
+    </>
   );
 }

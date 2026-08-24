@@ -1,6 +1,17 @@
 // /app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
+import { Dancing_Script } from "next/font/google";
+
+// Self-hosted at build time by next/font, so no runtime request to Google and
+// no layout shift. Dancing Script stays legible at small sizes where a more
+// formal script (Great Vibes, Allura) turns to mush.
+const script = Dancing_Script({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-script",
+  display: "swap",
+});
 
 const siteUrl = "https://sipandslayllc.com";
 
@@ -119,7 +130,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={script.variable}>
       <body>
         <script
           type="application/ld+json"

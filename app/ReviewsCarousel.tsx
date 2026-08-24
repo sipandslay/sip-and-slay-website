@@ -8,6 +8,10 @@ const reviews = [
   { src: "/Reviews/review3.jpeg", width: 1318, height: 422 },
   { src: "/Reviews/review4.jpeg", width: 851, height: 444 },
   { src: "/Reviews/review5.jpg", width: 853, height: 294 },
+  { src: "/Reviews/review6.png", width: 605, height: 137 },
+  { src: "/Reviews/review7.png", width: 591, height: 129 },
+  { src: "/Reviews/review8.png", width: 600, height: 131 },
+  { src: "/Reviews/review9.png", width: 599, height: 339 },
 ];
 
 const ROTATE_MS = 6000;
@@ -30,7 +34,14 @@ export default function ReviewsCarousel() {
     if (reduce) return;
 
     const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % reviews.length);
+      // Each hop is random rather than sequential, so no two visits run the
+      // reviews in the same order. Randomising at mount instead would give the
+      // server and the client different HTML and trip a hydration error.
+      setIndex((current) => {
+        const choice = Math.floor(Math.random() * (reviews.length - 1));
+        // Shift past the current index so a review never repeats back to back.
+        return choice >= current ? choice + 1 : choice;
+      });
     }, ROTATE_MS);
 
     return () => window.clearInterval(id);
@@ -47,9 +58,11 @@ export default function ReviewsCarousel() {
       <div className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_18px_70px_rgba(0,0,0,0.45)] backdrop-blur">
         <div className="pointer-events-none absolute inset-0 z-20 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.16),transparent_38%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.16),transparent_36%)]" />
 
-        {/* Every slide occupies the same grid cell, so the frame takes the height
-            of the tallest review and never jumps as it rotates. */}
-        <div className="grid bg-black/60">
+        {/* Fixed frame with object-contain. The screenshots range from 1.77 to
+            4.58 in aspect ratio, so sizing the frame to the tallest one would
+            leave the wide ones floating in dead space. Letterboxing costs
+            nothing here because the screenshots are dark on a dark card. */}
+        <div className="grid aspect-[2/1] bg-black/60 sm:aspect-[12/5]">
           {reviews.map((review, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -59,12 +72,27 @@ export default function ReviewsCarousel() {
               width={review.width}
               height={review.height}
               aria-hidden={i !== index}
-              className={`col-start-1 row-start-1 h-auto w-full self-center transition-opacity duration-700 ease-out ${
-                i === index ? "opacity-100" : "opacity-0"
-              }`}
+              className={
+                "col-start-1 row-start-1 h-full w-full object-contain p-1.5 transition-opacity duration-700 ease-out sm:p-4 " +
+                (i === index ? "opacity-100" : "pointer-events-none opacity-0")
+              }
             />
           ))}
         </div>
+
+        {/* A wide screenshot downscaled into a phone-width frame is simply
+            small; no amount of frame height changes that. So give people a way
+            to open the current review at full size instead. */}
+        <a
+          href={reviews[index].src}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open this review full size"
+          className="absolute bottom-2.5 right-2.5 z-30 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/60 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-[#FFC86A] backdrop-blur transition hover:border-[#FFC86A]/60 hover:bg-black/85 active:scale-95"
+        >
+          Full Size
+          <span aria-hidden="true" className="text-white/50">&#8599;</span>
+        </a>
 
         <button
           type="button"
@@ -89,7 +117,7 @@ export default function ReviewsCarousel() {
         </button>
       </div>
 
-      <div className="mt-6 flex items-center justify-center gap-2.5">
+      <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
         {reviews.map((review, i) => (
           <button
             key={review.src}
