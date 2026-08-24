@@ -301,7 +301,10 @@ radial-gradient(circle at center, #000 60%, #070707 100%);
 border:1px solid rgba(255,200,106,0.25);
 
   box-shadow:
-  0 0 0 1px rgba(255,255,255,0.05),
+  0 0 0 1px rgba(255,255,255,0.06),
+  0 0 42px rgba(176,62,166,0.24),
+  0 0 85px rgba(132,54,180,0.15),
+  0 0 140px rgba(88,38,132,0.08),
   0 35px 120px rgba(0,0,0,0.6);
 }
 
@@ -313,20 +316,7 @@ border:1px solid rgba(255,200,106,0.25);
   object-fit:contain;
 }
 
-/* glow */
 
-.sip-logo-backglow{
-  position:absolute;
-  inset:10%;
-  border-radius:9999px;
-  background:
-  radial-gradient(circle,
-  rgba(255,200,106,0.45),
-  rgba(255,79,184,0.25),
-  transparent 70%);
-  filter:blur(80px);
-  z-index:0;
-}
 
 /* luxury light sweep */
 
@@ -346,9 +336,9 @@ border:1px solid rgba(255,200,106,0.25);
 
   background:linear-gradient(
     120deg,
-    transparent 42%,
-    rgba(255,200,106,0.35) 50%,
-    transparent 58%
+    transparent 44%,
+    rgba(255,236,196,0.5) 50%,
+    transparent 56%
   );
 
   transform:translateX(-120%);
@@ -357,8 +347,11 @@ border:1px solid rgba(255,200,106,0.25);
 }
 
 @keyframes logoSweep{
+  /* Travel finishes inside the first 18% of the cycle, so the glint crosses in
+     about a second and then rests. Cycle length is unchanged at 6s, which keeps
+     it in step with the float. */
   0%{transform:translateX(-100%)}
-  60%{transform:translateX(120%)}
+  18%{transform:translateX(120%)}
   100%{transform:translateX(120%)}
 }
 

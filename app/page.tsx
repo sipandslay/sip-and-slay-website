@@ -429,7 +429,6 @@ export default function Page() {
         <div className="mx-auto max-w-3xl">
           <div className="mt-10 flex justify-center">
             <div className="sip-logo-circle sip-logo-float">
-              <span className="sip-logo-backglow" />
 
               <Image
                 src="/logo-v2.png"
