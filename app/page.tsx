@@ -558,11 +558,11 @@ export default function Page() {
             <span className="h-px w-10 bg-gradient-to-l from-transparent to-[#FFC86A]/70" />
           </div>
 
-          <h2 className="sip-heading text-4xl font-semibold tracking-tight md:text-6xl">
-            What Our Clients Say
+          {/* Doubles as the section heading, so there is still one h2 here
+              without stacking a big gradient title on top of the line. */}
+          <h2 className="mx-auto mt-1 max-w-2xl text-xl font-light leading-relaxed tracking-wide text-white/80 md:text-2xl">
+            See what our clients have to say about Sip &amp; Slay
           </h2>
-
-          <div className="mx-auto mt-4 h-[2px] w-20 rounded-full bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A]" />
         </div>
 
         <ReviewsCarousel />
