@@ -298,13 +298,13 @@ input:autofill {
  background:
 radial-gradient(circle at 40% 30%, rgba(255,255,255,0.08), transparent 60%),
 radial-gradient(circle at center, #000 60%, #070707 100%);
-border:1px solid rgba(176,62,166,0.34);
+border:1px solid rgba(238,168,132,0.32);
 
   box-shadow:
-  0 0 0 1px rgba(176,62,166,0.16),
-  0 0 42px rgba(176,62,166,0.24),
-  0 0 85px rgba(132,54,180,0.15),
-  0 0 140px rgba(88,38,132,0.08),
+  0 0 0 1px rgba(238,168,132,0.16),
+  0 0 42px rgba(238,168,132,0.22),
+  0 0 85px rgba(226,122,138,0.14),
+  0 0 140px rgba(178,84,112,0.07),
   0 35px 120px rgba(0,0,0,0.6);
 }
 
