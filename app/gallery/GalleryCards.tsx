@@ -53,7 +53,7 @@ export function MenuCard({ item }: { item: Photo }) {
       target="_blank"
       rel="noopener noreferrer"
       className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFC86A]/70"
-      aria-label={`${item.caption ?? item.alt} — open full size`}
+      aria-label={item.alt + " — open full size"}
     >
       <figure className={cardShell}>
         <div className={cornerGlow} />
@@ -68,10 +68,13 @@ export function MenuCard({ item }: { item: Photo }) {
           className="relative block h-auto w-full bg-black object-contain"
         />
 
-        <figcaption className="relative z-20 flex items-center justify-center gap-2 border-t border-white/10 bg-black/50 px-5 py-3.5 text-center text-xs font-medium uppercase tracking-[0.24em] text-[#FFC86A] backdrop-blur">
-          {item.caption}
-          <span className="text-white/40 transition group-hover:text-white/70">&#8599;</span>
-        </figcaption>
+        {/* Enlarge affordance only, no caption — the menu art speaks for itself. */}
+        <span
+          aria-hidden="true"
+          className="absolute right-4 top-4 z-20 rounded-full border border-white/15 bg-black/55 px-2.5 py-1.5 text-xs text-white/60 opacity-0 backdrop-blur transition duration-300 group-hover:opacity-100"
+        >
+          &#8599;
+        </span>
       </figure>
     </a>
   );

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import GalleryTabs from "./GalleryTabs";
 
 export default function GalleryLayout({ children }: { children: ReactNode }) {
@@ -14,9 +15,9 @@ export default function GalleryLayout({ children }: { children: ReactNode }) {
       </div>
 
       <header className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-        <a href="/" className="text-sm text-white/70 transition hover:text-white">
+        <Link href="/" className="text-sm text-white/70 transition hover:text-white">
           &larr; Back to Home
-        </a>
+        </Link>
         <div className="text-sm text-white/70">Sip &amp; Slay LLC &bull; Gallery</div>
       </header>
 
@@ -42,13 +43,13 @@ export default function GalleryLayout({ children }: { children: ReactNode }) {
         <div className="mt-12 md:mt-14">{children}</div>
 
         <div className="mt-14 flex justify-center">
-          <a
+          <Link
             href="/#contact"
             className="group inline-flex items-center gap-2 rounded-xl border border-white/5 bg-gradient-to-r from-[#FFC86A] to-[#FF4FB8] px-6 py-3 text-sm font-semibold tracking-wide text-black shadow-[0_18px_40px_rgba(255,79,184,0.22)] transition hover:brightness-110"
           >
             Request a Quote
             <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </section>
     </main>

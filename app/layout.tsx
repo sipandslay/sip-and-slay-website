@@ -8,10 +8,10 @@ const siteUrl = "https://sipandslayllc.com";
 // only show the first 20-30 characters. Service terms still follow. Chicagoland
 // lives in the description instead — the verified Google Business Profile
 // already owns local and "near me" intent, so the title need not carry it.
-const siteTitle = "Sip & Slay LLC | Mobile Bartending & Event Carts";
+const siteTitle = "Sip & Slay LLC | Mobile Bartending & Event Services";
 
 const siteDescription =
-  "Luxury event carts for Chicagoland weddings, birthdays & corporate events — mobile bartending, mixology classes, dessert carts & event servers.";
+  "Luxury event services for Chicagoland weddings, birthdays & corporate events — mobile bartending, mixology classes, dessert carts & event servers.";
 
 export const metadata: Metadata = {
   // Lets the relative image path below resolve to an absolute URL, which the
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         url: "/og-banner.png",
         width: 1200,
         height: 630,
-        alt: "Sip & Slay LLC — luxury event carts, mobile bartending, mixology classes, dessert carts and event servers in Chicagoland",
+        alt: "Sip & Slay LLC — luxury event services, mobile bartending, mixology classes, dessert carts and event servers in Chicagoland",
       },
     ],
   },
@@ -73,7 +73,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   name: "Sip & Slay LLC",
   description:
-    "Luxury event carts serving Chicagoland — mobile bartending, in-home mixology classes, ice cream and waffle pop dessert carts, and professional event servers.",
+    "Luxury event services serving Chicagoland — mobile bartending, in-home mixology classes, ice cream and waffle pop dessert carts, and professional event servers.",
   url: siteUrl,
   telephone: "+1-630-666-5882",
   email: "sipandslayllc@gmail.com",

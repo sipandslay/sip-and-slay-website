@@ -6,8 +6,6 @@ export const metadata = {
     "Themed cocktail and mocktail menus designed for each event — holidays, birthdays, showers and corporate parties across Chicagoland.",
 };
 
-// Swap the caption for the real occasion when you have it ("St. Patrick's Day",
-// "Baby Shower"); it becomes both the visible label and the alt text.
 const files = [
   "menu1.jpeg",
   "menu2.png",
@@ -24,7 +22,6 @@ const menus: Photo[] = files.map((file, i) => ({
   src: `/gallery/menus/${file}`,
   width: 1024,
   height: 1536,
-  caption: "View Full Size",
   alt: `Sip & Slay custom themed cocktail and mocktail menu designed for a Chicagoland event (${
     i + 1
   } of ${files.length})`,

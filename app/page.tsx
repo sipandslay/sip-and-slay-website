@@ -258,7 +258,7 @@ export default function Page() {
           </button>
           <div className="leading-tight">
             <div className="sip-glow text-sm text-white/70">Sip &amp; Slay LLC</div>
-            <div className="text-xs text-white/45">Luxury Event Carts</div>
+            <div className="text-xs text-white/45">Luxury Event Services</div>
             <div className="mt-2 flex items-center gap-2 md:hidden">
               <a
                 href="#meet"
@@ -462,6 +462,7 @@ export default function Page() {
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_38%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_36%)] opacity-90" />
 
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={item.src}
                 alt={item.alt}
@@ -732,7 +733,7 @@ export default function Page() {
 
         <footer className="relative mx-auto mt-10 max-w-6xl px-2 text-center text-xs text-white/45">
           <div>
-            © {new Date().getFullYear()} Sip &amp; Slay LLC • Luxury Event Carts • Chicagoland
+            © {new Date().getFullYear()} Sip &amp; Slay LLC • Luxury Event Services • Chicagoland
           </div>
 
           <div className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-white/35">
