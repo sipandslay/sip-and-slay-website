@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     images: [
       {
         // Purpose-built 1200x630 card — the ratio every preview crawler wants.
-        url: "/og-banner.png",
+        url: "/og-banner-v2.png",
         width: 1200,
         height: 630,
         alt: "Sip & Slay LLC — luxury event services, mobile bartending, mixology classes, dessert carts and event servers in Chicagoland",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/og-banner.png"],
+    images: ["/og-banner-v2.png"],
   },
   icons: {
     icon: [
@@ -88,7 +88,7 @@ const localBusinessSchema = {
   url: siteUrl,
   telephone: "+1-630-666-5882",
   email: "sipandslayllc@gmail.com",
-  image: `${siteUrl}/logo.png`,
+  image: `${siteUrl}/logo-v2.png`,
   // Canonical profile URL only — the ?utm_source share-sheet parameters that
   // Instagram appends are tracking noise and would weaken the entity match.
   sameAs: ["https://www.instagram.com/sip_and_slayllc/"],

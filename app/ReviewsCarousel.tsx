@@ -19,27 +19,33 @@ const ROTATE_MS = 6000;
 export default function ReviewsCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  // Fading is switched on only after the opening jump below, so the random
+  // first review appears instantly instead of crossfading out of review 1.
+  const [fade, setFade] = useState(false);
 
   const go = useCallback((next: number) => {
     setIndex((next + reviews.length) % reviews.length);
   }, []);
 
-  // Randomise which review is shown first. This runs in a timeout rather than
-  // straight in the effect body so the server and the client still agree on the
-  // initial HTML (both start on the first review) and hydration stays valid --
-  // the jump happens a tick later, hidden by the fade.
+  // Pick the opening review at random. It happens in a timeout rather than in
+  // the effect body so the server and client agree on the initial HTML and
+  // hydration stays valid; the swap lands a tick later with no transition, so
+  // review 1 is never actually seen. Fading turns on just after.
   const didInit = useRef(false);
   useEffect(() => {
     if (didInit.current) return;
     didInit.current = true;
 
-    const t = window.setTimeout(() => {
+    const jump = window.setTimeout(() => {
       setIndex(Math.floor(Math.random() * reviews.length));
     }, 0);
+    const enableFade = window.setTimeout(() => setFade(true), 60);
 
-    return () => window.clearTimeout(t);
+    return () => {
+      window.clearTimeout(jump);
+      window.clearTimeout(enableFade);
+    };
   }, []);
-
   useEffect(() => {
     if (paused) return;
 
@@ -89,7 +95,8 @@ export default function ReviewsCarousel() {
               height={review.height}
               aria-hidden={i !== index}
               className={
-                "col-start-1 row-start-1 h-full w-full object-contain p-1.5 transition-opacity duration-700 ease-out sm:p-4 " +
+                "col-start-1 row-start-1 h-full w-full object-contain p-1.5 sm:p-4 " +
+                (fade ? "transition-opacity duration-700 ease-out " : "") +
                 (i === index ? "opacity-100" : "pointer-events-none opacity-0")
               }
             />

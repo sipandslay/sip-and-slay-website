@@ -403,7 +403,7 @@ export default function Page() {
               <span className="sip-logo-backglow" />
 
               <Image
-                src="/logo.png"
+                src="/logo-v2.png"
                 alt="Sip & Slay logo"
                 width={1254}
                 height={1254}
@@ -594,8 +594,9 @@ export default function Page() {
 
           {/* Doubles as the section heading, so there is still one h2 here
               without stacking a big gradient title on top of the line. */}
-          <h2 className="sip-script mx-auto mt-3 max-w-md text-balance text-[#FFC86A] text-lg font-bold leading-snug tracking-wide md:max-w-2xl md:text-2xl">
-            See what our clients have to say about Sip &amp; Slay
+          <h2 className="sip-script mx-auto mt-3 text-lg font-bold leading-snug tracking-wide text-[#FFC86A] md:text-2xl">
+            <span className="block">See what our clients have to say</span>
+            <span className="block">about Sip &amp; Slay</span>
           </h2>
         </div>
 
