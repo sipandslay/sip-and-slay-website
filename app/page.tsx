@@ -609,7 +609,7 @@ export default function Page() {
         </div>
 
         <div className="grid gap-5 md:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
+          <div className="rounded-2xl border border-white/[0.14] bg-gradient-to-b from-white/[0.11] to-white/[0.05] p-6 text-sm text-white/75 shadow-[0_10px_36px_rgba(0,0,0,0.35)] backdrop-blur">
             <div className="font-semibold text-white">Do you provide alcohol?</div>
             <div className="mt-2">
               No, we&apos;re a dry hire service. Which means we bring the bartending expertise, presentation and
@@ -618,14 +618,14 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
+          <div className="rounded-2xl border border-white/[0.14] bg-gradient-to-b from-white/[0.11] to-white/[0.05] p-6 text-sm text-white/75 shadow-[0_10px_36px_rgba(0,0,0,0.35)] backdrop-blur">
             <div className="font-semibold text-white">What areas do you serve?</div>
             <div className="mt-2">
               Northwest suburbs + Chicagoland. If you&apos;re unsure, send the city and we&apos;ll confirm.
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 backdrop-blur">
+          <div className="rounded-2xl border border-white/[0.14] bg-gradient-to-b from-white/[0.11] to-white/[0.05] p-6 text-sm text-white/75 shadow-[0_10px_36px_rgba(0,0,0,0.35)] backdrop-blur">
             <div className="font-semibold text-white">
               Do you provide the food for the waffle cart &amp; ice cream bar experiences?
             </div>
@@ -638,7 +638,7 @@ export default function Page() {
       </section>
 
       <section id="contact" className="relative mx-auto max-w-6xl px-6 pb-16 pt-10">
-        <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
+        <div className="overflow-hidden rounded-3xl border border-white/[0.14] bg-gradient-to-b from-white/[0.095] to-white/[0.042] p-8 shadow-[0_18px_60px_rgba(0,0,0,0.4)] backdrop-blur">
           <div className="grid gap-8 md:grid-cols-2 md:items-start">
             <div>
               <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
@@ -684,7 +684,7 @@ export default function Page() {
                 <div className="mx-auto mt-4 h-[2px] w-16 rounded-full bg-gradient-to-r from-[#FFC86A] via-[#FF4FB8] to-[#FFC86A]" />
               </div>
             ) : (
-            <form onSubmit={onSubmit} className="rounded-2xl border border-white/10 bg-black/30 p-6">
+            <form onSubmit={onSubmit} className="rounded-2xl border border-white/[0.12] bg-black/25 p-6">
               <div className="text-sm font-semibold">Quick Quote Form</div>
               <p className="mt-2 text-sm text-white/65">
                 Required fields are marked with <span className="text-[#FFC86A]">*</span>.
