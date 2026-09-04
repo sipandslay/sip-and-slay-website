@@ -15,7 +15,10 @@ type Payload = {
   hours: string;
   vibeTheme: string;
   eventExperiences: string[];
-  referredBy?: string;
+  tipJar?: string;
+  foundUs?: string;
+  foundUsOther?: string;
+  eventTypeOther?: string;
   website?: string; // honeypot
   formStart?: number; // timing trap
 };
@@ -96,7 +99,10 @@ export async function POST(req: Request) {
       hours: sanitize(body.hours),
       vibeTheme: sanitize(body.vibeTheme),
       eventExperiences: sanitizeStringArray(body.eventExperiences),
-      referredBy: sanitize(body.referredBy),
+      tipJar: sanitize(body.tipJar),
+      foundUs: sanitize(body.foundUs),
+      foundUsOther: sanitize(body.foundUsOther),
+      eventTypeOther: sanitize(body.eventTypeOther),
       website: sanitize(body.website),
       formStart: typeof body.formStart === "number" ? body.formStart : 0,
     };
@@ -109,7 +115,6 @@ export async function POST(req: Request) {
       "guestCount",
       "eventType",
       "hours",
-      "vibeTheme",
     ] as const;
 
     for (const k of required) {
@@ -153,6 +158,8 @@ export async function POST(req: Request) {
     if (looksLikeSpamText(payload.eventType)) spamFields.push("Event type");
     if (looksLikeSpamText(payload.vibeTheme)) spamFields.push("Vibe/theme");
     if (payload.eventExperiences.some(looksLikeSpamText)) spamFields.push("Experience(s)");
+    if (looksLikeSpamText(payload.foundUsOther || "")) spamFields.push("How they found us");
+    if (looksLikeSpamText(payload.eventTypeOther || "")) spamFields.push("Event type detail");
 
     if (spamFields.length > 0) {
       flags.push(
@@ -194,11 +201,20 @@ export async function POST(req: Request) {
       `Date: ${payload.date}`,
       `City: ${payload.city}`,
       `Guest count: ${payload.guestCount}`,
-      `Event type: ${payload.eventType}`,
+      `Event type: ${
+        payload.eventType === "Other"
+          ? `Other — ${payload.eventTypeOther || "(not specified)"}`
+          : payload.eventType
+      }`,
       `Hours: ${payload.hours}`,
-      `Vibe/theme: ${payload.vibeTheme}`,
+      `Vibe/theme: ${payload.vibeTheme || "(not provided)"}`,
       `Experience(s) of interest: ${payload.eventExperiences.join(", ")}`,
-      `Referred by: ${payload.referredBy || "(not provided)"}`,
+      `Tip jar allowed: ${payload.tipJar || "(not answered)"}`,
+      `Found us via: ${
+        payload.foundUs === "Other"
+          ? `Other — ${payload.foundUsOther || "(not specified)"}`
+          : payload.foundUs || "(not provided)"
+      }`,
       "",
       `Sent: ${new Date().toISOString()}`,
     ].join("\n");

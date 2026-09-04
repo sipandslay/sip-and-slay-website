@@ -15,6 +15,8 @@ export type Photo = {
 export type Clip = {
   src: string;
   poster: string;
+  width: number;
+  height: number;
 };
 
 export function PhotoCard({ item }: { item: Photo }) {
@@ -22,15 +24,21 @@ export function PhotoCard({ item }: { item: Photo }) {
     <figure className={cardShell}>
       <div className={cornerGlow} />
 
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={item.src}
-        alt={item.alt}
-        width={item.width}
-        height={item.height}
-        loading="lazy"
-        className="relative block h-auto w-full bg-black object-contain"
-      />
+      {/* Uniform square frame, filled rather than letterboxed. These are
+          photographs, so cropping to fill is fine and gives a flush grid with
+          no bars. Menus get object-contain instead, because cropping a menu
+          would cut off drink names. */}
+      <div className="aspect-square bg-black">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={item.src}
+          alt={item.alt}
+          width={item.width}
+          height={item.height}
+          loading="lazy"
+          className="h-full w-full object-cover"
+        />
+      </div>
 
       {item.caption ? (
         <figcaption className="relative z-20 border-t border-white/10 bg-black/50 px-5 py-3.5 text-center text-xs font-medium uppercase tracking-[0.24em] text-[#FFC86A] backdrop-blur">
@@ -58,6 +66,11 @@ export function MenuCard({ item }: { item: Photo }) {
       <figure className={cardShell}>
         <div className={cornerGlow} />
 
+        {/* Natural height, not a fixed frame. A menu cannot be cropped without
+            cutting off drink names, and a fixed frame letterboxed the three
+            that are not 2:3 -- so the card sizes to each image instead and no
+            bar can exist inside it. The width/height attributes keep the space
+            reserved so the grid still does not jump while loading. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={item.src}
@@ -65,7 +78,7 @@ export function MenuCard({ item }: { item: Photo }) {
           width={item.width}
           height={item.height}
           loading="lazy"
-          className="relative block h-auto w-full bg-black object-contain"
+          className="block h-auto w-full bg-black object-contain"
         />
 
         {/* Enlarge affordance only, no caption — the menu art speaks for itself. */}
@@ -85,15 +98,22 @@ export function ClipCard({ item }: { item: Clip }) {
     <div className={cardShell}>
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,200,106,0.14),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,79,184,0.14),transparent_34%)] opacity-90" />
 
-      <video
-        controls
-        playsInline
-        preload="metadata"
-        poster={item.poster}
-        className="relative z-10 block h-full w-full bg-black object-contain"
+      {/* Each clip carries its own aspect ratio rather than a shared frame, so
+          the card matches the video exactly and never letterboxes. */}
+      <div
+        className="relative z-10 bg-black"
+        style={{ aspectRatio: item.width + " / " + item.height }}
       >
-        <source src={item.src} type="video/mp4" />
-      </video>
+        <video
+          controls
+          playsInline
+          preload="metadata"
+          poster={item.poster}
+          className="h-full w-full object-cover"
+        >
+          <source src={item.src} type="video/mp4" />
+        </video>
+      </div>
     </div>
   );
 }

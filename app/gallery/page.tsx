@@ -19,6 +19,48 @@ const photos: Photo[] = [
     width: 1920,
     height: 2400,
   },
+  {
+    src: "/gallery/events/setup.jpeg",
+    alt: "Sip & Slay event setup at a Chicagoland event",
+    width: 1795,
+    height: 2400,
+  },
+  {
+    src: "/gallery/events/setup1.jpeg",
+    alt: "Sip & Slay event setup at a Chicagoland event",
+    width: 4284,
+    height: 5712,
+  },
+  {
+    src: "/gallery/events/setup2.jpeg",
+    alt: "Sip & Slay event setup at a Chicagoland event",
+    width: 2400,
+    height: 1795,
+  },
+  {
+    src: "/gallery/events/setup3.jpeg",
+    alt: "Sip & Slay event setup at a Chicagoland event",
+    width: 4284,
+    height: 5712,
+  },
+  {
+    src: "/gallery/events/setup4.jpg",
+    alt: "Sip & Slay event setup at a Chicagoland event",
+    width: 5712,
+    height: 4284,
+  },
+  {
+    src: "/gallery/events/setup5.jpg",
+    alt: "Sip & Slay event setup at a Chicagoland event",
+    width: 4032,
+    height: 3024,
+  },
+  {
+    src: "/gallery/events/setup6.jpg",
+    alt: "Sip & Slay event setup at a Chicagoland event",
+    width: 4284,
+    height: 5712,
+  },
 ];
 
 export default function EventPhotosPage() {

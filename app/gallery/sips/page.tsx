@@ -7,9 +7,12 @@ export const metadata = {
 };
 
 const clips: Clip[] = [
-  { src: "/gallery/sips/clip1.mp4", poster: "/gallery/sips/clip1-poster.png" },
-  { src: "/gallery/sips/clip2.mp4", poster: "/gallery/sips/clip2-poster.png" },
-  { src: "/gallery/sips/clip3.mp4", poster: "/gallery/sips/clip3-poster.jpg" },
+  // Dimensions are the VIDEO's, not the poster's. The posters are cropped
+  // stills at different ratios, and sizing the card to them letterboxed the
+  // actual 9:16 footage inside it.
+  { src: "/gallery/sips/clip1.mp4", poster: "/gallery/sips/clip1-poster.png", width: 480, height: 854 },
+  { src: "/gallery/sips/clip2.mp4", poster: "/gallery/sips/clip2-poster.png", width: 480, height: 854 },
+  { src: "/gallery/sips/clip3.mp4", poster: "/gallery/sips/clip3-poster.jpg", width: 576, height: 1024 },
 ];
 
 const stills: Photo[] = [
@@ -24,6 +27,12 @@ const stills: Photo[] = [
     alt: "Sip & Slay dessert and drink spread — waffle pops, ice cream sundaes and flavored drinks under the neon sign",
     width: 1122,
     height: 1402,
+  },
+  {
+    src: "/gallery/sips/sip.jpg",
+    alt: "Sip & Slay signature drink served at a Chicagoland event",
+    width: 4284,
+    height: 5712,
   },
 ];
 

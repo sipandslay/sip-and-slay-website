@@ -34,6 +34,14 @@ const StarRating = () => (
   </div>
 );
 
+// A native date input always holds YYYY-MM-DD regardless of how the browser
+// displays it, so convert to MM/DD/YYYY on the way out to keep the emails and
+// the subject line in the format Nikki reads.
+function toUsDate(value: string) {
+  const [y, m, d] = value.split("-");
+  return y && m && d ? `${m}/${d}/${y}` : value;
+}
+
 function Input({
   label,
   value,
@@ -60,7 +68,7 @@ function Input({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
-        className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35 focus:border-white/25"
+        className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none [color-scheme:dark] placeholder:text-white/35 focus:border-white/25"
       />
     </label>
   );
@@ -117,6 +125,102 @@ function CheckboxGroup({
   );
 }
 
+function Select({
+  label,
+  value,
+  onChange,
+  options,
+  placeholder,
+  required,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  options: string[];
+  placeholder: string;
+  required?: boolean;
+}) {
+  return (
+    <label className="block">
+      <div className="mb-2 text-xs text-white/70">
+        {label} {required ? <span className="text-[#FFC86A]">*</span> : null}
+      </div>
+
+      {/* appearance-none plus a drawn chevron: the native arrow renders dark on
+          dark in some browsers and all but disappears against this field. */}
+      <div className="relative">
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          required={required}
+          className="w-full appearance-none rounded-xl border border-white/10 bg-black/40 px-4 py-3 pr-10 text-sm text-white outline-none focus:border-white/25"
+        >
+          <option value="" disabled className="bg-[#0b0b0e] text-white/50">
+            {placeholder}
+          </option>
+          {options.map((option) => (
+            <option key={option} value={option} className="bg-[#0b0b0e] text-white">
+              {option}
+            </option>
+          ))}
+        </select>
+
+        <svg
+          aria-hidden="true"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-white/40"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+    </label>
+  );
+}
+
+function YesNoGroup({
+  label,
+  name,
+  value,
+  onChange,
+}: {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <fieldset className="block">
+      <legend className="mb-2 text-xs text-white/70">{label}</legend>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        {["Yes", "No"].map((option) => (
+          <label
+            key={option}
+            className="flex cursor-pointer items-center gap-3 rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white transition hover:border-white/20"
+          >
+            <input
+              type="radio"
+              name={name}
+              value={option}
+              checked={value === option}
+              onChange={() => onChange(option)}
+              className="h-4 w-4 accent-[#FF4FB8]"
+            />
+            <span>{option}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  );
+}
+
 const menuPackages = [
   {
     src: "/Menus/Bar Cart Experience.png",
@@ -157,7 +261,10 @@ export default function Page() {
   const [hours, setHours] = useState("");
   const [vibeTheme, setVibeTheme] = useState("");
   const [eventExperiences, setEventExperiences] = useState<string[]>([]);
-  const [referredBy, setReferredBy] = useState("");
+  const [tipJar, setTipJar] = useState("");
+  const [foundUs, setFoundUs] = useState("");
+  const [foundUsOther, setFoundUsOther] = useState("");
+  const [eventTypeOther, setEventTypeOther] = useState("");
 
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -217,10 +324,26 @@ export default function Page() {
         guestCount.trim() &&
         eventType.trim() &&
         hours.trim() &&
-        vibeTheme.trim() &&
-        eventExperiences.length > 0
+        eventExperiences.length > 0 &&
+        (eventType !== "Other" || eventTypeOther.trim()) &&
+        foundUs.trim() &&
+        // "Other" on its own tells us nothing, so the free-text becomes
+        // required as soon as it is chosen.
+        (foundUs !== "Other" || foundUsOther.trim())
     );
-  }, [email, phone, date, city, guestCount, eventType, hours, vibeTheme, eventExperiences]);
+  }, [
+    email,
+    phone,
+    date,
+    city,
+    guestCount,
+    eventType,
+    hours,
+    eventExperiences,
+    eventTypeOther,
+    foundUs,
+    foundUsOther,
+  ]);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -235,14 +358,17 @@ export default function Page() {
           name,
           email,
           phone,
-          date,
+          date: toUsDate(date),
           city,
           guestCount,
           eventType,
           hours,
           vibeTheme,
           eventExperiences,
-          referredBy,
+          tipJar,
+          foundUs,
+          foundUsOther,
+          eventTypeOther,
           website,
           formStart,
         }),
@@ -731,20 +857,86 @@ export default function Page() {
                 <Input label="Name" value={name} onChange={setName} placeholder="Your name (optional)" />
                 <Input label="Email" value={email} onChange={setEmail} type="email" required placeholder="you@email.com" />
                 <Input label="Phone" value={phone} onChange={setPhone} required placeholder="(555) 555-5555" />
-                <Input label="Date" value={date} onChange={setDate} required placeholder="MM/DD/YYYY" />
+                <Input label="Date" value={date} onChange={setDate} type="date" required />
                 <Input label="City" value={city} onChange={setCity} required placeholder="Chicago, Arlington Heights, etc." />
-                <Input label="Guest count" value={guestCount} onChange={setGuestCount} required placeholder="e.g., 45" />
-                <Input label="Event type" value={eventType} onChange={setEventType} required placeholder="Birthday, wedding, corporate, etc." />
-                <Input label="Hours" value={hours} onChange={setHours} required placeholder="e.g., 4" />
+
+                {/* Ranges rather than an exact number: guests are often still
+                    firming up, and the brackets follow the pricing tiers, where
+                    65 is the point a second bartender is needed. */}
+                <Select
+                  label="Guest count"
+                  value={guestCount}
+                  onChange={setGuestCount}
+                  required
+                  placeholder="Select a range"
+                  options={[
+                    "Under 25",
+                    "25-50",
+                    "51-65",
+                    "66-100",
+                    "101-150",
+                    "150+",
+                    "Not sure yet",
+                  ]}
+                />
+
+                <Select
+                  label="Event type"
+                  value={eventType}
+                  onChange={setEventType}
+                  required
+                  placeholder="Select an event type"
+                  options={[
+                    "Birthday",
+                    "Wedding",
+                    "Bridal shower",
+                    "Baby shower",
+                    "Bachelorette party",
+                    "Graduation",
+                    "Corporate event",
+                    "Holiday party",
+                    "Private party",
+                    "Other",
+                  ]}
+                />
+
+                <Select
+                  label="Hours"
+                  value={hours}
+                  onChange={setHours}
+                  required
+                  placeholder="Select hours needed"
+                  options={[
+                    "Under 2 hours",
+                    "2 hours",
+                    "3 hours",
+                    "4 hours",
+                    "5 hours",
+                    "6 hours",
+                    "7+ hours",
+                    "Not sure yet",
+                  ]}
+                />
               </div>
+
+              {eventType === "Other" ? (
+                <div className="mt-4">
+                  <Input
+                    label="What kind of event?"
+                    value={eventTypeOther}
+                    onChange={setEventTypeOther}
+                    required
+                    placeholder="Tell us about the occasion"
+                  />
+                </div>
+              ) : null}
 
               <div className="mt-4">
                 <Input
                   label="Vibe / theme"
                   value={vibeTheme}
                   onChange={setVibeTheme}
-                  required
-                  placeholder="Elegant, fun, black & gold, Barbie, etc."
+                  placeholder="Elegant, black & gold, Barbie, etc. (optional)"
                 />
               </div>
 
@@ -766,13 +958,46 @@ export default function Page() {
               </div>
 
               <div className="mt-4">
-                <Input
-                  label="Referred by (name + email/phone)"
-                  value={referredBy}
-                  onChange={setReferredBy}
-                  placeholder="Referrer's name & email/phone, so we can send their $25 (optional)"
+                <YesNoGroup
+                  label="Tip jar allowed?"
+                  name="tipJar"
+                  value={tipJar}
+                  onChange={setTipJar}
                 />
               </div>
+
+              <div className="mt-4">
+                <Select
+                  label="How did you find us?"
+                  value={foundUs}
+                  onChange={setFoundUs}
+                  required
+                  placeholder="Select an option"
+                  options={[
+                    "Instagram",
+                    "Facebook",
+                    "TikTok",
+                    "Google search",
+                    "Google Maps",
+                    "Referred by a friend",
+                    "Past client",
+                    "Flyer or event",
+                    "Other",
+                  ]}
+                />
+              </div>
+
+              {foundUs === "Other" ? (
+                <div className="mt-4">
+                  <Input
+                    label="Where did you find us?"
+                    value={foundUsOther}
+                    onChange={setFoundUsOther}
+                    required
+                    placeholder="Tell us where you heard about us"
+                  />
+                </div>
+              ) : null}
 
               <div className="mt-5 flex items-center gap-3">
                 <button
